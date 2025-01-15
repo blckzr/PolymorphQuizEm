@@ -60,3 +60,8 @@ git pull origin master
 3. Switch branch using `git checkout <branch_name>`. After pushing the changes, change to `master` branch
 4. Merge main and chosen branch using `git merge <{new_branch_name}>`. Change `{new_branch_name} with branch you want to merge with master.
 5. Update the clone repository using `git pull origin master` if the repository is updated.
+
+# REFERENCES:
+[Git & GitHub Tutorial for Beginners](https://youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR&si=cxNCOabily6Cy9ZT)
+
+[Git Explained in 100 Seconds](https://www.youtube.com/watch?v=hwP7WQkmECE&t=90s)
