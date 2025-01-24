@@ -37,6 +37,7 @@ git push
 ![New branch](./img/alternate_branch.png)
 A branch acts as a separate workspace, allowing you to work on specific features, bug fixes, or experiments without affecting the main branch or other developers’ work. This isolation helps prevent introducing bugs or unfinished code into the main project. Branches also simplify collaboration by enabling multiple developers to work on different tasks simultaneously without interference.
 
+
 ```
 # Create and switch to a new branch
 git checkout -b <new_branch_name>
