@@ -1,0 +1,30 @@
+@font-family {
+    font-family: 'Poppins';
+    src: url('\fonts\Poppins-Light.ttf');
+}
+
+.sidePanel {
+    -fx-background-color: #b34be3;
+}
+.main-panel {
+    -fx-background-color: #ffe8fb;
+    -fx-background-radius: 20px;
+}
+.scroll-pane {
+    x-fx-background-color: #b34be3;
+}
+.panel:hover {
+    -fx-background-color: #f571df;
+}
+
+.panel:active {
+    -fx-background-color: #f571df;
+}
+
+.dashboard-text {
+    -fx-font-family: 'Poppins';
+    -fx-fill-text: #ffffff;
+}
+.icon {
+    -fx-padding-left: px;
+}
