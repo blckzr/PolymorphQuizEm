@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-ExtraLight.ttf');
+}
+.root {
+    -fx-background-color: #f2dff1;
+}
+.main {
+    -fx-background-color: #f2dff1;
+    -fx-background-radius: 18px;
+}
+.sidepanel {
+    -fx-background-color: #8a45ad;
+}
+.text {
+    -fx-font-family: "Poppins";
+    -fx-text-fill: #ffd4fc;
+}
+.title {
+    -fx-font-family: "Poppins-Bold";
+    -fx-text-fill: #4f1e69;
+}
+.subTitle {
+    -fx-font-family: "Poppins";
+    -fx-text-fill: #4f1e69;
+}
+.contentPane {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 7px;
+}
+.searchBar {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 7px;
+    -fx-font-family: "Poppins";
+    -fx-prompt-text-fill: #eaa7fa;
+}
+.tabs {
+}
+.tabs:hover {
+    -fx-background-color: #c147de;
+}
+.selectedTab {
+    -fx-background-color: #c147de;
+}
+.selectedBump {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10px;
+}
