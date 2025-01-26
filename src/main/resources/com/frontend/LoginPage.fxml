@@ -13,7 +13,8 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="679.0" prefWidth="1336.0" stylesheets="@LoginPageStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.polymorphquizem.LoginPageController">
+<AnchorPane prefHeight="679.0" prefWidth="1336.0" stylesheets="@LoginPageStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.frontend.LoginPageController">
     <children>
         <VBox alignment="CENTER" layoutX="560.0" prefHeight="679.0" prefWidth="769.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
          <VBox alignment="CENTER" prefHeight="612.0" prefWidth="769.0" spacing="10.0">
@@ -83,7 +84,7 @@
                   <children>
                       <ImageView fx:id="mainLogo" fitHeight="280.0" fitWidth="402.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                           <image>
-                              <Image url="@../../../mainLogo.png" />
+                              <Image url="@icons/mainLogo.png" />
                           </image>
                   </ImageView>
                       <Label fx:id="panelTitle" alignment="CENTER" layoutY="240.0" prefHeight="25.0" prefWidth="359.0" styleClass="title" stylesheets="@LoginPageStyle.css" text="PolymorphQuizEm:">
