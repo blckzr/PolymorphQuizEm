@@ -1,10 +1,10 @@
 @font-face {
-    font-family: 'Poppins-Bold';
-    src: url('fonts/Poppins-Bold.ttf');
-}
-@font-face {
     font-family: 'Poppins';
     src: url('fonts/Poppins-ExtraLight.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
 }
 .root {
     -fx-background-color: #f2dff1;
@@ -13,36 +13,95 @@
     -fx-background-color: #f2dff1;
     -fx-background-radius: 18px;
 }
+.scrollPane {
+    -fx-background: #f2dff1;
+    -fx-border-color: #f2dff1;
+    -fx-effect: null;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+.scrollPane .viewport {
+     -fx-background: transparent;
+}
+.scrollPane:focused {
+    -fx-background: #f2dff1;
+}
+.scrollPane:focused .subText {
+    -fx-font-size: 12px;
+}
+.scrollPane:focused .title {
+    -fx-font-size: 24px;
+}
+.scrollPane:focused .subTitle {
+    -fx-font-size: 20px;
+    -fx-font-family: 'Poppins';
+}
+.scrollPane:focused .radioText {
+    -fx-font-size: 15px;
+}
 .sidepanel {
     -fx-background-color: #8a45ad;
 }
 .text {
-    -fx-font-family: "Poppins";
+    -fx-font-family: 'Poppins';
     -fx-text-fill: #ffd4fc;
 }
+.subText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+}
 .title {
-    -fx-font-family: "Poppins-Bold";
+    -fx-font-family: 'Poppins-Bold';
     -fx-text-fill: #4f1e69;
 }
 .subTitle {
-    -fx-font-family: "Poppins";
-    -fx-text-fill: #4f1e69;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+}
+.userPane {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 7px;
 }
 .contentPane {
     -fx-background-color: #ffffff;
-    -fx-background-radius: 7px;
+    -fx-background-radius: 20px;
 }
 .searchBar {
     -fx-background-color: #ffffff;
     -fx-background-radius: 7px;
-    -fx-font-family: "Poppins";
+    -fx-font-family: 'Poppins';
     -fx-prompt-text-fill: #eaa7fa;
+}
+.pieChart .data0 {
+    -fx-pie-color: #5c155e; /* "Correct Answers */
+}
+
+.pieChart .data1 {
+    -fx-pie-color: #b133b1; /* "Partially Correct */
+}
+
+.pieChart .data2 {
+    -fx-pie-color: #e1a6e0; /* Wrong Answers */
+}
+.pieChart-legend {
+    -fx-text-fill: #808080;
+    -fx-font-size: 8px;
 }
 .tabs {
 }
 .tabs:hover {
     -fx-font-size: 20px;
     -fx-background-color: #c147de;
+}
+.radioText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #4f1e69;
+}
+.radioText:hover {
+    -fx-font-size: 15px;
+}
+.radioText:focused {
+    -fx-font-size: 15px;
 }
 .selectedTab {
     -fx-background-color: #c147de;
