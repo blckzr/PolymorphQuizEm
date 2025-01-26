@@ -13,15 +13,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="679.0" prefWidth="1336.0" stylesheets="@LoginPageStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.frontend.LoginPageController">
+<AnchorPane prefHeight="679.0" prefWidth="1336.0" stylesheets="@LoginPageStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.LoginPageController">
     <children>
         <VBox alignment="CENTER" layoutX="560.0" prefHeight="679.0" prefWidth="769.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
          <VBox alignment="CENTER" prefHeight="612.0" prefWidth="769.0" spacing="10.0">
             <children>
-                  <Pane fx:id="loginPanel" maxWidth="-Infinity" prefHeight="358.0" prefWidth="455.0" styleClass="loginPanel" stylesheets="@LoginPageStyle.css">
+                  <Pane fx:id="loginPanel" maxWidth="-Infinity" prefHeight="363.0" prefWidth="367.0" styleClass="loginPanel" stylesheets="@LoginPageStyle.css">
                       <children>
-                          <Label alignment="CENTER" layoutX="2.0" layoutY="21.0" prefHeight="25.0" prefWidth="455.0" styleClass="title" stylesheets="@LoginPageStyle.css" text="Log In">
+                          <Label alignment="CENTER" layoutX="2.0" layoutY="21.0" prefHeight="38.0" prefWidth="363.0" styleClass="title" stylesheets="@LoginPageStyle.css" text="Log In">
                               <font>
                                   <Font name="System Bold" size="26.0" />
                               </font>
@@ -31,50 +30,56 @@
                                   <Font size="15.0" />
                               </font>
                           </Label>
-                          <Button fx:id="loginBtn" layoutX="19.0" layoutY="252.0" mnemonicParsing="false" onAction="#verifyAccount" prefHeight="32.0" prefWidth="421.0" styleClass="login-btn" text="Log In" textFill="WHITE">
+                          <Button fx:id="loginBtn" layoutX="19.0" layoutY="252.0" mnemonicParsing="false" onAction="#verifyAccount" prefHeight="32.0" prefWidth="329.0" styleClass="login-btn" text="Log In" textFill="WHITE">
                               <font>
-                                  <Font name="System Bold" size="15.0" />
+                                  <Font name="System Bold" size="18.0" />
                               </font>
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
                      </Button>
-                          <Label fx:id="forgotPasswordLbl" alignment="CENTER_RIGHT" layoutX="2.0" layoutY="323.0" onMouseClicked="#forgotPassword" prefHeight="21.0" prefWidth="438.0" styleClass="text" text="Forgot your password" underline="true">
+                          <Label fx:id="forgotPasswordLbl" alignment="CENTER_RIGHT" layoutX="2.0" layoutY="323.0" onMouseClicked="#forgotPassword" prefHeight="21.0" prefWidth="342.0" styleClass="text" text="Forgot your password" underline="true">
                               <cursor>
-                                  <Cursor fx:constant="DEFAULT" />
+                                  <Cursor fx:constant="HAND" />
                               </cursor>
                         <font>
                            <Font size="15.0" />
                         </font>
                           </Label>
-                     <TextField fx:id="loginAccount1" layoutX="19.0" layoutY="179.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="421.0" styleClass="text-fields">
+                     <TextField fx:id="loginAccount1" layoutX="19.0" layoutY="179.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </TextField>
-                     <Label layoutX="19.0" layoutY="83.0" prefHeight="21.0" prefWidth="421.0" styleClass="text" text="Email or mobile phone number">
+                     <Label layoutX="19.0" layoutY="83.0" prefHeight="21.0" prefWidth="349.0" styleClass="text" text="Email or mobile phone number">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </Label>
-                     <TextField fx:id="loginAccount11" layoutX="19.0" layoutY="104.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="421.0" styleClass="text-fields">
+                     <TextField fx:id="loginAccount11" layoutX="19.0" layoutY="104.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </TextField>
                       </children>
                   </Pane>
-               <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="454.0" spacing="10.0">
+               <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="371.0" spacing="10.0">
                   <children>
-                     <Line endX="40.452396392822266" endY="0.45932307839393616" startX="-86.51095581054688" startY="0.45929470658302307" styleClass="seperator" />
+                     <Line endX="-107.28184509277344" endY="0.45955517888069153" startX="-30.082788467407227" startY="0.45953884720802307" styleClass="seperator" />
                         <Label prefHeight="21.0" prefWidth="167.0" styleClass="text" text="New to our community?">
                         <font>
                            <Font size="15.0" />
                         </font></Label>
-                     <Line endX="-149.37554931640625" endY="0.45955005288124084" startX="-30.082788467407227" startY="0.45953884720802307" styleClass="seperator" />
+                     <Line endX="-107.28184509277344" endY="0.45955517888069153" startX="-30.082788467407227" startY="0.45953884720802307" styleClass="seperator" />
                   </children>
                </HBox>
-                  <Button fx:id="createBtn" mnemonicParsing="false" onAction="#createAccount" prefHeight="33.0" prefWidth="456.0" styleClass="create-btn" text="Create Account" textFill="WHITE">
+                  <Button fx:id="createBtn" mnemonicParsing="false" onAction="#createAccount" prefHeight="33.0" prefWidth="365.0" styleClass="create-btn" text="Create Account" textFill="WHITE">
                   <font>
-                     <Font size="15.0" />
-                  </font></Button>
+                     <Font size="18.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
             </children>
          </VBox>
         </VBox>
@@ -82,22 +87,22 @@
          <children>
               <Pane fx:id="sidePane" maxWidth="-Infinity" prefHeight="401.0" prefWidth="359.0" stylesheets="@LoginPageStyle.css">
                   <children>
-                      <ImageView fx:id="mainLogo" fitHeight="280.0" fitWidth="402.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
+                      <ImageView fx:id="mainLogo" fitHeight="379.0" fitWidth="438.0" layoutX="-10.0" layoutY="-40.0" pickOnBounds="true" preserveRatio="true">
                           <image>
                               <Image url="@icons/mainLogo.png" />
                           </image>
                   </ImageView>
-                      <Label fx:id="panelTitle" alignment="CENTER" layoutY="240.0" prefHeight="25.0" prefWidth="359.0" styleClass="title" stylesheets="@LoginPageStyle.css" text="PolymorphQuizEm:">
+                      <Label fx:id="panelTitle" alignment="CENTER" layoutX="-3.0" layoutY="263.0" prefHeight="25.0" prefWidth="359.0" styleClass="title" stylesheets="@LoginPageStyle.css" text="PolymorphQuizEm:">
                           <font>
                               <Font name="System Bold" size="26.0" />
                           </font>
                       </Label>
-                      <Label fx:id="panelLbl1" alignment="CENTER" layoutX="7.0" layoutY="278.0" prefHeight="17.0" prefWidth="359.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="Revolutionizing Quiz Systems for Dynamic Learning">
+                      <Label fx:id="panelLbl1" alignment="CENTER" layoutX="4.0" layoutY="301.0" prefHeight="17.0" prefWidth="359.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="Revolutionizing Quiz Systems for Dynamic Learning">
                           <font>
                               <Font size="15.0" />
                           </font>
                       </Label>
-                      <Label fx:id="panelLbl2" alignment="CENTER" layoutX="7.0" layoutY="295.0" prefHeight="17.0" prefWidth="359.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="Polymorphism Concept by Innov-ate">
+                      <Label fx:id="panelLbl2" alignment="CENTER" layoutX="4.0" layoutY="318.0" prefHeight="17.0" prefWidth="359.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="Polymorphism Concept by Innov-ate">
                           <font>
                               <Font size="15.0" />
                           </font>

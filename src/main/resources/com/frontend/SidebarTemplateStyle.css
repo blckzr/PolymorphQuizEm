@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Medium.ttf');
+}
+.root {
+    -fx-background-color: #f2dff1;
+}
+.main {
+    -fx-background-color: #f2dff1;
+    -fx-background-radius: 18px;
+}
+.sidepanel {
+    -fx-background-color: #8a45ad;
+}
+.text {
+    -fx-font-family: "Poppins";
+    -fx-text-fill: #ffd4fc;
+    -fx-font-size: 20px;
+}
+.tabs {
+}
+.tabs:hover {
+    -fx-background-color: #c147de;
+}
+.tabs:pressed {
+    -fx-background-color: #c147de;
+}

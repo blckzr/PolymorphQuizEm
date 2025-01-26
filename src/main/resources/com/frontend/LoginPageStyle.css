@@ -11,7 +11,7 @@
     src: url('fonts/Poppins-Medium.ttf');
 }
 .root {
-    -fx-background-color: #f0cced;
+    -fx-background-color: #f2dff1;
 }
 .loginPanel {
     -fx-background-color: #ffffff;
@@ -25,36 +25,61 @@
 }
 .title {
     -fx-font-family: "Poppins-Bold";
-    -fx-text-fill: #2e072b;
+    -fx-text-fill: #4f1e69;
 }
 .text {
     -fx-font-family: "Poppins-Light";
-    -fx-text-fill: #2e072b;
+    -fx-text-fill: #4f1e69;
 }
 .text-fields {
     -fx-background-color: #f7d5f4;
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
-    -fx-border-color: #2e072b;
+    -fx-border-color: #4f1e69;
     -fx-border-width: 1px;
+    -fx-font-family: "Poppins-Light";
+    -fx-text-fill: #4f1e69;
 }
 .login-btn {
-    -fx-background-color: #3d173a;
+    -fx-background-color: #4f1e69;
     -fx-font-family: 'Poppins-Light';
     -fx-text-fill: #ffffff;
     -fx-background-radius: 15px;
     -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-pref-height: 32px;
+    -fx-pref-width: 329px;
+}
+.login-btn:hover {
+    -fx-font-size: 18px;
+    -fx-pref-height: 32px;
+    -fx-pref-width: 329px;
+}
+.login-btn:pressed {
+    -fx-font-size: 18px;
+    -fx-pref-height: 32px;
+    -fx-pref-width: 329px;
 }
 .create-btn {
     -fx-background-color: #ffffff;
     -fx-font-family: 'Poppins-Light';
-    -fx-text-fill: #2e072b;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-border-color: #2e072b;
+    -fx-text-fill: #4f1e69;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-border-color: #4f1e69;
     -fx-border-width: 1px;
     -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-pref-height: 33px;
+    -fx-pref-width: 365px;
 }
-.seperator {
-    -fx-background-color: #2e072b;
+.create-btn:hover {
+    -fx-font-size: 18px;
+    -fx-pref-height: 33px;
+    -fx-pref-width: 365px;
+}
+.create-btn:pressed {
+    -fx-font-size: 18px;
+    -fx-pref-height: 33px;
+    -fx-pref-width: 365px;
 }
