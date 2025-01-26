@@ -29,7 +29,7 @@
                                     <children>
                                         <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@icons/dbIcon.png" />
+                                                <Image url="@icons/dbSel.png" />
                                             </image>
                                         </ImageView>
                                         <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Dashboard">

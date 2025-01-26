@@ -41,6 +41,7 @@
 .tabs {
 }
 .tabs:hover {
+    -fx-font-size: 20px;
     -fx-background-color: #c147de;
 }
 .selectedTab {
