@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('fonts/Poppins-Light.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('fonts/Poppins-Medium.ttf');
+}
+.root {
+    -fx-background-color: #f0cced;
+}
+.loginPanel {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #2e072b;
+    -fx-border-width: 1px;
+}
+.sidePanel {
+     -fx-background-color: radial-gradient(center 50% 50%, radius 50%, white, #f07de6);
+}
+.title {
+    -fx-font-family: "Poppins-Bold";
+    -fx-text-fill: #2e072b;
+}
+.text {
+    -fx-font-family: "Poppins-Light";
+    -fx-text-fill: #2e072b;
+}
+.text-fields {
+    -fx-background-color: #f7d5f4;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-border-color: #2e072b;
+    -fx-border-width: 1px;
+}
+.login-btn {
+    -fx-background-color: #3d173a;
+    -fx-font-family: 'Poppins-Light';
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 15px;
+    -fx-font-weight: bold;
+}
+.create-btn {
+    -fx-background-color: #ffffff;
+    -fx-font-family: 'Poppins-Light';
+    -fx-text-fill: #2e072b;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #2e072b;
+    -fx-border-width: 1px;
+    -fx-font-weight: bold;
+}
+.seperator {
+    -fx-background-color: #2e072b;
+}
