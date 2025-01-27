@@ -7,17 +7,17 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class SidebarTemplate extends Application {
+public class Signup extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("SidebarTemplate.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Signup.fxml"));
         Scene scene = new Scene(root);
         Image icon = new Image(getClass().getResourceAsStream("icons/mainLogo.png"));
-        scene.getStylesheets().add(getClass().getResource("SidebarTemplateStyle.css").toExternalForm());
-        
+        scene.getStylesheets().add(getClass().getResource("SignupStyle.css").toExternalForm());
+
         stage.getIcons().add(icon);
         stage.setScene(scene);
-        stage.setTitle("PolymorphQuizEm - Login");
+        stage.setTitle("PolymorphQuizEm - Signup");
         stage.show();
     }
 

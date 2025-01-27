@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="679.0" prefWidth="1336.0" stylesheets="@SignupStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.SignupController">
+    <children>
+        <VBox alignment="CENTER" layoutX="560.0" prefHeight="679.0" prefWidth="769.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="CENTER" prefHeight="695.0" prefWidth="777.0" spacing="10.0">
+                <children>
+                    <Pane fx:id="loginPanel" maxWidth="-Infinity" prefHeight="485.0" prefWidth="429.0" styleClass="loginPanel" stylesheets="@LoginPageStyle.css">
+                        <children>
+                            <Label alignment="CENTER" layoutX="33.0" layoutY="17.0" prefHeight="38.0" prefWidth="363.0" styleClass="title" stylesheets="@LoginPageStyle.css" text="Create an Account">
+                                <font>
+                                    <Font name="System Bold" size="26.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="19.0" layoutY="280.0" prefHeight="23.0" prefWidth="349.0" styleClass="text" text="Password">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <Button fx:id="signupBtn" layoutX="22.0" layoutY="419.0" mnemonicParsing="false" onAction="#signup" prefHeight="39.0" prefWidth="391.0" styleClass="signup-btn" text="Sign Up" textFill="WHITE">
+                                <font>
+                                    <Font name="System Bold" size="18.0" />
+                                </font>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Button>
+                            <Label layoutX="19.0" layoutY="75.0" prefHeight="21.0" prefWidth="349.0" styleClass="text" text="Full Name">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="fullnameField" layoutX="19.0" layoutY="96.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="391.0" styleClass="text-fields">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </TextField>
+                            <PasswordField fx:id="passwordField" layoutX="19.0" layoutY="301.0" prefHeight="38.0" prefWidth="391.0" styleClass="pass-field">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </PasswordField>
+                     <Label layoutX="19.0" layoutY="144.0" prefHeight="21.0" prefWidth="349.0" styleClass="text" text="Username">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="usernameField" layoutX="19.0" layoutY="165.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="391.0" styleClass="text-fields">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </TextField>
+                     <Label layoutX="19.0" layoutY="212.0" prefHeight="21.0" prefWidth="349.0" styleClass="text" text="Email">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="emailField" layoutX="19.0" layoutY="233.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="391.0" styleClass="text-fields">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </TextField>
+                     <Label layoutX="19.0" layoutY="355.0" prefHeight="17.0" prefWidth="171.0" styleClass="keyText" text="• Use 8 or more characters" />
+                     <Label layoutX="19.0" layoutY="381.0" prefHeight="17.0" prefWidth="171.0" styleClass="keyText" text="• Use a number (e.g. 1234)" />
+                     <Label layoutX="190.0" layoutY="355.0" prefHeight="17.0" prefWidth="266.0" styleClass="keyText" text="• Use uppercase and lowercase (e.g. Aa)" />
+                     <Label layoutX="190.0" layoutY="381.0" prefHeight="17.0" prefWidth="266.0" styleClass="keyText" text="• Use a special character (e.g. !@#$)" />
+                     <Label fx:id="errorEmailLbl" alignment="CENTER_RIGHT" layoutX="140.0" layoutY="212.0" prefHeight="23.0" prefWidth="266.0" styleClass="errorText" text="Please enter a valid email." visible="false" />
+                     <Label fx:id="errorPasswordLbl" alignment="CENTER_RIGHT" layoutX="140.0" layoutY="280.0" prefHeight="23.0" prefWidth="266.0" styleClass="errorText" text="Please enter a valid password." visible="false" />
+                        </children>
+                    </Pane>
+                </children>
+            </VBox>
+        </VBox>
+        <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="561.0" styleClass="sidePanel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane fx:id="sidePane" maxWidth="-Infinity" prefHeight="401.0" prefWidth="359.0" stylesheets="@LoginPageStyle.css">
+                    <children>
+                        <ImageView fx:id="mainLogo" fitHeight="250.0" fitWidth="241.0" layoutX="66.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@icons/signin.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="panelLbl1" alignment="CENTER" layoutX="4.0" layoutY="301.0" prefHeight="17.0" prefWidth="359.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="Stay organized and boost learning with">
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="panelLbl2" alignment="CENTER" layoutX="-19.0" layoutY="320.0" prefHeight="23.0" prefWidth="157.0" styleClass="title" stylesheets="@SignupStyle.css" text="PolymorphQuizEm.">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                        </Label>
+                  <Label fx:id="panelLbl11" alignment="CENTER" layoutX="92.0" layoutY="320.0" prefHeight="23.0" prefWidth="321.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="Quizzes, tasks, and calendars in">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="panelLbl111" alignment="CENTER" layoutX="14.0" layoutY="340.0" prefHeight="23.0" prefWidth="321.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="one place — join today!">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                    </children>
+                </Pane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

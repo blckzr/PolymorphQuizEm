@@ -10,75 +10,69 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginPageController {
+public class SignupController {
     @FXML
-    private TextField usernameField;
+    private TextField fullnameField, usernameField, emailField;
     @FXML
     private PasswordField passwordField;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    @FXML
-    private void forgotPassword(MouseEvent event) {
-        // backend here
-    }
-
-    /*
-        To be added with database and backend.
-
-        if(email != valid || password != valid) {
-            emailField.setPromptText("Email or password is invalid.");
-            emailField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
-
-            passwordField.setPromptText("Email or password is invalid.");
-            passwordField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
-         }
-         */
-
-    public void login(ActionEvent event) throws IOException {
+    
+    public void signup(ActionEvent event) throws IOException {
+        String fullname = fullnameField.getText();
         String username = usernameField.getText();
+        String email = emailField.getText();
         String password = passwordField.getText();
 
-        if(!username.isEmpty() && !password.isEmpty()) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
-            root = loader.load();
+        /*
+        To be added with database and backend.
 
-            DashboardController dashboardController = loader.getController();
-            dashboardController.changeUsername(username);
+        if(email != valid)
+            emailField.setPromptText("Please enter a valid email.");
+            emailField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
 
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        if(password != valid)
+            passwordField.setPromptText("Please enter a valid password.");
+            passwordField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
+         */
+
+        if(!fullname.isEmpty() && !username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+            root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }else {
-            if(username.isEmpty())  {
+        } else {
+            if(fullname.isEmpty()) {
+                fullnameField.setPromptText("Field required!");
+                fullnameField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
+            }
+            if(username.isEmpty()) {
                 usernameField.setPromptText("Field required!");
                 usernameField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
             }
-            if(password.isEmpty())  {
+            if(email.isEmpty()) {
+                emailField.setPromptText("Field required!");
+                emailField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
+            }
+            if(password.isEmpty()) {
                 passwordField.setPromptText("Field required!");
                 passwordField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
             }
         }
     }
 
-    public void createAccount(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Signup.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
+    @FXML
     public void initialize() {
+        addTextChangeListener(fullnameField);
         addTextChangeListener(usernameField);
+        addTextChangeListener(emailField);
         addTextChangeListener(passwordField);
     }
 

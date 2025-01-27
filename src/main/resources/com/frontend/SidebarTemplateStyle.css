@@ -1,29 +1,30 @@
 @font-face {
     font-family: 'Poppins';
-    src: url('fonts/Poppins-Medium.ttf');
+    src: url('fonts/Poppins-Bold.ttf');
 }
 .root {
-    -fx-background-color: #f2dff1;
+    -fx-background-color: #f5e0f4;
 }
 .main {
-    -fx-background-color: #f2dff1;
+    -fx-background-color: #f5e0f4;
     -fx-background-radius: 18px;
 }
 .sidepanel {
-    -fx-background-color: #8a45ad;
+    -fx-background-color: #b133b1;
 }
 .text {
     -fx-font-family: "Poppins";
-    -fx-text-fill: #ffd4fc;
+    -fx-text-fill: #f5e0f4;
     -fx-font-size: 20px;
+    -fx-font-weight: bold;
 }
 .tabs {
 }
 .tabs:hover {
-    -fx-background-color: #c147de;
+    -fx-background-color: #c951c9;
 }
 
 /* create a separate pane nalang for selected in other page. */
 .tabs:pressed {
-    -fx-background-color: #c147de;
+    -fx-background-color: #e1a6e0;
 }
