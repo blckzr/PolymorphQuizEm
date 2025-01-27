@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="frame" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="875.0" prefWidth="1456.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.MainQuizController">
+   <children>
+      <HBox styleClass="main-panel" stylesheets="@style.css">
+         <children>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1081.0" prefWidth="302.0" />
+            <HBox prefHeight="578.0" prefWidth="1362.0">
+               <children>
+                  <VBox prefHeight="920.0" prefWidth="1350.0">
+                     <children>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="1350.0" />
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="694.0" prefWidth="1350.0">
+                           <children>
+                              <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="726.0" prefWidth="1350.0" styleClass="sub-panel" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Pane layoutX="16.0" layoutY="14.0" prefHeight="81.0" prefWidth="1320.0" styleClass="sub-panel">
+                                       <children>
+                                          <Label fx:id="testTitle" layoutX="53.0" layoutY="16.0" prefHeight="29.0" prefWidth="1209.0" styleClass="TestNameLabel" stylesheets="@style.css" text="OOP - MultipleChoice" textFill="#5c155e">
+                                             <font>
+                                                <Font name="Poppins Light" size="43.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="timerLabel" layoutX="1106.0" layoutY="8.0" prefHeight="61.0" prefWidth="206.0" styleClass="questionNo" text="Time: 00:00" textFill="#b133b1">
+                                             <font>
+                                                <Font name="Poppins Light" size="30.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="20.0" layoutY="109.0" prefHeight="63.0" prefWidth="1315.0">
+                                       <children>
+                                          <Label fx:id="questionNoLabel" layoutX="390.0" layoutY="-2.0" prefHeight="61.0" prefWidth="511.0" styleClass="questionNo" text="Question No. 1" textFill="#b133b1">
+                                             <font>
+                                                <Font name="Poppins Light" size="30.0" />
+                                             </font></Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="main-panel" />
+                                          <String fx:value="sub-panel" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Pane layoutX="9.0" layoutY="168.0" prefHeight="126.0" prefWidth="1315.0">
+                                       <children>
+                                          <Label fx:id="questionLabel" alignment="TOP_LEFT" layoutX="134.0" layoutY="7.0" prefHeight="117.0" prefWidth="1057.0" styleClass="questionLabel" stylesheets="@style.css" text="What is the original name of Java? What is the original name of Java? What is the original name of Java?What is the original name of Java?What is the original name of Java?What is the original name of Java?" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="27.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="main-panel" />
+                                          <String fx:value="sub-panel" />
+                                       </styleClass></Pane>
+                                    <Pane fx:id="answerPane" layoutX="19.0" layoutY="300.0" prefHeight="274.0" prefWidth="1315.0" styleClass="sub-panel">
+                                       <children>
+                                          <RadioButton fx:id="choice1" layoutX="137.0" layoutY="22.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="1069.0" styleClass="choices" text="Choices1">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="Choices" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="choice2" layoutX="137.0" layoutY="78.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="1069.0" styleClass="choices" text="Choices2" toggleGroup="$Choices">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </RadioButton>
+                                          <RadioButton fx:id="choice3" layoutX="138.0" layoutY="134.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="1069.0" styleClass="choices" text="Choices3" toggleGroup="$Choices">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </RadioButton>
+                                          <RadioButton fx:id="choice4" layoutX="138.0" layoutY="193.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="1069.0" styleClass="choices" text="Choices4" toggleGroup="$Choices">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </RadioButton>
+                                       </children></Pane>
+                                    <Pane layoutX="-1.0" layoutY="99.0" prefHeight="6.0" prefWidth="1351.0">
+                                       <styleClass>
+                                          <String fx:value="main-panel" />
+                                          <String fx:value="line" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Button fx:id="nextButton" layoutX="1087.0" layoutY="582.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="142.0" styleClass="next-button" text="Next ▶" onAction="#handleNextButton">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="prevButton" layoutX="123.0" layoutY="582.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="142.0" styleClass="prev-button" text="◀ Prev" onAction="#handlePrevButton">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="1350.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1081.0" prefWidth="302.0" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
