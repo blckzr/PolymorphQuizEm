@@ -3,47 +3,64 @@
     src: url('fonts/Poppins-Bold.ttf');
 }
 @font-face {
-    font-family: 'Poppins-Light';
-    src: url('fonts/Poppins-Light.ttf');
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf');
 }
 @font-face {
-    font-family: 'Poppins-Medium';
-    src: url('fonts/Poppins-Medium.ttf');
+    font-family: 'Poppins-Italic';
+    src: url('fonts/Poppins-Italic.ttf');
 }
 .root {
-    -fx-background-color: #f2dff1;
+    -fx-background-color: #f5e0f4;
 }
 .loginPanel {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcf0ff;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
     -fx-border-color: #2e072b;
     -fx-border-width: 1px;
 }
 .sidePanel {
-     -fx-background-color: radial-gradient(center 50% 50%, radius 50%, white, #f07de6);
+     -fx-background-color: radial-gradient(center 50% 50%, radius 50%, #ffdbfe, #f191f0);
 }
 .title {
     -fx-font-family: "Poppins-Bold";
-    -fx-text-fill: #4f1e69;
+    -fx-text-fill: #5c155e;
 }
 .text {
-    -fx-font-family: "Poppins-Light";
-    -fx-text-fill: #4f1e69;
+    -fx-font-family: "Poppins";
+    -fx-text-fill: #5c155e;
+}
+.errorText {
+    -fx-font-family: 'Poppins-Italic';
+    -fx-font-size: 15px;
+    -fx-text-fill: #5c155e;
+    -fx-font-style: italic;
 }
 .text-fields {
     -fx-background-color: #f7d5f4;
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
-    -fx-border-color: #4f1e69;
+    -fx-border-color: #5c155e;
     -fx-border-width: 1px;
-    -fx-font-family: "Poppins-Light";
-    -fx-text-fill: #4f1e69;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 15px;
+    -fx-text-fill: #5c155e;
+}
+.pass-field {
+    -fx-background-color: #f7d5f4;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-border-color: #5c155e;
+    -fx-border-width: 1px;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 15px;
+    -fx-text-fill: #5c155e;
 }
 .login-btn {
-    -fx-background-color: #4f1e69;
-    -fx-font-family: 'Poppins-Light';
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #5c155e;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #fcf0ff;
     -fx-background-radius: 15px;
     -fx-font-weight: bold;
     -fx-font-size: 18px;
@@ -61,12 +78,12 @@
     -fx-pref-width: 329px;
 }
 .create-btn {
-    -fx-background-color: #ffffff;
-    -fx-font-family: 'Poppins-Light';
-    -fx-text-fill: #4f1e69;
+    -fx-background-color: #fcf0ff;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
-    -fx-border-color: #4f1e69;
+    -fx-border-color: #5c155e;
     -fx-border-width: 1px;
     -fx-font-weight: bold;
     -fx-font-size: 18px;

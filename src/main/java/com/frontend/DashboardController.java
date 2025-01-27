@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +15,15 @@ import java.util.ResourceBundle;
 public class DashboardController implements Initializable {
     @FXML
     private PieChart pieChart;
+    
+    @FXML
+    private Label welcomeLbl, usernameLbl;
 
+    public void changeUsername(String username) {
+        welcomeLbl.setText("Hey, " + username + "!");
+        usernameLbl.setText(username);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<PieChart.Data> pieChartData =
