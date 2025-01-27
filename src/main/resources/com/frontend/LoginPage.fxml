@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,7 +17,7 @@
 <AnchorPane prefHeight="679.0" prefWidth="1336.0" stylesheets="@LoginPageStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.LoginPageController">
     <children>
         <VBox alignment="CENTER" layoutX="560.0" prefHeight="679.0" prefWidth="769.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-         <VBox alignment="CENTER" prefHeight="612.0" prefWidth="769.0" spacing="10.0">
+         <VBox alignment="CENTER" prefHeight="695.0" prefWidth="777.0" spacing="10.0">
             <children>
                   <Pane fx:id="loginPanel" maxWidth="-Infinity" prefHeight="363.0" prefWidth="367.0" styleClass="loginPanel" stylesheets="@LoginPageStyle.css">
                       <children>
@@ -30,7 +31,7 @@
                                   <Font size="15.0" />
                               </font>
                           </Label>
-                          <Button fx:id="loginBtn" layoutX="19.0" layoutY="252.0" mnemonicParsing="false" onAction="#verifyAccount" prefHeight="32.0" prefWidth="329.0" styleClass="login-btn" text="Log In" textFill="WHITE">
+                          <Button fx:id="loginBtn" layoutX="19.0" layoutY="252.0" mnemonicParsing="false" onAction="#login" prefHeight="32.0" prefWidth="329.0" styleClass="login-btn" text="Log In" textFill="WHITE">
                               <font>
                                   <Font name="System Bold" size="18.0" />
                               </font>
@@ -46,27 +47,37 @@
                            <Font size="15.0" />
                         </font>
                           </Label>
-                     <TextField fx:id="loginAccount1" layoutX="19.0" layoutY="179.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </TextField>
-                     <Label layoutX="19.0" layoutY="83.0" prefHeight="21.0" prefWidth="349.0" styleClass="text" text="Email or mobile phone number">
+                     <Label layoutX="19.0" layoutY="83.0" prefHeight="21.0" prefWidth="349.0" styleClass="text" text="Username or Email">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </Label>
-                     <TextField fx:id="loginAccount11" layoutX="19.0" layoutY="104.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
+                     <TextField fx:id="usernameField" layoutX="19.0" layoutY="104.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </TextField>
+                     <PasswordField fx:id="passwordField" layoutX="19.0" layoutY="179.0" prefHeight="38.0" prefWidth="329.0" styleClass="pass-field">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </PasswordField>
+                     <Label fx:id="errorLbl1" alignment="CENTER_RIGHT" layoutX="153.0" layoutY="82.0" prefHeight="23.0" prefWidth="189.0" styleClass="errorText" text="Field required!" visible="false">
+                        <font>
+                           <Font name="System Italic" size="12.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="errorLbl2" alignment="CENTER_RIGHT" layoutX="153.0" layoutY="157.0" prefHeight="23.0" prefWidth="189.0" styleClass="errorText" text="Field required!" visible="false">
+                        <font>
+                           <Font name="System Italic" size="12.0" />
+                        </font>
+                     </Label>
                       </children>
                   </Pane>
                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="371.0" spacing="10.0">
                   <children>
                      <Line endX="-107.28184509277344" endY="0.45955517888069153" startX="-30.082788467407227" startY="0.45953884720802307" styleClass="seperator" />
-                        <Label prefHeight="21.0" prefWidth="167.0" styleClass="text" text="New to our community?">
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="189.0" styleClass="text" text="New to our community?">
                         <font>
                            <Font size="15.0" />
                         </font></Label>
