@@ -64,7 +64,7 @@ public class JavaDatabase {
         }
     }
 
-    public static void logInUser(ActionEvent event, String username, String password) {
+    public static boolean logInUser(ActionEvent event, String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -87,40 +87,30 @@ public class JavaDatabase {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");  // Correct column name here
                     if (retrievedPassword.equals(password)) {
-
+                        return true;
                     } else {
                         // Password did not match
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Incorrect Password");
                         alert.show();
+                        return false;
                     }
                 }
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
+
+        return false;
     }
 }

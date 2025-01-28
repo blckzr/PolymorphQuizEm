@@ -31,23 +31,19 @@ public class LoginPageController {
         // backend here
     }
 
-    @FXML
-    public void verifyAccount(ActionEvent event) {
-        // Logic for verifying account (login logic here)
-    }
-
-
-    /*
-        To be added with database and backend.
-
-        if(email != valid || password != valid) {
-            emailField.setPromptText("Email or password is invalid.");
-            emailField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
+    public void isValid(boolean isSuccessful) {
+        if(!isSuccessful) {
+            usernameField.setPromptText("Email or password is invalid.");
+            usernameField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
 
             passwordField.setPromptText("Email or password is invalid.");
             passwordField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
-         }
-         */
+        } else {
+            // Reset styling if credentials are valid
+            usernameField.setStyle("-fx-border-color: #000; -fx-border-width: 1px;");
+            passwordField.setStyle("-fx-border-color: #000; -fx-border-width: 1px;");
+        }
+    }
 
     public void login(ActionEvent event) throws IOException {
         String username = usernameField.getText();
@@ -55,18 +51,22 @@ public class LoginPageController {
 
         if(!username.isEmpty() && !password.isEmpty()) {
             // Call the method to sign up the user
-            JavaDatabase.logInUser(event, username, password);
+            boolean isSuccessful = JavaDatabase.logInUser(event, username, password);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SidebarTemplate.fxml"));
-            root = loader.load();
+            isValid(isSuccessful);
 
-            SidebarController sidebarController = loader.getController();
-            sidebarController.setUsername(username);
+            if(isSuccessful){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("SidebarTemplate.fxml"));
+                root = loader.load();
 
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                SidebarController sidebarController = loader.getController();
+                sidebarController.setUsername(username);
+
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
         }else {
             if(username.isEmpty())  {
                 usernameField.setPromptText("Field required!");
