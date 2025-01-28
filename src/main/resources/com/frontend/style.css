@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('fonts/Poppins-Light.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('fonts/Poppins-Medium.ttf');
+}
+
+.main-panel {
+    -fx-background-color: #fcf0ff
+    ;
+}
+
+.sub-panel {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+}
+
+.line {
+    -fx-background-color: #ebc4eb;
+}
+
+.questionNo {
+    -fx-font-family: "Poppins";
+    -fx-font-color: #b133b1;
+    -fx-font-size: 25px;
+
+    -fx-alignment: center; /* Align text to the center */
+    -fx-halignment: center; /* Horizontal alignment */
+    -fx-valignment: center; /* Vertical alignment */
+}
+
+.questionLabel {
+    -fx-text-fill: #5c155e; /* Text color */
+    -fx-font-family: "Poppins-Light"; /* Font family */
+    -fx-font-size: 25px; /* Font size */
+    -fx-wrap-text: true; /* Enable text wrapping */
+}
+
+.choices {
+    -fx-text-fill: #5c155e; /* Text color */
+    -fx-font-family: "Poppins-Light"; /* Font family */
+    -fx-font-size: 22px; /* Font size */
+    -fx-wrap-text: true; /* Enable text wrapping */
+}
+
+.TestNameLabel {
+    -fx-font-family: "Poppins";
+    -fx-font-color: #5c155e;
+    -fx-font-size: 35px;
+}
+
+.next-button {
+    -fx-background-color: #b133b1; /* Set the background color */
+    -fx-text-fill: white; /* Set the text color */
+    -fx-font-family: "Poppins"; /* Set the font */
+    -fx-font-size: 22px; /* Set the font size */
+    -fx-font-weight: bold; /* Set the font weight */
+    -fx-background-radius: 15px;
+}
+
+.prev-button {
+    -fx-background-color: #f5e0f4; /* Set the background color */
+    -fx-text-fill: #5c155e; /* Set the text color */
+    -fx-font-family: "Poppins"; /* Set the font */
+    -fx-font-size: 22px; /* Set the font size */
+    -fx-font-weight: bold; /* Set the font weight */
+    -fx-background-radius: 15px;
+}
+
+.radio-button {
+    -fx-text-fill: #5c155e;           /* Change the text color */
+}
+
+.radio-button .radio {
+    -fx-background-color: #f5e0f4;
+}
+
+/* Change the color of the radio button circle when selected */
+.radio-button:selected .radio {
+    -fx-background-color: b133b1;
+}
+
+.vbox {
+    -fx-background-color: #f0f0f0; /* Light grey background */
+    -fx-padding: 20; /* Padding around the VBox */
+    -fx-spacing: 10; /* Space between child nodes */
+}
+
+.text_field {
+
+    -fx-border-color: #5c155e;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+
+    -fx-font-family: "Poppins-Light";
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 18px;
+    -fx-padding: 10px;
+
+
+    -fx-background-color: #ffffff;
+}
+
+.text_area {
+
+    -fx-border-color: #5c155e;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+
+    -fx-font-family: "Poppins-Light";
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 18px;
+    -fx-padding: 10px;
+    -fx-wrap-text: true;
+
+    -fx-background-color: #ffffff;
+}
+
+.Emphasis-Text{
+
+    -fx-font-family: "Poppins";
+    -fx-font-weight: Bold;
+    -fx-font-size: 25px;
+    -fx-text-fill: #5c155e;
+
+}
+
