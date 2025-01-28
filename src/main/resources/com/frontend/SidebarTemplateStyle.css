@@ -12,11 +12,15 @@
 .sidepanel {
     -fx-background-color: #b133b1;
 }
-.text {
+.sidebar-text {
     -fx-font-family: "Poppins";
     -fx-text-fill: #f5e0f4;
     -fx-font-size: 20px;
     -fx-font-weight: bold;
+}
+.selectedBump {
+    -fx-background-color: #f5e0f4;
+    -fx-background-radius: 10px;
 }
 .tabs {
 }

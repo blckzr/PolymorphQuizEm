@@ -35,7 +35,7 @@
 }
 .scrollPane:focused .subTitle {
     -fx-font-size: 20px;
-    -fx-font-family: 'Poppins';
+    -fx-font-family: 'Poppins-Bold';
 }
 .scrollPane:focused .radioText {
     -fx-font-size: 15px;
@@ -52,27 +52,31 @@
     -fx-text-fill: #b133b1;
 }
 .title {
-    -fx-font-family: 'Poppins-Bold';
+    -fx-font-family: 'Poppins';
     -fx-text-fill: #5c155e;
+    -fx-font-weight: bold;
+}
+.subTitle {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+    -fx-font-weight: bold;
 }
 .dashboardTitle {
-    -fx-font-family: 'Poppins-Bold';
+    -fx-font-family: 'Poppins';
     -fx-text-fill: #5c155e;
     -fx-font-size: 36px;
+    -fx-font-weight: bold;
 }
 .nameInfo {
-    -fx-font-family: 'Poppins-Bold';
+    -fx-font-family: 'Poppins';
     -fx-text-fill: #5c155e;
     -fx-font-size: 12px;
+    -fx-font-weight: bold;
 }
 .roleInfo {
     -fx-font-family: 'Poppins';
     -fx-text-fill: #b133b1;
     -fx-font-size: 12px;
-}
-.subTitle {
-    -fx-font-family: 'Poppins';
-    -fx-text-fill: #b133b1;
 }
 .userPane {
     -fx-background-color: #fcf0ff;

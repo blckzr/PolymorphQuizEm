@@ -25,9 +25,9 @@
                <children>
                   <Pane prefHeight="141.0" prefWidth="956.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label layoutX="23.0" layoutY="-4.0" prefHeight="74.0" prefWidth="260.0" styleClass="dashboardTitle" text="Dashboard">
+                        <Label layoutX="23.0" layoutY="-4.0" prefHeight="74.0" prefWidth="224.0" styleClass="dashboardTitle" text="Dashboard">
                            <font>
-                              <Font size="36.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
                         <TextField layoutX="262.0" layoutY="19.0" prefHeight="33.0" prefWidth="459.0" promptText="Search...." styleClass="searchBar">
@@ -51,11 +51,11 @@
                         <Pane layoutX="780.0" layoutY="8.0" prefHeight="51.0" prefWidth="232.0" styleClass="userPane">
                            <children>
                               <Circle fill="#4f1e69" layoutX="26.0" layoutY="24.0" radius="19.0" stroke="#4f1e69" strokeType="INSIDE" />
-                              <Label fx:id="usernameLbl" layoutX="51.0" layoutY="5.0" prefHeight="17.0" prefWidth="173.0" styleClass="title" text="[Name Here]">
+                              <Label fx:id="usernameLbl" layoutX="51.0" layoutY="8.0" prefHeight="17.0" prefWidth="173.0" styleClass="title" text="[Name Here]">
                                  <font>
                                     <Font size="11.0" />
                                  </font></Label>
-                              <Label layoutX="52.0" layoutY="25.0" prefHeight="17.0" prefWidth="174.0" styleClass="subTitle" text="Student">
+                              <Label layoutX="52.0" layoutY="28.0" prefHeight="17.0" prefWidth="174.0" styleClass="subTitle" text="Student">
                                  <font>
                                     <Font size="11.0" />
                                  </font></Label>
