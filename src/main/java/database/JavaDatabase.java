@@ -1,39 +1,13 @@
 package database;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.Parent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.sql.*;
 
 public class JavaDatabase {
     private static final String db_url = "jdbc:mysql://127.0.0.1:3306/polymorphquizem_db";
     private static final String db_username = "root";
     private static final String db_password = "password";
-
-    public static void changeScene(ActionEvent event, String fxmlFile, boolean bool) {
-        Parent root = null;
-
-        try {
-            if (bool) {
-                FXMLLoader loader = new FXMLLoader(JavaDatabase.class.getResource(fxmlFile));
-                root = loader.load();
-            } else {
-                root = FXMLLoader.load(JavaDatabase.class.getResource(fxmlFile));
-            }
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 679, 1336));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void signUpUser(ActionEvent event, String fullname, String username, String email, String password) {
         Connection connection = null;
