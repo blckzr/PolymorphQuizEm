@@ -53,7 +53,7 @@ public class LoginPageController {
 
         if(!username.isEmpty() && !password.isEmpty()) {
             // Call the method to sign up the user
-            boolean isSuccessful = JavaDatabase.logInUser(event, username, password);
+            boolean isSuccessful = JavaDatabase.logInUser(username, password);
 
             isValid(isSuccessful);
 

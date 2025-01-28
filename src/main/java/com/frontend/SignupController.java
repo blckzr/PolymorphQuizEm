@@ -36,9 +36,9 @@ public class SignupController {
         String confirmPass = confirmPasswordField.getText();
 
         // Check if fields are not empty
-        if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPass.isEmpty()) {
+        if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPass.isEmpty() && password.equals(confirmPass)) {
             // Call the method to sign up the user
-            JavaDatabase.signUpUser(event, username, email, password, confirmPass);
+            JavaDatabase.logInUser(username, email, password);
 
             // If the user was successfully inserted into the database, go to the next scene (Login page)
             root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
