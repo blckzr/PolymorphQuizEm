@@ -74,6 +74,8 @@ public class SignupController {
         addTextChangeListener(usernameField);
         addTextChangeListener(emailField);
         addTextChangeListener(passwordField);
+
+
     }
 
     private void addTextChangeListener(TextField textField) {

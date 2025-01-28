@@ -7,4 +7,6 @@ module com.polymorphquizem {
 
     opens com.frontend to javafx.fxml;
     exports com.frontend;
+    exports database;
+    opens database to javafx.fxml;
 }
