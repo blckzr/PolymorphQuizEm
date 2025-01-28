@@ -60,13 +60,10 @@ public class SidebarController {
     }
 
     @FXML
-    private void switchToDashboard(javafx.scene.input.MouseEvent event, String username) {
+    private void switchToDashboard(javafx.scene.input.MouseEvent event) {
         resetAllPanes();
         dbBump.setVisible(true);
         dbPane.setStyle("-fx-background-color: #c951c9;");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
-        DashboardController dbCont = loader.getController();
-        dbCont.setUsername(username);
 
         SceneLoader object = new SceneLoader();
         Pane view = object.getPage("Dashboard");
