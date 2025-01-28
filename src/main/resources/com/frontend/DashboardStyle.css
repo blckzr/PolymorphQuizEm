@@ -102,24 +102,35 @@
     -fx-font-size: 20px;
     -fx-background-color: #c951c9;
 }
-.radioText {
+.boxText {
     -fx-font-family: 'Poppins';
     -fx-text-fill: #4f1e69;
     -fx-font-size: 15px;
 }
-.radio {
+.boxText:hover {
+    -fx-font-size: 15px;
+}
+.boxText:focused {
+    -fx-font-size: 15px;
+}
+.check-box {
     -fx-background-color: #fcf0ff;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+}
+.check-box .box {
+    -fx-background-color: transparent;
     -fx-border-color: #4f1e69;
     -fx-border-width: 2px;
     -fx-border-radius: 50%;
     -fx-background-radius: 50%;
-    -fx-padding: 5px;
 }
-.radioText:hover {
-    -fx-font-size: 15px;
+.check-box:selected .box {
+    -fx-background-color: #4f1e69;
+    -fx-border-color: #4f1e69;
 }
-.radioText:focused {
-    -fx-font-size: 15px;
+.check-box:selected .box:before {
+    -fx-mark-color: #fcf0ff;
 }
 .squareQuiz {
     -fx-background-color: #b133b1;
@@ -132,7 +143,8 @@
     -fx-font-size: 50px;
 }
 .daysText {
-    -fx-font-family: 'Poppins';
+    -fx-font-fami
+    ly: 'Poppins';
     -fx-text-fill: #e1a6e0;
     -fx-font-weight: bold;
 }

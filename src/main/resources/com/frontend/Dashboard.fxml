@@ -5,8 +5,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -75,11 +75,11 @@
             </HBox>
             <Pane prefHeight="200.0" prefWidth="955.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox layoutY="-3.0" prefHeight="602.0" prefWidth="647.0">
+                  <VBox prefHeight="615.0" prefWidth="647.0">
                      <children>
                         <ScrollPane focusTraversable="false" hbarPolicy="NEVER" prefHeight="586.0" prefWidth="647.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                            <content>
-                              <VBox alignment="TOP_CENTER" prefHeight="697.0" prefWidth="647.0">
+                              <VBox alignment="TOP_CENTER" prefHeight="811.0" prefWidth="647.0">
                                  <children>
                                     <Pane prefHeight="126.0" prefWidth="567.0" styleClass="contentPane">
                                        <children>
@@ -161,7 +161,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Label>
-                                    <Pane prefHeight="173.0" prefWidth="567.0" styleClass="contentPane">
+                                    <Pane prefHeight="235.0" prefWidth="567.0" styleClass="contentPane">
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>
@@ -186,31 +186,23 @@
                                                 <Insets left="10.0" />
                                              </padding>
                                           </HBox>
-                                          <RadioButton focusTraversable="false" layoutX="21.0" layoutY="55.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="OOP TEST">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </RadioButton>
-                                          <RadioButton focusTraversable="false" layoutX="21.0" layoutY="87.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="OOP FINALS">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </RadioButton>
-                                          <RadioButton focusTraversable="false" layoutX="21.0" layoutY="119.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="OOP PROJECT">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </RadioButton>
-                                          <RadioButton focusTraversable="false" layoutX="300.0" layoutY="55.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="OOP MINI HACKATHON">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </RadioButton>
-                                          <RadioButton focusTraversable="false" layoutX="300.0" layoutY="87.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="OOP FINALS">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </RadioButton>
+                                          <VBox layoutX="15.0" layoutY="49.0" prefHeight="174.0" prefWidth="232.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="OOP TEST">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="OOP FINALS" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="OOP AAA" />
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="290.0" layoutY="49.0" prefHeight="174.0" prefWidth="232.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="OOP MINI HACKATHON" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="OOP HANDS-ON" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </Pane>
                                  </children>
