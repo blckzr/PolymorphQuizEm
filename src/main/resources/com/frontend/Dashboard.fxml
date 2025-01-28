@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
@@ -11,6 +12,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -51,13 +53,13 @@
                         <Pane layoutX="780.0" layoutY="8.0" prefHeight="51.0" prefWidth="232.0" styleClass="userPane">
                            <children>
                               <Circle fill="#4f1e69" layoutX="26.0" layoutY="24.0" radius="19.0" stroke="#4f1e69" strokeType="INSIDE" />
-                              <Label fx:id="usernameLbl" layoutX="51.0" layoutY="8.0" prefHeight="17.0" prefWidth="173.0" styleClass="title" text="[Name Here]">
+                              <Label fx:id="usernameLbl" layoutX="50.0" layoutY="4.0" prefHeight="17.0" prefWidth="173.0" styleClass="title" text="[Name Here]">
                                  <font>
-                                    <Font size="11.0" />
+                                    <Font size="18.0" />
                                  </font></Label>
-                              <Label layoutX="52.0" layoutY="28.0" prefHeight="17.0" prefWidth="174.0" styleClass="subTitle" text="Student">
+                              <Label layoutX="51.0" layoutY="27.0" prefHeight="17.0" prefWidth="174.0" styleClass="subTitle" text="Student">
                                  <font>
-                                    <Font size="11.0" />
+                                    <Font size="13.0" />
                                  </font></Label>
                            </children>
                            <cursor>
@@ -134,6 +136,11 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Label>
+                                                <Pane layoutX="62.0" layoutY="77.0" prefHeight="101.0" prefWidth="107.0" styleClass="squareQuiz">
+                                                   <children>
+                                                      <Label alignment="CENTER" layoutY="15.0" prefHeight="71.0" prefWidth="108.0" styleClass="quizNumber" text="1" />
+                                                   </children>
+                                                </Pane>
                                              </children>
                                           </Pane>
                                        </children>
@@ -194,12 +201,12 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </RadioButton>
-                                          <RadioButton focusTraversable="false" layoutX="300.0" layoutY="55.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="ANG HIRAP MAG DYNAMIC">
+                                          <RadioButton focusTraversable="false" layoutX="300.0" layoutY="55.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="OOP MINI HACKATHON">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </RadioButton>
-                                          <RadioButton focusTraversable="false" layoutX="300.0" layoutY="87.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="TOTOO LANG STAN BINI">
+                                          <RadioButton focusTraversable="false" layoutX="300.0" layoutY="87.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="258.0" styleClass="radioText" text="OOP FINALS">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -219,7 +226,156 @@
                         </ScrollPane>
                      </children>
                   </VBox>
-                  <VBox layoutX="647.0" prefHeight="614.0" prefWidth="388.0" />
+                  <VBox layoutX="647.0" prefHeight="614.0" prefWidth="362.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="672.0" styleClass="title" text="My Calendar">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="632.0" styleClass="subText" text="View All" underline="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Pane prefHeight="328.0" prefWidth="362.0" styleClass="contentPane">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <HBox alignment="CENTER" layoutX="15.0" layoutY="8.0" prefHeight="38.0" prefWidth="338.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#backOneMonth" styleClass="calBtns" text="&lt;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="month" alignment="CENTER" prefHeight="27.0" prefWidth="135.0" styleClass="monthText" text="######">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="year" styleClass="monthText" text="####" />
+                                    <Button mnemonicParsing="false" onAction="#forwardOneMonth" styleClass="calBtns" text="&gt;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                 </children>
+                              </HBox>
+                              <FlowPane fx:id="calendar" hgap="2.0" layoutX="8.0" layoutY="75.0" prefHeight="217.0" prefWidth="346.0" />
+                              <HBox alignment="CENTER" layoutX="8.0" layoutY="42.0" prefHeight="33.0" prefWidth="346.0" spacing="25.0">
+                                 <children>
+                                    <Label styleClass="daysText" text="SUN" />
+                                    <Label styleClass="daysText" text="MON" />
+                                    <Label styleClass="daysText" text="TUE" />
+                                    <Label styleClass="daysText" text="WED" />
+                                    <Label styleClass="daysText" text="THU" />
+                                    <Label styleClass="daysText" text="FRI" />
+                                    <Label styleClass="daysText" text="SAT" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Pane>
+                        <HBox alignment="CENTER" prefHeight="39.0" prefWidth="362.0">
+                           <children>
+                              <Label prefHeight="81.0" prefWidth="362.0" styleClass="title" text="Upcoming">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="277.0" styleClass="todayText" text="Today">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ScrollPane focusTraversable="false" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" styleClass="scrollPane" vbarPolicy="NEVER">
+                           <content>
+                              <VBox prefHeight="257.0" prefWidth="359.0">
+                                 <children>
+                                    <Pane prefHeight="261.0" prefWidth="359.0" styleClass="contentPane">
+                                       <children>
+                                          <Pane layoutX="14.0" layoutY="27.0" prefHeight="91.0" prefWidth="329.0" styleClass="upcomingPane">
+                                             <children>
+                                                <Label layoutX="22.0" layoutY="14.0" styleClass="title" text="9:00">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="22.0" layoutY="42.0" prefHeight="35.0" prefWidth="207.0" styleClass="subTitle" text="REVIEW OOP EXAM">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="84.0" layoutY="18.0" styleClass="title" text="AM">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="80.0" fitWidth="65.0" layoutX="239.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@icons/calendarIcon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="upcomingDaysLbl" alignment="CENTER" layoutX="243.0" layoutY="42.0" prefHeight="35.0" prefWidth="57.0" styleClass="subTitle" text="THU">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="14.0" layoutY="137.0" prefHeight="91.0" prefWidth="329.0" styleClass="upcomingPane">
+                                             <children>
+                                                <Label layoutX="22.0" layoutY="14.0" styleClass="title" text="8:30">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="22.0" layoutY="42.0" prefHeight="35.0" prefWidth="207.0" styleClass="subTitle" text="REVIEW OOP EXAM">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="84.0" layoutY="18.0" styleClass="title" text="PM">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="80.0" fitWidth="65.0" layoutX="239.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@icons/calendarIcon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="upcomingDaysLbl1" alignment="CENTER" layoutX="243.0" layoutY="42.0" prefHeight="35.0" prefWidth="57.0" styleClass="subTitle" text="FRI">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </ScrollPane>
+                     </children></VBox>
                </children>
             </Pane>
             </children>

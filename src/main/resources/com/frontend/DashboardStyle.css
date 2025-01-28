@@ -67,17 +67,6 @@
     -fx-font-size: 36px;
     -fx-font-weight: bold;
 }
-.nameInfo {
-    -fx-font-family: 'Poppins';
-    -fx-text-fill: #5c155e;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-}
-.roleInfo {
-    -fx-font-family: 'Poppins';
-    -fx-text-fill: #b133b1;
-    -fx-font-size: 12px;
-}
 .userPane {
     -fx-background-color: #fcf0ff;
     -fx-background-radius: 7px;
@@ -122,6 +111,43 @@
 }
 .radioText:focused {
     -fx-font-size: 15px;
+}
+.squareQuiz {
+    -fx-background-color: #b133b1;
+    -fx-background-radius: 10px;
+}
+.quizNumber {
+    -fx-font-family: "Poppins-Bold";
+    -fx-text-fill: #f5e0f4;
+    -fx-font-weight: bold;
+    -fx-font-size: 50px;
+}
+.daysText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #e1a6e0;
+    -fx-font-weight: bold;
+}
+.monthText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+.calBtns {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.calBtns .text {
+    -fx-fill: #e1a6e0;
+}
+.todayText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+    -fx-font-weight: bold;
+}
+.upcomingPane {
+    -fx-background-color: #f5e0f4;
+    -fx-background-radius: 20px;
 }
 .selectedTab {
     -fx-background-color: #c951c9;
