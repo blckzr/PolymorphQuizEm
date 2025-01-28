@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
+.root {
+    -fx-background-color: #f5e0f4;
+    -fx-background-radius: 18px;
+}
+.main {
+    -fx-background-color: #f5e0f4;
+    -fx-background-radius: 18px;
+}
+.text {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #f5e0f4;
+}
+.subText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+}
+.title {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-weight: bold;
+}
+.subTitle {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+    -fx-font-weight: bold;
+}
+.dashboardTitle {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+}
+.contentPane {
+    -fx-background-color: #fcf0ff;
+    -fx-background-radius: 20px;
+}
+.searchBar {
+    -fx-background-color: #fcf0ff;
+    -fx-background-radius: 7px;
+    -fx-font-family: 'Poppins';
+    -fx-prompt-text-fill: #eaa7fa;
+}
+.userPane {
+    -fx-background-color: #fcf0ff;
+    -fx-background-radius: 7px;
+}
+.daysText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #e1a6e0;
+    -fx-font-weight: bold;
+}
+.monthText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+.calBtns {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.calBtns .text {
+    -fx-fill: #e1a6e0;
+}

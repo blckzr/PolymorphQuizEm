@@ -105,6 +105,15 @@
 .radioText {
     -fx-font-family: 'Poppins';
     -fx-text-fill: #4f1e69;
+    -fx-font-size: 15px;
+}
+.radio {
+    -fx-background-color: #fcf0ff;
+    -fx-border-color: #4f1e69;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-padding: 5px;
 }
 .radioText:hover {
     -fx-font-size: 15px;
