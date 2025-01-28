@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -15,13 +16,16 @@ public class SidebarController {
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Pane dbPane, quizPane, historyPane, trackingPane, settingsPane, dbBump, quizBump, historyBump, trackingBump, settingsBump;
+    private Pane dbPane, quizPane, historyPane, trackingPane, dbBump, quizBump, historyBump, trackingBump;
+    @FXML
+    private Label usernameLbl;
 
     private Stage stage;
     private String username;
 
     public void setUsername(String username) {
         this.username = username;
+        usernameLbl.setText(username);
         SceneLoader object = new SceneLoader();
         Pane view = object.getPage("Dashboard");
         setDefaultPage(view);
@@ -50,13 +54,11 @@ public class SidebarController {
         quizPane.setStyle("-fx-background-color: transparent;");
         historyPane.setStyle("-fx-background-color: transparent;");
         trackingPane.setStyle("-fx-background-color: transparent;");
-        settingsPane.setStyle("-fx-background-color: transparent;");
 
         dbBump.setVisible(false);
         quizBump.setVisible(false);
         historyBump.setVisible(false);
         trackingBump.setVisible(false);
-        settingsBump.setVisible(false);
     }
 
     @FXML
@@ -65,9 +67,17 @@ public class SidebarController {
         dbBump.setVisible(true);
         dbPane.setStyle("-fx-background-color: #c951c9;");
 
-        SceneLoader object = new SceneLoader();
-        Pane view = object.getPage("Dashboard");
-        mainPane.setCenter(view);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+            Pane dashboardView = loader.load();
+
+            DashboardController dashboardController = loader.getController();
+            dashboardController.setUsername(username);
+
+            mainPane.setCenter(dashboardView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     private void switchToQuiz(javafx.scene.input.MouseEvent event) {
@@ -102,8 +112,6 @@ public class SidebarController {
     @FXML
     private void switchToSettings(javafx.scene.input.MouseEvent event) {
         resetAllPanes();
-        settingsBump.setVisible(true);
-        settingsPane.setStyle("-fx-background-color: #c951c9;");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
         SceneLoader object = new SceneLoader();
         Pane view = object.getPage("Settings");

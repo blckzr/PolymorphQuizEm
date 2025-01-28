@@ -18,6 +18,20 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
+.userPane {
+    -fx-background-color: #fcf0ff;
+    -fx-background-radius: 7px;
+}
+.nameTitle {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-weight: bold;
+}
+.roleTitle {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+    -fx-font-weight: bold;
+}
 .selectedBump {
     -fx-background-color: #f5e0f4;
     -fx-background-radius: 10px;

@@ -38,7 +38,6 @@ public class DashboardController implements Initializable {
 
     public void setUsername(String username) {
         welcomeLbl.setText("Hey, " + username + "!");
-        usernameLbl.setText(username);
     }
     
     @Override

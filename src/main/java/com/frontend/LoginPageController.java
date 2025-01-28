@@ -53,11 +53,11 @@ public class LoginPageController {
 
         if(!username.isEmpty() && !password.isEmpty()) {
             // Call the method to sign up the user
-            boolean isSuccessful = JavaDatabase.logInUser(username, password);
+            //boolean isSuccessful = JavaDatabase.logInUser(username, password);
 
-            isValid(isSuccessful);
+            //isValid(isSuccessful);
 
-            if(isSuccessful){
+            //if(isSuccessful){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("SidebarTemplate.fxml"));
                 root = loader.load();
 
@@ -68,7 +68,7 @@ public class LoginPageController {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-            }
+            //}
         }else {
             if(username.isEmpty())  {
                 usernameField.setPromptText("Field required!");
