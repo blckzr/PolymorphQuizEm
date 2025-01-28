@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('fonts/Poppins-Light.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('fonts/Poppins-Medium.ttf');
+}
+
+.main-panel {
+    -fx-background-color: #fcf0ff;
+}
+
+.control-panel {
+    -fx-background-color: #5c155e;
+    -fx-background-radius: 30px;
+}
+
+
+
+.control-button{
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #b133b1;
+    -fx-font-family: "Poppins";
+    -fx-font-weight: Bold;
+    -fx-font-size: 14px;
+}
+
+.control-rbutton{
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Poppins";
+    -fx-font-weight: Bold;
+    -fx-font-size: 14px;
+}
+
+
+.norm_text_field {
+
+    -fx-border-color: #ffffff;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+
+    -fx-font-family: "Poppins";
+    -fx-font-weight: Bold;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+
+    -fx-background-color: #5c155e
+}
+
+.title_text_field {
+
+    -fx-border-color: #ffffff;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+
+    -fx-font-family: "Poppins";
+    -fx-font-weight: Bold;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20px;
+
+    -fx-background-color: #5c155e
+}
+
+.combo_box {
+    -fx-background-color: #5c155e;
+    -fx-font-family: "Poppins";
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 3px;
+    -fx-font-size: 14px;
+}
+
+.qcombo_box {
+    -fx-background-color: #f5e0f4;
+    -fx-font-family: "Poppins";
+    -fx-text-fill: #5c155e;
+    -fx-border-color: #e1a6e0;
+    -fx-border-radius: 3px;
+    -fx-font-size: 14px;
+}
+
+.question-panel {
+    -fx-background-color: #f5e0f4;
+    -fx-border-color: #e1a6e0;
+    -fx-border-width: 3px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+.qnorm_text {
+
+    -fx-font-family: "Poppins";
+    -fx-font-weight: Bold;
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 14px;
+}
+
+.question-rbutton{
+    -fx-text-fill: #5c155e;
+    -fx-font-family: "Poppins";
+    -fx-font-weight: Bold;
+    -fx-font-size: 14px;
+}
+
