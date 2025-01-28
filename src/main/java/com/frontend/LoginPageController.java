@@ -33,9 +33,11 @@ public class LoginPageController {
 
     public void isValid(boolean isSuccessful) {
         if(!isSuccessful) {
+            usernameField.setText(null);
             usernameField.setPromptText("Email or password is invalid.");
             usernameField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
 
+            passwordField.setText(null);
             passwordField.setPromptText("Email or password is invalid.");
             passwordField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
         } else {
