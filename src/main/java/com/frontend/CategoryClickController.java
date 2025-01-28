@@ -1,5 +1,6 @@
 package com.frontend;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +15,7 @@ public class CategoryClickController {
     private Button startButton;
 
     @FXML
-    private void handleStartQuiz(MouseEvent event) {
+    private void handleStartQuiz(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("quiz_interface.fxml"));
             Parent root = loader.load();

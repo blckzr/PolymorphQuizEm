@@ -38,7 +38,7 @@ public class SidebarController {
             dbPane.setStyle("-fx-background-color: #c951c9;");
 
             DashboardController dashboardController = loader.getController();
-            dashboardController.changeUsername(username);
+            dashboardController.setUsername(username);
             mainPane.setCenter(dashboardView);
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,11 +60,14 @@ public class SidebarController {
     }
 
     @FXML
-    private void switchToDashboard(javafx.scene.input.MouseEvent event) {
+    private void switchToDashboard(javafx.scene.input.MouseEvent event, String username) {
         resetAllPanes();
         dbBump.setVisible(true);
         dbPane.setStyle("-fx-background-color: #c951c9;");
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+        DashboardController dbCont = loader.getController();
+        dbCont.setUsername(username);
+
         SceneLoader object = new SceneLoader();
         Pane view = object.getPage("Dashboard");
         mainPane.setCenter(view);
@@ -94,17 +97,17 @@ public class SidebarController {
         resetAllPanes();
         trackingBump.setVisible(true);
         trackingPane.setStyle("-fx-background-color: #c951c9;");
-
-//        SceneLoader object = new SceneLoader();
-//        Pane view = object.getPage("Dashboard");
-//        mainPane.setCenter(view);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Tracking.fxml"));
+        SceneLoader object = new SceneLoader();
+        Pane view = object.getPage("Tracking");
+        mainPane.setCenter(view);
     }
     @FXML
     private void switchToSettings(javafx.scene.input.MouseEvent event) {
         resetAllPanes();
         settingsBump.setVisible(true);
         settingsPane.setStyle("-fx-background-color: #c951c9;");
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
         SceneLoader object = new SceneLoader();
         Pane view = object.getPage("Settings");
         mainPane.setCenter(view);

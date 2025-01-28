@@ -36,7 +36,7 @@ public class DashboardController implements Initializable {
     ZonedDateTime dateFocus;
     ZonedDateTime today;
 
-    public void changeUsername(String username) {
+    public void setUsername(String username) {
         welcomeLbl.setText("Hey, " + username + "!");
         usernameLbl.setText(username);
     }

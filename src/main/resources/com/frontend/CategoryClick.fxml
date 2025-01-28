@@ -80,10 +80,13 @@
                         <Text fill="#696f79" layoutX="789.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoDesc" text="Multiple" />
                      </children>
                   </Pane>
-                  <Button layoutX="693.0" layoutY="330.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="123.0" styleClass="start-button" text="Start Quiz" textFill="WHITE" onAction="#handleStartQuiz">
+                  <Button focusTraversable="false" layoutX="693.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleStartQuiz" prefHeight="51.0" prefWidth="123.0" styleClass="start-button" text="Start Quiz" textFill="WHITE">
                      <font>
                         <Font name="Poppins Bold" size="18.0" />
-                     </font></Button>
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <Pane layoutX="42.0" layoutY="43.0" prefHeight="530.0" prefWidth="574.0">
                      <children>
                         <ImageView fitHeight="294.0" fitWidth="515.0" layoutX="30.0" layoutY="33.0">
