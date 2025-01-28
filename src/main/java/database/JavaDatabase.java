@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.*;
 
 public class JavaDatabase {
-    private static final String db_url = "jdbc:mysql://192.168.100:3306/polymorphquizem_db";
+    private static final String db_url = "jdbc:mysql://127.0.0.1:3306/polymorphquizem_db";
     private static final String db_username = "root";
     private static final String db_password = "password";
 
