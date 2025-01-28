@@ -47,11 +47,11 @@ public class LoginPageController {
         String password = passwordField.getText();
 
         if(!username.isEmpty() && !password.isEmpty()) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SidebarTemplate.fxml"));
             root = loader.load();
 
-            DashboardController dashboardController = loader.getController();
-            dashboardController.changeUsername(username);
+            SidebarController sidebarController = loader.getController();
+            sidebarController.setUsername(username);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
