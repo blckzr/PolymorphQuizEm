@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class SidebarController {
     @FXML
@@ -12,6 +13,7 @@ public class SidebarController {
     @FXML
     private Pane dbPane, quizPane, historyPane, trackingPane, settingsPane, dbBump, quizBump, historyBump, trackingBump, settingsBump;
 
+    private Stage stage;
     private String username;
 
     public void setUsername(String username) {
@@ -27,6 +29,9 @@ public class SidebarController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
             Pane dashboardView = loader.load();
+
+            dbBump.setVisible(true);
+            dbPane.setStyle("-fx-background-color: #c951c9;");
 
             DashboardController dashboardController = loader.getController();
             dashboardController.changeUsername(username);
