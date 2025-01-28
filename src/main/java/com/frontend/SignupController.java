@@ -21,26 +21,24 @@ import java.util.ResourceBundle;
 
 public class SignupController {
     @FXML
-    private TextField fullnameField, usernameField, emailField;
+    private TextField usernameField, emailField;
     @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Button signupBtn;
+    private PasswordField passwordField, confirmPasswordField;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     public void signup(ActionEvent event) throws IOException {
-        String fullname = fullnameField.getText();
         String username = usernameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
+        String confirmPass = confirmPasswordField.getText();
 
         // Check if fields are not empty
-        if (!fullname.isEmpty() && !username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+        if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPass.isEmpty()) {
             // Call the method to sign up the user
-            JavaDatabase.signUpUser(event, fullname, username, email, password);
+            JavaDatabase.signUpUser(event, username, email, password, confirmPass);
 
             // If the user was successfully inserted into the database, go to the next scene (Login page)
             root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
@@ -49,11 +47,6 @@ public class SignupController {
             stage.setScene(scene);
             stage.show();
         } else {
-            // Handle empty fields
-            if (fullname.isEmpty()) {
-                fullnameField.setPromptText("Field required!");
-                fullnameField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
-            }
             if (username.isEmpty()) {
                 usernameField.setPromptText("Field required!");
                 usernameField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
@@ -66,15 +59,19 @@ public class SignupController {
                 passwordField.setPromptText("Field required!");
                 passwordField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
             }
+            if (confirmPass.isEmpty()) {
+                confirmPasswordField.setPromptText("Field required!");
+                confirmPasswordField.setStyle("-fx-border-color: #5c155e; -fx-prompt-text-fill: #5c155e; -fx-font-style: italic; -fx-border-width: 3px;");
+            }
         }
     }
 
     @FXML
     public void initialize() {
-        addTextChangeListener(fullnameField);
         addTextChangeListener(usernameField);
         addTextChangeListener(emailField);
         addTextChangeListener(passwordField);
+        addTextChangeListener(confirmPasswordField);
     }
 
     private void addTextChangeListener(TextField textField) {

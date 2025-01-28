@@ -9,7 +9,7 @@ public class JavaDatabase {
     private static final String db_username = "root";
     private static final String db_password = "password";
 
-    public static void signUpUser(ActionEvent event, String fullname, String username, String email, String password) {
+    public static void signUpUser(ActionEvent event, String username, String email, String password, String confirmPass) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;

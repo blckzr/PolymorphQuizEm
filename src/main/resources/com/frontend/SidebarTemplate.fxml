@@ -114,7 +114,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Pane>
-                              <Pane prefHeight="63.0" prefWidth="367.0" styleClass="tabs">
+                              <Pane onMouseClicked="#logout" prefHeight="63.0" prefWidth="367.0" styleClass="tabs">
                                  <children>
                                     <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

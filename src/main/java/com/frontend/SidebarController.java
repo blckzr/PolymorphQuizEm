@@ -2,10 +2,14 @@ package com.frontend;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class SidebarController {
     @FXML
@@ -104,5 +108,16 @@ public class SidebarController {
 //        SceneLoader object = new SceneLoader();
 //        Pane view = object.getPage("Dashboard");
 //        mainPane.setCenter(view);
+    }
+    @FXML
+    private void logout(javafx.scene.input.MouseEvent event) throws IOException {
+        Parent root;
+        Scene scene;
+
+        root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
