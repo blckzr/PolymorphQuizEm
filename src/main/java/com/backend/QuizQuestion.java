@@ -5,18 +5,17 @@ import  com.frontend.MainQuizController;
 public abstract class QuizQuestion {
     private final MainQuizController controller;
     protected String question;
-    protected String correctAnswer;
 
 
-    public QuizQuestion(String question, String correctAnswer, MainQuizController controller) {
+    public QuizQuestion(String question, MainQuizController controller) {
         this.question = question;
-        this.correctAnswer = correctAnswer;
         this.controller = controller;
     }
 
+    public abstract  void displayInputs();
     public abstract void storeAnswer();
     public abstract void displayQuestion();
     public abstract  void toggleNextButton();
-    public abstract boolean checkAnswer();
+    public abstract double checkAnswer();
 }
 

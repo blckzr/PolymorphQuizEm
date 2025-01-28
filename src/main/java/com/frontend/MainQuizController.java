@@ -1,12 +1,8 @@
 package com.frontend;
 
-import com.backend.MultipleChoices;
-import com.backend.QuizQuestion;
+import com.backend.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
@@ -42,30 +38,35 @@ public class MainQuizController {
     public VBox frame;
     @FXML
     public Pane answerPane;
+    @FXML
+    public Label ptsLabel;
+    @FXML
+    public Label text_label;
+    @FXML
+    public TextField identification_field;
+    @FXML
+    public TextArea essay_field;
 
     private TimerController timerController;
-    private boolean isDone=false;
+    public boolean isDone;
     private QuizQuestion currentQuestion;
     private Stage stage;
     public QuizQuestion[]  questionset;
 
     @FXML
     private void initialize() {
+        isDone=false;
         prevButton.setVisible(false);
         timerController = new TimerController(timerLabel);
         timerController.startCountdown(300);
-        frame.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getCode() == KeyCode.ALT||event.getCode() == KeyCode.TAB) {
-                event.consume();  // Consume the event to stop fullscreen exit
-            }
-        });
         String[] options = {"Red", "Green", "Blue", "Yellow"};
         questionset = new QuizQuestion[]{new MultipleChoices(
                 "What is the capital of France?",
                 "Paris",
                 new String[]{"Paris", "London", "Rome", "Berlin"},
                 this,
-                false
+                false,
+                1
         ),
 
                 new MultipleChoices(
@@ -73,23 +74,21 @@ public class MainQuizController {
                         "Mars",
                         new String[]{"Venus","Mars","Jupiter","Saturn"},
                         this,
-                        false
+                        false,2
                 ),
 
-                new MultipleChoices(
-                        "Who wrote the play 'Romeo and Juliet'?",
-                        "William Shakespeare",
-                        new String[]{"Charles Dickens","Mark Twain","William Shakespeare","Jane Austen"},
+                new TrueOrFalse(
+                        "Did William Shakespeare wrote the play 'Romeo and Juliet'?",
+                        "True",
                         this,
-                        false
+                        false,1
                 ),
 
-                new MultipleChoices(
-                        "What is the largest ocean on Earth?",
-                        "Pacific Ocean",
-                        new String[]{"Atlantic Ocean","Indian Ocean","Arctic Ocean","Pacific Ocean"},
+                new Identification(
+                        "Who is the Hero of Mactan?",
+                        "Lapu-lapu",
                         this,
-                        false
+                        false,1
                 ),
 
                 new MultipleChoices(
@@ -97,10 +96,24 @@ public class MainQuizController {
                         "Avocado",
                         new String[]{"Tomato","Avocado","Onion","Garlic"},
                         this,
-                        false
+                        false,4
+                ),
+                new Essay(
+                        "Write an essay about guacamole?",
+                        new String[]{"Tomato","Avocado","Onion","Garlic"},
+                        this,
+                        false,4
+                ),
+
+                new Enumeration(
+                        "Enumerate 4 colors of the rainbow:",
+                        new String[]{"Red","Orange","yellow","green","Blue","Purple","Indigo"},
+                        this,
+                        false,4,4
                 )};
         currentQuestion = questionset[0];
         currentQuestion.displayQuestion();
+        nextButton.setDisable(true);
         currentQuestion.toggleNextButton();
     }
 

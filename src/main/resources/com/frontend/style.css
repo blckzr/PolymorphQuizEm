@@ -92,3 +92,42 @@
     -fx-spacing: 10; /* Space between child nodes */
 }
 
+.text_field {
+
+    -fx-border-color: #5c155e;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+
+    -fx-font-family: "Poppins-Light";
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 18px;
+    -fx-padding: 10px;
+
+
+    -fx-background-color: #ffffff;
+}
+
+.text_area {
+
+    -fx-border-color: #5c155e;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+
+    -fx-font-family: "Poppins-Light";
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 18px;
+    -fx-padding: 10px;
+    -fx-wrap-text: true;
+
+    -fx-background-color: #ffffff;
+}
+
+.Emphasis-Text{
+
+    -fx-font-family: "Poppins";
+    -fx-font-weight: Bold;
+    -fx-font-size: 25px;
+    -fx-text-fill: #5c155e;
+
+}
+
