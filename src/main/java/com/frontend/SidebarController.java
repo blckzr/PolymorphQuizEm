@@ -105,9 +105,9 @@ public class SidebarController {
         settingsBump.setVisible(true);
         settingsPane.setStyle("-fx-background-color: #c951c9;");
 
-//        SceneLoader object = new SceneLoader();
-//        Pane view = object.getPage("Dashboard");
-//        mainPane.setCenter(view);
+        SceneLoader object = new SceneLoader();
+        Pane view = object.getPage("Settings");
+        mainPane.setCenter(view);
     }
     @FXML
     private void logout(javafx.scene.input.MouseEvent event) throws IOException {

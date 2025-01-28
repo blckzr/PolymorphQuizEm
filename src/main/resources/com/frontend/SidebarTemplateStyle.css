@@ -27,8 +27,6 @@
 .tabs:hover {
     -fx-background-color: #c951c9;
 }
-
-/* create a separate pane nalang for selected in other page. */
-.tabs:pressed {
-    -fx-background-color: #e1a6e0;
+.tabs:pressed:hover {
+    -fx-background-color: #c951c9;
 }

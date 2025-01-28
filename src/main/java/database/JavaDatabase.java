@@ -32,7 +32,7 @@ public class JavaDatabase {
             } else {
                 // Insert new user into the database
                 psInsert = connection.prepareStatement("INSERT INTO user (fullname, username, email_account, password) VALUES (?, ?, ?, ?)");
-                psInsert.setString(1, fullname);
+                //psInsert.setString(1, fullname);
                 psInsert.setString(2, username);
                 psInsert.setString(3, email);
                 psInsert.setString(4, password);
