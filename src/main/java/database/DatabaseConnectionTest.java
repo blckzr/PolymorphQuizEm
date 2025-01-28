@@ -7,9 +7,9 @@ public class DatabaseConnectionTest {
 
     public static void main(String[] args) {
         // MySQL Database connection details
-        String url = "jdbc:mysql://127.0.0.1:3306/your_database_name";  // Replace with your database URL and name
+        String url = "jdbc:mysql://127.0.0.1:3306/polymorphquizem_db";  // Replace with your database URL and name
         String username = "root";  // Replace with your MySQL username
-        String password = "your_password";  // Replace with your MySQL password
+        String password = "password";  // Replace with your MySQL password
 
         // Attempt to connect to the database
         try {
