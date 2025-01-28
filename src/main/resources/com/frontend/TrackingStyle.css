@@ -70,3 +70,36 @@
 .calBtns .text {
     -fx-fill: #e1a6e0;
 }
+.line {
+    -fx-stroke: #5c155e;
+}
+.boxText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #4f1e69;
+    -fx-font-size: 15px;
+}
+.boxText:hover {
+    -fx-font-size: 15px;
+}
+.boxText:focused {
+    -fx-font-size: 15px;
+}
+.check-box {
+    -fx-background-color: #fcf0ff;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+}
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-border-color: #4f1e69;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+}
+.check-box:selected .box {
+    -fx-background-color: #4f1e69;
+    -fx-border-color: #4f1e69;
+}
+.check-box:selected .box:before {
+    -fx-mark-color: #fcf0ff;
+}
