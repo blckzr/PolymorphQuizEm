@@ -5,138 +5,139 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="668.0" prefWidth="1352.0" styleClass="main" stylesheets="@SidebarTemplateStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.SidebarTemplate">
+<AnchorPane prefHeight="668.0" prefWidth="1352.0" styleClass="main" stylesheets="@SidebarTemplateStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.SidebarController">
    <children>
-      <VBox prefHeight="675.0" prefWidth="357.0" styleClass="sidepanel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Pane prefHeight="708.0" prefWidth="330.0" styleClass="sidepanel">
+      <BorderPane fx:id="mainPane" prefHeight="679.0" prefWidth="1336.0">
+         <left>
+            <VBox prefHeight="675.0" prefWidth="357.0" styleClass="sidepanel" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="5.0" layoutY="21.0" prefHeight="371.0" prefWidth="342.0" spacing="12.0">
+                  <Pane prefHeight="708.0" prefWidth="330.0" styleClass="sidepanel">
                      <children>
-                        <ImageView fitHeight="82.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/logo2.png" />
-                           </image>
-                        </ImageView>
-                        <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                        <VBox layoutX="5.0" layoutY="21.0" prefHeight="371.0" prefWidth="353.0" spacing="12.0">
                            <children>
-                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="82.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/dbIcon.png" />
+                                    <Image url="@icons/logo2.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Dashboard">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Label>
+                              <Pane onMouseClicked="#switchToDashboard" prefHeight="63.0" prefWidth="425.0" styleClass="tabs">
+                                 <children>
+                                    <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/dbIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Dashboard">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                                 <children>
+                                    <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/quizIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Take a Quiz">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                                 <children>
+                                    <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/historyIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Quiz History">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                                 <children>
+                                    <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/trackIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Tracking">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
                            </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                        </VBox>
+                        <VBox alignment="BOTTOM_CENTER" layoutX="6.0" layoutY="446.0" prefHeight="200.0" prefWidth="353.0" spacing="12.0">
                            <children>
-                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/quizIcon.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Take a Quiz">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
+                              <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                                 <children>
+                                    <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/settingsIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Settings">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
+                              <Pane prefHeight="63.0" prefWidth="367.0" styleClass="tabs">
+                                 <children>
+                                    <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/logoutIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Log out">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Pane>
                            </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
-                           <children>
-                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/historyIcon.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Quiz History">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
-                           <children>
-                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/trackIcon.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Tracking">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
+                        </VBox>
                      </children>
-                  </VBox>
-                  <VBox alignment="BOTTOM_CENTER" layoutX="6.0" layoutY="446.0" prefHeight="200.0" prefWidth="342.0" spacing="12.0">
-                     <children>
-                        <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
-                           <children>
-                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/settingsIcon.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Settings">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Pane prefHeight="63.0" prefWidth="367.0" styleClass="tabs">
-                           <children>
-                              <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/logoutIcon.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Log out">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                     </children>
-                  </VBox>
+                  </Pane>
                </children>
-            </Pane>
-         </children>
-      </VBox>
-      <VBox layoutX="330.0" prefHeight="674.0" prefWidth="1022.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Pane prefHeight="686.0" prefWidth="1036.0" styleClass="root" VBox.vgrow="ALWAYS" />
-         </children>
-      </VBox>
+            </VBox>
+         </left>
+      </BorderPane>
    </children>
 </AnchorPane>

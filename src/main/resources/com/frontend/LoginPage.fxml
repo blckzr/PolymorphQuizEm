@@ -52,7 +52,7 @@
                            <Font size="15.0" />
                         </font>
                      </Label>
-                     <TextField fx:id="usernameField" layoutX="19.0" layoutY="104.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
+                     <TextField fx:id="usernameField" layoutX="19.0" layoutY="104.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
                         <font>
                            <Font size="15.0" />
                         </font>

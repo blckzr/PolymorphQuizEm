@@ -57,11 +57,11 @@ public class LoginPageController {
             // Call the method to sign up the user
             JavaDatabase.logInUser(event, username, password);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SidebarTemplate.fxml"));
             root = loader.load();
 
-            DashboardController dashboardController = loader.getController();
-            dashboardController.changeUsername(username);
+            SidebarController sidebarController = loader.getController();
+            sidebarController.setUsername(username);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);

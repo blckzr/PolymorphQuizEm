@@ -1,21 +1,22 @@
 @font-face {
     font-family: 'Poppins';
-    src: url('fonts/Poppins-ExtraLight.ttf');
+    src: url('fonts/Poppins-Regular.ttf');
 }
 @font-face {
     font-family: 'Poppins-Bold';
     src: url('fonts/Poppins-Bold.ttf');
 }
 .root {
-    -fx-background-color: #f2dff1;
+    -fx-background-color: #f5e0f4;
+    -fx-background-radius: 18px;
 }
 .main {
-    -fx-background-color: #f2dff1;
+    -fx-background-color: #f5e0f4;
     -fx-background-radius: 18px;
 }
 .scrollPane {
-    -fx-background: #f2dff1;
-    -fx-border-color: #f2dff1;
+    -fx-background: #f5e0f4;
+    -fx-border-color: #f5e0f4;
     -fx-effect: null;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
@@ -40,11 +41,11 @@
     -fx-font-size: 15px;
 }
 .sidepanel {
-    -fx-background-color: #8a45ad;
+    -fx-background-color: #b133b1;
 }
 .text {
     -fx-font-family: 'Poppins';
-    -fx-text-fill: #ffd4fc;
+    -fx-text-fill: #f5e0f4;
 }
 .subText {
     -fx-font-family: 'Poppins';
@@ -52,22 +53,37 @@
 }
 .title {
     -fx-font-family: 'Poppins-Bold';
-    -fx-text-fill: #4f1e69;
+    -fx-text-fill: #5c155e;
+}
+.dashboardTitle {
+    -fx-font-family: 'Poppins-Bold';
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 36px;
+}
+.nameInfo {
+    -fx-font-family: 'Poppins-Bold';
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 12px;
+}
+.roleInfo {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+    -fx-font-size: 12px;
 }
 .subTitle {
     -fx-font-family: 'Poppins';
     -fx-text-fill: #b133b1;
 }
 .userPane {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcf0ff;
     -fx-background-radius: 7px;
 }
 .contentPane {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcf0ff;
     -fx-background-radius: 20px;
 }
 .searchBar {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcf0ff;
     -fx-background-radius: 7px;
     -fx-font-family: 'Poppins';
     -fx-prompt-text-fill: #eaa7fa;
@@ -91,7 +107,7 @@
 }
 .tabs:hover {
     -fx-font-size: 20px;
-    -fx-background-color: #c147de;
+    -fx-background-color: #c951c9;
 }
 .radioText {
     -fx-font-family: 'Poppins';
@@ -104,9 +120,9 @@
     -fx-font-size: 15px;
 }
 .selectedTab {
-    -fx-background-color: #c147de;
+    -fx-background-color: #c951c9;
 }
 .selectedBump {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #f5e0f4;
     -fx-background-radius: 10px;
 }
