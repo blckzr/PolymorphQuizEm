@@ -1,21 +1,22 @@
 @font-face {
     font-family: 'Poppins';
-    src: url('fonts/Poppins-ExtraLight.ttf');
+    src: url('fonts/Poppins-Regular.ttf');
 }
 @font-face {
     font-family: 'Poppins-Bold';
     src: url('fonts/Poppins-Bold.ttf');
 }
 .root {
-    -fx-background-color: #f2dff1;
+    -fx-background-color: #f5e0f4;
+    -fx-background-radius: 18px;
 }
 .main {
-    -fx-background-color: #f2dff1;
+    -fx-background-color: #f5e0f4;
     -fx-background-radius: 18px;
 }
 .scrollPane {
-    -fx-background: #f2dff1;
-    -fx-border-color: #f2dff1;
+    -fx-background: #f5e0f4;
+    -fx-border-color: #f5e0f4;
     -fx-effect: null;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
@@ -34,40 +35,48 @@
 }
 .scrollPane:focused .subTitle {
     -fx-font-size: 20px;
-    -fx-font-family: 'Poppins';
+    -fx-font-family: 'Poppins-Bold';
 }
 .scrollPane:focused .radioText {
     -fx-font-size: 15px;
 }
 .sidepanel {
-    -fx-background-color: #8a45ad;
+    -fx-background-color: #b133b1;
 }
 .text {
     -fx-font-family: 'Poppins';
-    -fx-text-fill: #ffd4fc;
+    -fx-text-fill: #f5e0f4;
 }
 .subText {
     -fx-font-family: 'Poppins';
     -fx-text-fill: #b133b1;
 }
 .title {
-    -fx-font-family: 'Poppins-Bold';
-    -fx-text-fill: #4f1e69;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-weight: bold;
 }
 .subTitle {
     -fx-font-family: 'Poppins';
     -fx-text-fill: #b133b1;
+    -fx-font-weight: bold;
+}
+.dashboardTitle {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
 }
 .userPane {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcf0ff;
     -fx-background-radius: 7px;
 }
 .contentPane {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcf0ff;
     -fx-background-radius: 20px;
 }
 .searchBar {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcf0ff;
     -fx-background-radius: 7px;
     -fx-font-family: 'Poppins';
     -fx-prompt-text-fill: #eaa7fa;
@@ -91,7 +100,7 @@
 }
 .tabs:hover {
     -fx-font-size: 20px;
-    -fx-background-color: #c147de;
+    -fx-background-color: #c951c9;
 }
 .radioText {
     -fx-font-family: 'Poppins';
@@ -103,10 +112,47 @@
 .radioText:focused {
     -fx-font-size: 15px;
 }
+.squareQuiz {
+    -fx-background-color: #b133b1;
+    -fx-background-radius: 10px;
+}
+.quizNumber {
+    -fx-font-family: "Poppins-Bold";
+    -fx-text-fill: #f5e0f4;
+    -fx-font-weight: bold;
+    -fx-font-size: 50px;
+}
+.daysText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #e1a6e0;
+    -fx-font-weight: bold;
+}
+.monthText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+.calBtns {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.calBtns .text {
+    -fx-fill: #e1a6e0;
+}
+.todayText {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #b133b1;
+    -fx-font-weight: bold;
+}
+.upcomingPane {
+    -fx-background-color: #f5e0f4;
+    -fx-background-radius: 20px;
+}
 .selectedTab {
-    -fx-background-color: #c147de;
+    -fx-background-color: #c951c9;
 }
 .selectedBump {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #f5e0f4;
     -fx-background-radius: 10px;
 }

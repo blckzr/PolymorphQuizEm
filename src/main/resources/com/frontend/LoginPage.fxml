@@ -52,7 +52,7 @@
                            <Font size="15.0" />
                         </font>
                      </Label>
-                     <TextField fx:id="usernameField" layoutX="19.0" layoutY="104.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#verifyAccount" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
+                     <TextField fx:id="usernameField" layoutX="19.0" layoutY="104.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="329.0" styleClass="text-fields">
                         <font>
                            <Font size="15.0" />
                         </font>
@@ -62,16 +62,6 @@
                            <Font size="15.0" />
                         </font>
                      </PasswordField>
-                     <Label fx:id="errorLbl1" alignment="CENTER_RIGHT" layoutX="153.0" layoutY="82.0" prefHeight="23.0" prefWidth="189.0" styleClass="errorText" text="Field required!" visible="false">
-                        <font>
-                           <Font name="System Italic" size="12.0" />
-                        </font>
-                     </Label>
-                     <Label fx:id="errorLbl2" alignment="CENTER_RIGHT" layoutX="153.0" layoutY="157.0" prefHeight="23.0" prefWidth="189.0" styleClass="errorText" text="Field required!" visible="false">
-                        <font>
-                           <Font name="System Italic" size="12.0" />
-                        </font>
-                     </Label>
                       </children>
                   </Pane>
                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="371.0" spacing="10.0">
@@ -108,7 +98,7 @@
                               <Font name="System Bold" size="26.0" />
                           </font>
                       </Label>
-                      <Label fx:id="panelLbl1" alignment="CENTER" layoutX="4.0" layoutY="301.0" prefHeight="17.0" prefWidth="359.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="Revolutionizing Quiz Systems for Dynamic Learning">
+                      <Label fx:id="panelLbl1" alignment="CENTER" layoutX="-23.0" layoutY="298.0" prefHeight="20.0" prefWidth="412.0" styleClass="text" stylesheets="@LoginPageStyle.css" text="Revolutionizing Quiz Systems for Dynamic Learning">
                           <font>
                               <Font size="15.0" />
                           </font>

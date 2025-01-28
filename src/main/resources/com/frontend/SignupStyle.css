@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Italic';
+    src: url('fonts/Poppins-Italic.ttf');
+}
+.root {
+    -fx-background-color: #f5e0f4;
+}
+.loginPanel {
+    -fx-background-color: #fcf0ff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #2e072b;
+    -fx-border-width: 1px;
+}
+.sidePanel {
+     -fx-background-color: radial-gradient(center 50% 50%, radius 50%, #ffdbfe, #f191f0);
+}
+.title {
+    -fx-font-family: "Poppins-Bold";
+    -fx-text-fill: #5c155e;
+}
+.text {
+    -fx-font-family: "Poppins";
+    -fx-text-fill: #5c155e;
+}
+.errorText {
+    -fx-font-family: 'Poppins-Italic';
+    -fx-font-size: 15px;
+    -fx-text-fill: #5c155e;
+    -fx-font-style: italic;
+}
+.keyText {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 11px;
+    -fx-text-fill: #e1a6e0;
+}
+.text-fields {
+    -fx-background-color: #f7d5f4;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-border-color: #5c155e;
+    -fx-border-width: 1px;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 15px;
+    -fx-text-fill: #5c155e;
+}
+.text-fields:focus {
+    -fx-border-width: 1px;
+}
+.pass-field {
+    -fx-background-color: #f7d5f4;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-border-color: #5c155e;
+    -fx-border-width: 1px;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 15px;
+    -fx-text-fill: #5c155e;
+}
+.signup-btn {
+    -fx-background-color: #5c155e;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #fcf0ff;
+    -fx-background-radius: 15px;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-pref-height: 32px;
+    -fx-pref-width: 391px;
+}
+.signup-btn:hover {
+    -fx-font-size: 18px;
+    -fx-pref-height: 32px;
+    -fx-pref-width: 391px;
+}
+.signup-btn:pressed {
+    -fx-font-size: 18px;
+    -fx-pref-height: 32px;
+    -fx-pref-width: 391px;
+}
