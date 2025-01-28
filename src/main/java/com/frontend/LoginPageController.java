@@ -1,5 +1,6 @@
 package com.frontend;
 
+import database.JavaDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,12 @@ public class LoginPageController {
         // backend here
     }
 
+    @FXML
+    public void verifyAccount(ActionEvent event) {
+        // Logic for verifying account (login logic here)
+    }
+
+
     /*
         To be added with database and backend.
 
@@ -47,6 +54,9 @@ public class LoginPageController {
         String password = passwordField.getText();
 
         if(!username.isEmpty() && !password.isEmpty()) {
+            // Call the method to sign up the user
+            JavaDatabase.logInUser(event, username, password);
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
             root = loader.load();
 

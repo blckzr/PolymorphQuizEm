@@ -70,7 +70,7 @@ public class JavaDatabase {
                 alert.show();
 
                 // Optionally, navigate to another scene (Login page)
-                changeScene(event, "LoginPage.fxml", true);
+                // changeScene(event, "LoginPage.fxml", true);
             }
 
         } catch (SQLException e) {
@@ -86,6 +86,66 @@ public class JavaDatabase {
                 if (connection != null) connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    public static void logInUser(ActionEvent event, String username, String password) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // Connect to the database
+            connection = DriverManager.getConnection(db_url, db_username, db_password);
+
+            // Check if user has record
+            preparedStatement = connection.prepareStatement("SELECT password FROM user WHERE username = ?");
+            preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+
+            if (!resultSet.isBeforeFirst()) {
+                System.out.println("User not found in the database");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Provided credentials are incorrect!");
+                alert.show();
+            } else {
+                while (resultSet.next()) {
+                    String retrievedPassword = resultSet.getString("password");  // Correct column name here
+                    if (retrievedPassword.equals(password)) {
+
+                    } else {
+                        // Password did not match
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Incorrect Password");
+                        alert.show();
+                    }
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
