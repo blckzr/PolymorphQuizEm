@@ -17,7 +17,7 @@ public class LoginPage extends Application {
 
         stage.getIcons().add(icon);
         stage.setScene(scene);
-        stage.setTitle("PolymorphQuizEm - Login");
+        stage.setTitle("PolymorphQuizEm");
         stage.show();
     }
 

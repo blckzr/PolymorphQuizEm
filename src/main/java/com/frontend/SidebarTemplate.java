@@ -28,7 +28,7 @@ public class SidebarTemplate extends Application {
         
         stage.getIcons().add(icon);
         stage.setScene(scene);
-        stage.setTitle("PolymorphQuizEm - Main");
+        stage.setTitle("PolymorphQuizEm");
         stage.show();
     }
 

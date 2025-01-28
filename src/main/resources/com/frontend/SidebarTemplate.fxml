@@ -25,14 +25,14 @@
                                     <Image url="@icons/logo2.png" />
                                  </image>
                               </ImageView>
-                              <Pane onMouseClicked="#switchToDashboard" prefHeight="63.0" prefWidth="425.0" styleClass="tabs">
+                              <Pane fx:id="dbPane" onMouseClicked="#switchToDashboard" prefHeight="63.0" prefWidth="425.0" styleClass="tabs">
                                  <children>
                                     <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@icons/dbIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Dashboard">
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="sidebar-text" text="Dashboard">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -42,14 +42,14 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Pane>
-                              <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                              <Pane fx:id="quizPane" onMouseClicked="#switchToQuiz" prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
                                  <children>
                                     <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@icons/quizIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Take a Quiz">
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="sidebar-text" text="Take a Quiz">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -59,14 +59,14 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Pane>
-                              <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                              <Pane fx:id="historyPane" onMouseClicked="#switchToHistory" prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
                                  <children>
                                     <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@icons/historyIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Quiz History">
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="sidebar-text" text="Quiz History">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -76,14 +76,14 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Pane>
-                              <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                              <Pane fx:id="trackingPane" onMouseClicked="#switchToTracking" prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
                                  <children>
                                     <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@icons/trackIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Tracking">
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="sidebar-text" text="Tracking">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -97,14 +97,14 @@
                         </VBox>
                         <VBox alignment="BOTTOM_CENTER" layoutX="6.0" layoutY="446.0" prefHeight="200.0" prefWidth="353.0" spacing="12.0">
                            <children>
-                              <Pane prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
+                              <Pane fx:id="settingsPane" onMouseClicked="#switchToSettings" prefHeight="63.0" prefWidth="320.0" styleClass="tabs">
                                  <children>
                                     <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="51.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@icons/settingsIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Settings">
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="sidebar-text" text="Settings">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -121,7 +121,7 @@
                                           <Image url="@icons/logoutIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="text" text="Log out">
+                                    <Label layoutX="100.0" layoutY="18.0" prefHeight="24.0" prefWidth="147.0" styleClass="sidebar-text" text="Log out">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -139,5 +139,10 @@
             </VBox>
          </left>
       </BorderPane>
+      <Pane fx:id="dbBump" layoutX="-78.0" layoutY="103.0" prefHeight="63.0" prefWidth="91.0" styleClass="selectedBump" visible="false" />
+      <Pane fx:id="quizBump" layoutX="-78.0" layoutY="179.0" prefHeight="63.0" prefWidth="91.0" styleClass="selectedBump" visible="false" />
+      <Pane fx:id="historyBump" layoutX="-78.0" layoutY="254.0" prefHeight="63.0" prefWidth="91.0" styleClass="selectedBump" visible="false" />
+      <Pane fx:id="trackingBump" layoutX="-78.0" layoutY="330.0" prefHeight="63.0" prefWidth="91.0" styleClass="selectedBump" visible="false" />
+      <Pane fx:id="settingsBump" layoutX="-78.0" layoutY="508.0" prefHeight="63.0" prefWidth="91.0" styleClass="selectedBump" visible="false" />
    </children>
 </AnchorPane>
