@@ -1,4 +1,4 @@
-package com.frontend;
+package frontend;
 
 import database.JavaDatabase;
 import javafx.event.ActionEvent;
@@ -27,8 +27,13 @@ public class LoginPageController {
     private Parent root;
 
     @FXML
-    private void forgotPassword(MouseEvent event) {
-        // backend here
+    private void forgotPassword(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("forget-password.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void isValid(boolean isSuccessful) {
@@ -53,11 +58,11 @@ public class LoginPageController {
 
         if(!username.isEmpty() && !password.isEmpty()) {
             // Call the method to sign up the user
-            //boolean isSuccessful = JavaDatabase.logInUser(username, password);
+            boolean isSuccessful = JavaDatabase.logInUser(username, password);
 
-            //isValid(isSuccessful);
+            isValid(isSuccessful);
 
-            //if(isSuccessful){
+            if(isSuccessful){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("SidebarTemplate.fxml"));
                 root = loader.load();
 
@@ -68,7 +73,7 @@ public class LoginPageController {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-            //}
+            }
         }else {
             if(username.isEmpty())  {
                 usernameField.setPromptText("Field required!");
