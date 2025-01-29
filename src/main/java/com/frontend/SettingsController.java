@@ -16,14 +16,10 @@ public class SettingsController {
     @FXML
     private PasswordField currPassField, newPassField;
 
-    @FXML
-    private Label profileName;
-
     private String username;
 
     public void setUsername(String username) {
         this.username = username;
-        profileName.setText(username);
         loadUserData();
     }
 
