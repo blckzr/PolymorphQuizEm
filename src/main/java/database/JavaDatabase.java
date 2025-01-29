@@ -1,23 +1,12 @@
 package database;
 
-import jakarta.mail.*;
-import jakarta.mail.internet.*;
-import java.util.Properties;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.sql.*;
 import javafx.scene.control.Alert;
+import java.sql.*;
 
 public class JavaDatabase {
     private static final String db_url = "jdbc:mysql://127.0.0.1:3306/polymorphquizem_db";
     private static final String db_username = "root";
     private static final String db_password = "password";
-
-    // Database Connection Method (Previously Missing)
-    public static Connection connect() throws SQLException {
-        return DriverManager.getConnection(db_url, db_username, db_password);
-    }
 
     // Signup Function
     public static void logInUser(String username, String email, String password) {
@@ -27,23 +16,28 @@ public class JavaDatabase {
         ResultSet resultSet = null;
 
         try {
-            connection = connect();
+            // Connect to the database
+            connection = DriverManager.getConnection(db_url, db_username, db_password);
 
+            // Check if the username already exists
             psCheckUserExists = connection.prepareStatement("SELECT * FROM user WHERE username = ?");
             psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
 
             if (resultSet.isBeforeFirst()) {
+                System.out.println("Username already exists!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Username is taken");
                 alert.show();
             } else {
+                // Insert new user into the database
                 psInsert = connection.prepareStatement("INSERT INTO user (username, email_account, password) VALUES (?, ?, ?)");
                 psInsert.setString(1, username);
                 psInsert.setString(2, email);
-                psInsert.setString(3, hashPassword(password)); // Hashing password before storing
+                psInsert.setString(3, password);
                 psInsert.executeUpdate();
 
+                // Inform user about successful sign-up
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("User successfully signed up!");
                 alert.show();
@@ -51,8 +45,18 @@ public class JavaDatabase {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("An error occurred while signing up. Please try again.");
+            alert.show();
         } finally {
-            closeResources(connection, psInsert, psCheckUserExists, resultSet);
+            try {
+                if (resultSet != null) resultSet.close();
+                if (psCheckUserExists != null) psCheckUserExists.close();
+                if (psInsert != null) psInsert.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -63,23 +67,26 @@ public class JavaDatabase {
         ResultSet resultSet = null;
 
         try {
-            connection = connect();
+            // Connect to the database
+            connection = DriverManager.getConnection(db_url, db_username, db_password);
 
+            // Check if user has record
             preparedStatement = connection.prepareStatement("SELECT password FROM user WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isBeforeFirst()) {
+                System.out.println("User not found in the database");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("User not found!");
+                alert.setContentText("Provided credentials are incorrect!");
                 alert.show();
-                return false;
             } else {
                 while (resultSet.next()) {
-                    String retrievedPassword = resultSet.getString("password");
-                    if (retrievedPassword.equals(hashPassword(password))) { // Compare hashed passwords
+                    String retrievedPassword = resultSet.getString("password");  // Correct column name here
+                    if (retrievedPassword.equals(password)) {
                         return true;
                     } else {
+                        // Password did not match
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Incorrect Password");
                         alert.show();
@@ -87,131 +94,24 @@ public class JavaDatabase {
                     }
                 }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         } finally {
-            closeResources(connection, preparedStatement, resultSet);
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return false;
     }
 
-    // Check if Email Exists
-    public static boolean checkEmailExists(String email) {
-        String query = "SELECT * FROM user WHERE email_account = ?";
-        try (Connection conn = connect();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, email);
-            ResultSet rs = stmt.executeQuery();
-            return rs.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    // Forgot Password - Reset Function
-    public static boolean resetPassword(String email) {
-        String tempPassword = generateTemporaryPassword();
-        String query = "UPDATE user SET password = ? WHERE email_account = ?";
-        try (Connection conn = connect();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, hashPassword(tempPassword));
-            stmt.setString(2, email);
-            int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected > 0) {
-                sendResetEmail(email, tempPassword);
-                return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    // Generate a Temporary Password
-    public static String generateTemporaryPassword() {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&!";
-        SecureRandom random = new SecureRandom();
-        StringBuilder tempPassword = new StringBuilder();
-
-        for (int i = 0; i < 8; i++) {
-            tempPassword.append(characters.charAt(random.nextInt(characters.length())));
-        }
-        return tempPassword.toString();
-    }
-
-    // Hash Password (Previously Missing)
-    public static String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hash = md.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
-
-            for (byte b : hash) {
-                hexString.append(String.format("%02x", b));
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    // Send Reset Email (Previously Missing)
-    public static void sendResetEmail(String email, String tempPassword) {
-        final String senderEmail = "yourEmail@gmail.com";
-        final String senderPassword = "yourEmailPassword";  // Use an App Password
-
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-
-        Session session = jakarta.mail.Session.getInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(senderEmail, senderPassword);
-            }
-        });
-
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(senderEmail));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message.setSubject("Password Reset");
-            message.setText("Your new temporary password is: " + tempPassword);
-
-            Transport.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // ✅ Helper Method to Close Resources
-    private static void closeResources(Connection connection, Statement stmt, ResultSet rs) {
-        try {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            if (connection != null) connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void closeResources(Connection connection, Statement stmt1, Statement stmt2, ResultSet rs) {
-        try {
-            if (rs != null) rs.close();
-            if (stmt1 != null) stmt1.close();
-            if (stmt2 != null) stmt2.close();
-            if (connection != null) connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    // Settings Function
     public static User getUserInfo(String username) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

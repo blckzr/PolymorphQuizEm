@@ -3,7 +3,7 @@ module com.polymorphquizem {
     requires javafx.fxml;
     requires java.sql;
     requires jdk.compiler;
-    requires jakarta.mail;
+    requires java.desktop;
 
 
     opens com.frontend to javafx.fxml;
