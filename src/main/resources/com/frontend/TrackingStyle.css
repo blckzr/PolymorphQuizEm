@@ -103,3 +103,53 @@
 .check-box:selected .box:before {
     -fx-mark-color: #fcf0ff;
 }
+.text-fields {
+    -fx-background-color:  #fcf0ff;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-border-color: #5c155e;
+    -fx-border-width: 1px;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12px;
+    -fx-text-fill: #5c155e;
+}
+.text-fields:focus {
+    -fx-border-width: 1px;
+}
+.addBtn {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #f5e0f4;
+    -fx-font-weight: bold;
+    -fx-background-color: #5c155e;
+    -fx-background-radius: 5px;
+}
+.addBtn:hover {
+    -fx-font-size: 12px;
+    -fx-pref-height: 25px;
+    -fx-pref-width: 68px;
+}
+.addBtn:pressed {
+    -fx-font-size: 12px;
+    -fx-pref-height: 25px;
+    -fx-pref-width: 68px;
+}
+.clearBtn {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #5c155e;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+    -fx-border-color: #5c155e;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.clearBtn:hover {
+    -fx-font-size: 12px;
+    -fx-pref-height: 25px;
+    -fx-pref-width: 68px;
+}
+.clearBtn:pressed {
+    -fx-font-size: 12px;
+    -fx-pref-height: 25px;
+    -fx-pref-width: 68px;
+}

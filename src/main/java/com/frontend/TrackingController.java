@@ -4,16 +4,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class TrackingController implements Initializable {
@@ -23,8 +27,18 @@ public class TrackingController implements Initializable {
     @FXML
     private FlowPane calendar;
 
+    @FXML
+    private TextField taskTitleField;
+
+    @FXML
+    private DatePicker taskDatePicker;
+
+    @FXML
+    private VBox taskList;
+
     ZonedDateTime dateFocus;
     ZonedDateTime today;
+    Map<LocalDate, Integer> taskCounts = new HashMap<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,31 +87,91 @@ public class TrackingController implements Initializable {
         // Align children in the FlowPane
         calendar.setAlignment(Pos.TOP_LEFT);
         calendar.setHgap(15);
-        calendar.setVgap(5);
+        calendar.setVgap(7);
     }
 
     private StackPane createDayCell(String day, boolean isToday) {
         StackPane stackPane = new StackPane();
-        stackPane.setPrefSize(60, 50); // Adjusted for calendar dimensions
+        stackPane.setPrefSize(60, 50);
 
-        // Background Circle
         Circle background = new Circle(25);
         background.setFill(isToday ? Paint.valueOf("#5c155e") : Paint.valueOf("#fcf0ff"));
 
-        // Text for the day
         Text text = new Text(day);
         text.setFill(isToday ? Paint.valueOf("#fcf0ff") : Color.BLACK);
         text.setStyle("-fx-font-size: 16;");
 
         stackPane.getChildren().addAll(background, text);
 
-        // Add click event
+        // Highlight days with tasks
+        if (!day.isEmpty()) {
+            LocalDate date = LocalDate.of(dateFocus.getYear(), dateFocus.getMonthValue(), Integer.parseInt(day));
+            if (taskCounts.containsKey(date)) {
+                Circle taskIndicator = new Circle(5, Color.RED);
+                StackPane.setAlignment(taskIndicator, Pos.BOTTOM_CENTER);
+                stackPane.getChildren().add(taskIndicator);
+            }
+        }
+
+        // Click to show tasks
         stackPane.setOnMouseClicked(event -> {
             if (!day.isEmpty()) {
-                System.out.println("Clicked on day: " + day);
+                LocalDate clickedDate = LocalDate.of(dateFocus.getYear(), dateFocus.getMonthValue(), Integer.parseInt(day));
+                showTasksForDate(clickedDate);
             }
         });
 
         return stackPane;
+    }
+
+    private void showTasksForDate(LocalDate date) {
+        taskList.getChildren().clear(); // Clear previous tasks
+
+        for (CheckBox task : taskList.getChildren().filtered(node -> node instanceof CheckBox).toArray(new CheckBox[0])) {
+            if (task.getText().contains(date.toString())) {
+                taskList.getChildren().add(task);
+            }
+        }
+    }
+
+    @FXML
+    void addTask(ActionEvent event) {
+        String title = taskTitleField.getText();
+        LocalDate date = taskDatePicker.getValue();
+
+        if (title.isEmpty() || date == null) {
+            showAlert("Please fill in all fields.");
+            return;
+        }
+
+        addTaskToList(title, date);
+        markCalendar(date);
+        taskTitleField.clear();
+        taskDatePicker.setValue(null);
+    }
+
+    private void addTaskToList(String title, LocalDate date) {
+        CheckBox taskCheckBox = new CheckBox(title + " - " + date);
+        taskCheckBox.setStyle("-fx-font-size: 15px; -fx-text-fill: #4f1e69;");
+        taskList.getChildren().add(taskCheckBox);
+    }
+
+    private void markCalendar(LocalDate date) {
+        taskCounts.put(date, taskCounts.getOrDefault(date, 0) + 1);
+        calendar.getChildren().clear();
+        drawCalendar();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public void clearFields(ActionEvent event) {
+        taskTitleField.setText(null);
+        taskDatePicker.setValue(null);
     }
 }

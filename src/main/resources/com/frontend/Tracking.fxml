@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -108,11 +108,11 @@
                                     </Pane>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="588.0" prefWidth="436.0">
+                              <VBox prefHeight="588.0" prefWidth="436.0" spacing="20.0">
                                  <children>
-                                    <Pane prefHeight="371.0" prefWidth="436.0" styleClass="contentPane">
+                                    <Pane prefHeight="275.0" prefWidth="423.0" styleClass="contentPane">
                                        <children>
-                                          <VBox layoutX="14.0" layoutY="14.0" prefHeight="345.0" prefWidth="399.0">
+                                          <VBox fx:id="taskList" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="399.0">
                                              <children>
                                                 <Label prefHeight="35.0" prefWidth="194.0" styleClass="title" text="Task Manager">
                                                    <font>
@@ -120,77 +120,52 @@
                                                    </font>
                                                 </Label>
                                                 <Line endX="294.626220703125" endY="-0.41420844197273254" startX="-100.0" styleClass="line" />
-                                                <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="399.0" spacing="20.0">
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="193.0" prefWidth="423.0" styleClass="contentPane">
+                                       <children>
+                                          <Label layoutX="11.0" layoutY="10.0" prefHeight="35.0" prefWidth="387.0" styleClass="title" text="Add a Task">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Line endX="294.626220703125" endY="-0.41420844197273254" layoutX="112.0" layoutY="46.0" startX="-100.0" styleClass="line" />
+                                          <VBox layoutX="14.0" layoutY="47.0" prefHeight="140.0" prefWidth="396.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="396.0">
                                                    <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="35.0" prefWidth="358.0" styleClass="boxText" text="OOP ENUMERATION QUIZ">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </CheckBox>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="Favorite?">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </CheckBox>
-                                                   </children>
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="399.0" spacing="20.0">
-                                                   <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="35.0" prefWidth="358.0" styleClass="boxText" text="OOP IDENTIFICATION QUIZ">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </CheckBox>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="Favorite?">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </CheckBox>
+                                                      <Label prefHeight="27.0" prefWidth="97.0" styleClass="subTitle" text="Task Title">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="taskTitleField" prefHeight="29.0" prefWidth="291.0" styleClass="text-fields" />
                                                    </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="399.0" spacing="20.0">
+                                                <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="396.0">
                                                    <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="35.0" prefWidth="358.0" styleClass="boxText" text="OOP MULTIPLE CHOICE QUIZ">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </CheckBox>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="Favorite?">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </CheckBox>
+                                                      <Label prefHeight="27.0" prefWidth="97.0" styleClass="subTitle" text="Task Date">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <DatePicker fx:id="taskDatePicker" editable="false" prefHeight="25.0" prefWidth="292.0" styleClass="text-fields" />
                                                    </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="399.0" spacing="20.0">
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="396.0" spacing="10.0">
                                                    <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="35.0" prefWidth="358.0" styleClass="boxText" text="OOP TRUE OR FALSE QUIZ">
+                                                      <Button mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="68.0" styleClass="clearBtn" text="Clear">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
-                                                      </CheckBox>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="Favorite?">
+                                                      </Button>
+                                                      <Button mnemonicParsing="false" onAction="#addTask" prefHeight="25.0" prefWidth="68.0" styleClass="addBtn" text="Add">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
-                                                      </CheckBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="399.0" spacing="20.0">
-                                                   <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="35.0" prefWidth="358.0" styleClass="boxText" text="OOP FILL IN THE BLANKS QUIZ">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </CheckBox>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="206.0" styleClass="boxText" text="Favorite?">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </CheckBox>
+                                                      </Button>
                                                    </children>
                                                 </HBox>
                                              </children>
