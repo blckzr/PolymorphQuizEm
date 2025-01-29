@@ -1,6 +1,0 @@
-QuestionType,QuestionText,CorrectAnswer,Choices,Points
-Multiple Choice,Which is not an OOP Concept?,GUI,Abstraction/GUI/Encapsulation/Polymorphism,1
-Identification,Which OOP Language is this Quiz written?,Java,,1
-Enumeration,Three primary colors,Red/ Blue/ Yellow,,3
-True or False,C is an OOP Language,FALSE,,1
-Essay,Essay about OOP Concepts,Polymorphism/ Abstraction/ Encapsulation/ Inheritance,,4
