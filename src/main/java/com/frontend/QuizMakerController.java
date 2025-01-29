@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -44,6 +45,8 @@ public class QuizMakerController implements Initializable {
     Button BackButton;
     @FXML
     ChoiceBox<String> difficultyChoice;
+
+    private SidebarController sidebarController;
 
     private final String[] difficulty = {"Easy", "Average", "Hard"};
 
@@ -216,8 +219,22 @@ public class QuizMakerController implements Initializable {
         updateTotalPoints();
     }
 
-    public void handleBackButton() {
+    public void setSidebarController(SidebarController sidebarController) {
+        this.sidebarController = sidebarController;
+    }
 
+    public void handleBackButton() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizCategories.fxml"));
+            Pane quizCategoriesView = loader.load();
+
+            QuizCategoriesController quizCategoriesController = loader.getController();
+            quizCategoriesController.setSidebarController(sidebarController);
+
+            sidebarController.setCenterView(quizCategoriesView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

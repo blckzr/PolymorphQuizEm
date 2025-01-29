@@ -85,10 +85,23 @@ public class SidebarController {
         quizBump.setVisible(true);
         quizPane.setStyle("-fx-background-color: #c951c9;");
 
-//        SceneLoader object = new SceneLoader();
-//        Pane view = object.getPage("Dashboard");
-//        mainPane.setCenter(view);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizCategories.fxml"));
+            Pane quizCategoriesView = loader.load();
+
+            QuizCategoriesController quizCategoriesController = loader.getController();
+            quizCategoriesController.setSidebarController(this);
+
+            setCenterView(quizCategoriesView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public BorderPane getMainPane() {
+        return mainPane;
+    }
+
     @FXML
     private void switchToHistory(javafx.scene.input.MouseEvent event) {
         resetAllPanes();
@@ -113,15 +126,13 @@ public class SidebarController {
     private void switchToSettings(javafx.scene.input.MouseEvent event) {
         resetAllPanes();
         try {
-            // Load the FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
-            Pane settingsView = loader.load(); // Load the FXML file here
+            Pane settingsView = loader.load();
 
             // Get the controller and pass the username
             SettingsController settingsController = loader.getController();
             settingsController.setUsername(username);
 
-            // Set the loaded view into the main pane
             mainPane.setCenter(settingsView);
         } catch (IOException e) {
             e.printStackTrace();
@@ -138,4 +149,9 @@ public class SidebarController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void setCenterView(Pane view) {
+        mainPane.setCenter(view);
+    }
+
 }
