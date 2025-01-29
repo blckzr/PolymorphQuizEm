@@ -112,10 +112,20 @@ public class SidebarController {
     @FXML
     private void switchToSettings(javafx.scene.input.MouseEvent event) {
         resetAllPanes();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
-        SceneLoader object = new SceneLoader();
-        Pane view = object.getPage("Settings");
-        mainPane.setCenter(view);
+        try {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
+            Pane settingsView = loader.load(); // Load the FXML file here
+
+            // Get the controller and pass the username
+            SettingsController settingsController = loader.getController();
+            settingsController.setUsername(username);
+
+            // Set the loaded view into the main pane
+            mainPane.setCenter(settingsView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     private void logout(javafx.scene.input.MouseEvent event) throws IOException {

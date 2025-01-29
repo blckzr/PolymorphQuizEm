@@ -72,13 +72,13 @@ public class TrackingController implements Initializable {
 
         // Align children in the FlowPane
         calendar.setAlignment(Pos.TOP_LEFT);
-        calendar.setHgap(10);
+        calendar.setHgap(15);
         calendar.setVgap(5);
     }
 
     private StackPane createDayCell(String day, boolean isToday) {
         StackPane stackPane = new StackPane();
-        stackPane.setPrefSize(65, 50); // Adjusted for calendar dimensions
+        stackPane.setPrefSize(60, 50); // Adjusted for calendar dimensions
 
         // Background Circle
         Circle background = new Circle(25);
