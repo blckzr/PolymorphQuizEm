@@ -99,13 +99,7 @@ public class JavaDatabase {
             e.printStackTrace();
             return false;
         } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            closeResources(connection, preparedStatement, resultSet);
         }
 
         return false;
@@ -141,13 +135,7 @@ public class JavaDatabase {
             e.printStackTrace();
             return null;
         } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            closeResources(connection, preparedStatement, resultSet);
         }
     }
 
@@ -181,12 +169,7 @@ public class JavaDatabase {
             e.printStackTrace();
             return false;
         } finally {
-            try {
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            closeResources(connection, preparedStatement);
         }
     }
 
@@ -214,13 +197,7 @@ public class JavaDatabase {
             e.printStackTrace();
             return null;
         } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            closeResources(connection, preparedStatement, resultSet);
         }
     }
 
@@ -250,12 +227,26 @@ public class JavaDatabase {
             e.printStackTrace();
             return false;
         } finally {
-            try {
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            closeResources(connection, preparedStatement);
+        }
+    }
+
+    private static void closeResources(Connection connection, PreparedStatement preparedStatement) {
+        try {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void closeResources(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
+        try {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+            if (resultSet != null) resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
