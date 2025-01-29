@@ -1,68 +1,118 @@
-# Github Guide
+# 🎭 POLYMORPHQUIZEM  
+ ###  Java Quiz App Demonstrating Polymorphism
 
-## To contribute in project:
-1. Go to designated repository and copy the repository url by clicking `Code`
-![Copy https](./img/copy_https.png)
-2. Open your terminal
+ 
+PolymorphQuizEm is a **Java-based quiz application** that brings **polymorphism** to life in an engaging and educational way. This interactive app lets users take quizzes with **multiple question types**, including:  
+
+- 🟢 **Multiple Choice**  
+- 🔴 **True or False**  
+- 🟡 **Identification**  
+- 🟠 **Fill in the Blanks**  
+- 🔵 **Essay**  
+
+By leveraging **object-oriented principles**, especially **polymorphism**, the application efficiently manages different question types, demonstrating how real-world software can be structured with flexible, reusable components.  
+
+
+---
+
+## 🔑 Keywords  
+`Java` · `Polymorphism` · `OOP` · `Quiz Application` · `Software Design` · `Educational App` · `Dynamic Method Dispatch` · `JavaFX` · `FXML` · `SceneBuilder`  
+
+---
+
+## 🔥 PROGRAM KEY FEATURES  
+
+### ✅ Multiple Question Types  
+- Supports **Identification, Multiple Choice, True/False, Enumeration, Fill-in-the-Blanks, and Essay.**  
+- Familiarizes users with different **departmental exam formats** for a more versatile learning experience.  
+
+### 📊 User Progress Tracking  
+- Saves **quiz history and scores** to help users track progress.  
+- Allows users to **complete quizzes anytime** for flexible learning.  
+
+### 🎭 Polymorphism Implemented  
+- Demonstrates **object-oriented principles** with a structured quiz system.  
+- Uses **a common interface** to manage different question types efficiently.  
+
+### 🎨 FXML-Based UI Design  
+- Built with **JavaFX and SceneBuilder** for a user-friendly, **visually appealing interface**.  
+- Provides a smooth and engaging **user experience (UX)**.  
+
+### 💾 Database Integration (MySQL)  
+- Stores **quiz questions and results** efficiently.  
+- Ensures **data security and quick retrieval**, making information **well-organized and accessible**.  
+
+### 🔄 Retake & Review Options  
+- Users can **retake quizzes anytime** to improve their scores.  
+- Provides a **detailed performance summary** after every quiz attempt.  
+- Encourages **self-motivation** by tracking personal growth over time.  
+
+---
+![LoginPage](https://github.com/controlbackspace/mdtest/blob/321df6b76320cbf7058ec726897c157b00d29d9d/Screenshot%202025-01-29%20231623.png)
+
+---
+
+
+# 👥 USER MANUAL 
+**🚀 Quick Start Guide**
+
+The easiest way to see **PolymorphQuizEm** in action is to follow these steps:  
+
+### 1️⃣ Clone This Project  
+```sh
+git clone https://github.com/blckzr/PolymorphQuizEm.git
+cd PolymorphQuizEm
 ```
-# Navigate the desired folder for clone repository
-cd <file_path>
 
-# Clone repository
-git clone <repository_url>
+
+### 2️⃣ Set Up Your Java Environment  
+
+Ensure you have the following installed:  
+- **Java Development Kit (JDK) 17+**  
+- **Apache Maven**  
+
+Download here:  
+- [JDK 17+](https://www.oracle.com/java/technologies/javase-downloads.html)  
+- [Apache Maven](https://maven.apache.org/download.cgi)  
+
+
+### 3️⃣ Install Dependencies  
+```sh
+mvn clean install
 ```
-3. You may now start working
 
-# Two ways to upload your code:
 
-## Main branch coding:
-![Master branch](./img/master_branch.png)
-The main branch is the central branch where the primary version of the project resides. It is often considered the "production-ready" or "stable" version of the code. When coding directly in the main branch, all changes made to this branch will immediately affect the codebase as a whole. These changes can impact the entire project, including other branches that may later merge with the main branch.
-After making changes to the code:
+### 4️⃣ Run the Application  
+```sh
+mvn javafx:run
 ```
-# Add the code to stage
-git add -A
+or
+1. **Open the project on your IDE(Intelli J, Eclipse, VSCode)** – Run the `.jar` or `.exe` file to launch the quiz.  
+2. **Choose Your Quiz Type** – Select from the available question formats.  
+3. **Answer the Questions** – Read the questions carefully and input your responses.  
+4. **Submit & Review** – Get instant feedback on your answers.  
+5. **Track Your Progress** – View your final score and see areas for improvement.  
 
-# Commit changes
-git commit -m "{commit message}"
+---
 
-# Send the changes
-git push
-```
-1. Add changes to the staging area (files you will commit) using `git add .` or `git add -A.`
-2. Commit changes using `git commit -m "{commit message}"`. Make sure your commit messages are descriptive.
-3. Push your changes to your fork using `git push`.
+# 🛠️ Developers Notes 
 
-## Alternate branch coding (Recommended):
-![New branch](./img/alternate_branch.png)
-A branch acts as a separate workspace, allowing you to work on specific features, bug fixes, or experiments without affecting the main branch or other developers’ work. This isolation helps prevent introducing bugs or unfinished code into the main project. Branches also simplify collaboration by enabling multiple developers to work on different tasks simultaneously without interference.
+💡 **Want to contribute or explore the code?**  
+Feel free to **fork** the repository, **enhance** features, or **submit issues**!  
 
+### 🛑 Enhancing Error Handling  
+- Improve **unexpected issue handling** and **exception management**.  
 
-```
-# Create and switch to a new branch
-git checkout -b <new_branch_name>
+### 🤖 Automated Essay Grading  
+- Implement **text analysis or keyword recognition** for automated grading.  
 
-# Upload changes
-git add -A
-git commit -m "{commit message}"
-git push origin <new_branch_name>
+### 📱 Mobile Compatibility  
+- Optimize UI for **mobile responsiveness**.  
 
-# Switch to master branch
-git checkout master
+### 🎭 More Question Types  
+- Introduce **image-based, matching, and drag-and-drop questions**.  
 
-# Merge with main branch
-git merge <{new_branch_name}>
+### 🎮 Multiplayer Mode  
+- Implement **real-time quiz competition for multiple users**.  
+---
 
-# Pull latest version
-git pull origin master
-```
-1. Create and switch a new branch using `git checkout -b <new_branch_name>`. You can decide what the branch name.
-2. Upload the changes and wait for the approval from the owner of the repository.
-3. Switch branch using `git checkout <branch_name>`. After pushing the changes, change to `master` branch
-4. Merge main and chosen branch using `git merge <{new_branch_name}>`. Change `{new_branch_name} with branch you want to merge with master.
-5. Update the clone repository using `git pull origin master` if the repository is updated.
-
-# REFERENCES:
-[Git & GitHub Tutorial for Beginners](https://youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR&si=cxNCOabily6Cy9ZT)
-
-[Git Explained in 100 Seconds](https://www.youtube.com/watch?v=hwP7WQkmECE&t=90s)
