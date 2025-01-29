@@ -2,12 +2,16 @@ package com.frontend;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Popup;
 import javafx.scene.control.*;
+
+import java.io.IOException;
 
 public class PopupController {
 
@@ -27,6 +31,7 @@ public class PopupController {
     public ImageView questionmark;
 
     private Popup popup;
+    private SidebarController sidebarController;
 
     private MainQuizController mainQuizController;
 
@@ -40,6 +45,11 @@ public class PopupController {
         scoreLabel.setVisible(false);
         pieChart.setVisible(false);
     }
+
+    public void setSidebarController(SidebarController sidebarController) {
+        this.sidebarController = sidebarController;
+    }
+
     public void setPopup(Popup popup) {
         this.popup = popup;
     }
@@ -50,7 +60,20 @@ public class PopupController {
     }
 
     public void gotoDashboard(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+            Pane dashboardView = loader.load();
 
+            DashboardController dashboardController = loader.getController();
+
+            if (sidebarController != null) {
+                dashboardController.setUsername(sidebarController.getUsername());
+            }
+
+            sidebarController.setCenterView(dashboardView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void handleYes(ActionEvent actionEvent) {
