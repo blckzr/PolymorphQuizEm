@@ -51,6 +51,7 @@ public class MainQuizController {
     @FXML
     public StackPane stackpane;
 
+    private SidebarController sidebarController;
     private TimerController timerController;
     public boolean isDone;
     private QuizQuestion currentQuestion;
@@ -58,6 +59,10 @@ public class MainQuizController {
     public QuizQuestion[]  questionset;
     public int totalPoints;
     public double score=0;
+
+    public void setSidebarController(SidebarController sidebarController) {
+        this.sidebarController = sidebarController;
+    }
 
     @FXML
     private void initialize() {
@@ -198,6 +203,11 @@ public class MainQuizController {
 
         // Get the controller of the popup
         PopupController popupController = loader.getController();
+        popupController.setMainQuizController(this);
+
+        if (sidebarController != null) {
+            popupController.setSidebarController(sidebarController);
+        }
 
         popupController.setMainQuizController(this);
         // Create the popup and set the content
