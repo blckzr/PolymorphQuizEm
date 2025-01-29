@@ -9,16 +9,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class QuizMakerController implements Initializable {
+public class QuizMakerController {
     @FXML
     VBox QuestionVbox;
     @FXML
@@ -44,6 +46,10 @@ public class QuizMakerController implements Initializable {
     @FXML
     Button BackButton;
     @FXML
+    TextField TitleTextField;
+    @FXML
+    CheckBox TimerCheckbox;
+    @FXML
     ChoiceBox<String> difficultyChoice;
 
     private SidebarController sidebarController;
@@ -53,7 +59,6 @@ public class QuizMakerController implements Initializable {
     private List<Parent> questionPanes = new ArrayList<>();
     private int nextIndex = 0;
 
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         difficultyChoice.getItems().addAll(difficulty);
     }
@@ -173,6 +178,12 @@ public class QuizMakerController implements Initializable {
 
         // For debugging, print out the questions
         displayQuestions();
+        try {
+            saveQuestionsToCSV();
+            saveQuizMetadataToCSV();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     int totalPoints;
@@ -214,7 +225,113 @@ public class QuizMakerController implements Initializable {
         }
     }
 
+    public void saveQuestionsToCSV() throws IOException {
+        String filename = TitleTextField.getText().trim();
+
+        if (filename.isEmpty()) {
+            System.out.println("Filename is empty. Please provide a valid filename.");
+            return;
+        }
+
+        if (!filename.endsWith(".csv")) {
+            filename += ".csv";
+        }
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+
+        writer.write("QuestionType,QuestionText,CorrectAnswer,Choices,Points\n");
+
+        if (questions.isEmpty()) {
+            System.out.println("No questions to save!");
+            writer.close();
+            return;
+        }
+
+
+        for (QuestionPaneData question : questions) {
+
+            String questionType = question.getQuestionType();
+            String questionText = question.getQuestionText();
+            String correctAnswer = question.getCorrectAnswer();
+            String[] choices = question.getChoices();
+            int points = question.getPoints();
+
+
+            correctAnswer = "\"" + correctAnswer + "\"";
+
+            String joinedChoices;
+
+            if (choices != null && choices.length > 0) {
+                joinedChoices = String.join("/", choices);
+                joinedChoices = "\""+joinedChoices+"\"";
+            } else {
+
+                joinedChoices = "";
+            }
+            System.out.println(joinedChoices);
+
+            writer.write(String.format("\"%s\",\"%s\",%s,%s,%d\n",
+                    questionType,
+                    questionText,
+                    correctAnswer,
+                    joinedChoices,
+                    points));
+
+
+            System.out.println("Writing to CSV: " + String.format("\"%s\",\"%s\",%s,%s,%d\n",
+                    questionType,
+                    questionText,
+                    correctAnswer,
+                    joinedChoices,
+                    points));
+        }
+
+        writer.close();
+
+        System.out.println("Quiz saved to CSV successfully!");
+    }
+
+    public void saveQuizMetadataToCSV() throws IOException {
+
+        String metadataFilename = TitleTextField.getText().trim() + ".csv"; // Use quiz title or any other logic for naming
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Quizzez.csv", true)); // 'true' to append to the file
+
+        String timer;
+        String selectedMode;
+        if(profMode.isSelected()){
+            selectedMode = "Professional";
+        }else{
+            selectedMode = "Review";
+        }
+
+        if(TimerCheckbox.isSelected()){
+            timer= timerTF.getText();
+        }else{
+            timer= "";
+        }
+
+        LocalDate duedate = datePicker.getValue();
+
+
+
+        writer.write(String.format("\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",%d\n",
+                metadataFilename,
+                TitleTextField.getText().trim(),
+                selectedMode,
+                timer,
+                duedate,
+                totalPoints
+        ));
+
+        // Close the writer
+        writer.close();
+
+        System.out.println("Quiz metadata saved to CSV successfully!");
+    }
+
     public void saveQuiz() {
+        updateTotalPoints();
         gatherAllQuestions();
         updateTotalPoints();
     }

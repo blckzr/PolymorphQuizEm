@@ -11,11 +11,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainQuizController {
+    @FXML
+    public Label testTitle;
     @FXML
     public Label questionLabel;
     @FXML
@@ -58,67 +63,131 @@ public class MainQuizController {
     public QuizQuestion[]  questionset;
     public int totalPoints;
     public double score=0;
+    public String Mode;
+    List<QuizQuestion> probset;
+    int timelimit;
+
+    public List<QuestionPaneData> loadQuestions(String filename) throws IOException {
+        List<QuestionPaneData> questions = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        String line;
+
+        // Skip the header
+        reader.readLine();
+
+        while ((line = reader.readLine()) != null) {
+            String[] data = line.split(",");
+
+            String questionType = data[0].replace("\"","");
+            String questionText = data[1].replace("\"", "");
+            String correctAnswer = data[2].replace("\"", ""); // Remove quotes
+            String[] choices = data[3].split("/"); // Remove quotes and split by comma
+            int points = Integer.parseInt(data[4].replace("\"", ""));
+
+            System.out.println(points);
+            // Create a QuestionData object and add to the list
+            QuestionPaneData question = new QuestionPaneData(questionType, questionText, correctAnswer, choices, points);
+            System.out.println(question.getQuestionText());
+            questions.add(question);
+        }
+
+        reader.close();
+        return questions;
+    }
+
+    public QuizInfo loadQuizInfo(String filename, int index) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        String line;
+
+        // Skip the header
+        reader.readLine();
+        int i = 0;
+        // Read the first line of quiz info
+        while ((line = reader.readLine()) != null){
+
+            if(i!=index-1){
+                continue;
+            }
+            String[] data = line.split(",");
+
+            String title = data[1].replace("\"","");
+            String mode = data[2].replace("\"","");
+            String time = data[3].replace("\"","");
+            String dueDate = data[4];
+            int tpoints = Integer.parseInt(data[5]);
+
+            QuizInfo quizInfo = new QuizInfo(title, mode, time, dueDate, tpoints);
+
+            reader.close();
+            return quizInfo;
+        }
+
+        reader.close();
+        return null;
+    }
+
+    private void LoadProbset (List<QuestionPaneData> CSVquestions){
+        for(QuestionPaneData cur_unformatted_q : CSVquestions){
+            String type = cur_unformatted_q.getQuestionType();
+            String answer =  cur_unformatted_q.getCorrectAnswer();
+            String question = cur_unformatted_q.getQuestionText();
+            String[] choices = cur_unformatted_q.getChoices();
+            int points = cur_unformatted_q.getPoints();
+
+            System.out.println(type);
+            if(type.equals("Multiple Choice")){
+                System.out.println(points);
+                probset.add(new MultipleChoices(question,answer,choices,this,false,points));
+            }else if(type.equals("True or False")){
+                probset.add(new TrueOrFalse(question,answer,this, false,points));
+            }else if(type.equals("Identification")){
+                probset.add(new Identification(question,answer,this,false,points));
+            }else if(type.equals("Enumeration")){
+                choices = answer.split("/ ");
+                probset.add(new Enumeration(question,choices,this, false, choices.length, points));
+            }else if(type.equals("Essay")){
+                choices = answer.split("/ ");
+                probset.add(new Essay(question,choices,this,false, points));
+            }
+
+
+        }
+    }
 
     @FXML
     private void initialize() {
-        totalPoints =14;
+        QuizInfo currentQuiz;
+        List<QuestionPaneData>  questionset;
+        try {
+            currentQuiz = loadQuizInfo("Quizzez.csv",1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String targettitle = currentQuiz.getTitle();
+        probset = new ArrayList<>();
+        Mode=currentQuiz.getMode();
+        totalPoints =currentQuiz.getTotalPoints();
         isDone=false;
+        testTitle.setText(targettitle);
         prevButton.setVisible(false);
-        timerController = new TimerController(timerLabel);
-        timerController.startCountdown(300);
-        String[] options = {"Red", "Green", "Blue", "Yellow"};
-        questionset = new QuizQuestion[]{new MultipleChoices(
-                "What is the capital of France?",
-                "Paris",
-                new String[]{"Paris", "London", "Rome", "Berlin"},
-                this,
-                false,
-                1
-        ),
+        timelimit=currentQuiz.getTimer();
+        timerLabel.setVisible(false);
 
-                new MultipleChoices(
-                        "Which planet is known as the Red Planet?",
-                        "Mars",
-                        new String[]{"Venus","Mars","Jupiter","Saturn"},
-                        this,
-                        false,2
-                ),
+        try {
+            questionset = loadQuestions(targettitle+".csv");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-                new TrueOrFalse(
-                        "Did William Shakespeare wrote the play 'Romeo and Juliet'?",
-                        "True",
-                        this,
-                        false,1
-                ),
+        LoadProbset(questionset);
 
-                new Identification(
-                        "Who is the Hero of Mactan?",
-                        "Lapu-lapu",
-                        this,
-                        false,1
-                ),
+        if(timelimit!=0) {
+            timerController = new TimerController(timerLabel);
+            timerController.startCountdown(timelimit*60);
+            timerLabel.setVisible(true);
+        }
 
-                new MultipleChoices(
-                        "What is the main ingredient in guacamole?",
-                        "Avocado",
-                        new String[]{"Tomato","Avocado","Onion","Garlic"},
-                        this,
-                        false,1
-                ),
-                new Essay(
-                        "Write an essay about guacamole?",
-                        new String[]{"Tomato","Avocado","Onion","Garlic"},
-                        this,
-                        false,4
-                ),
-
-                new Enumeration(
-                        "Enumerate 4 colors of the rainbow:",
-                        new String[]{"Red","Orange","yellow","green","Blue","Purple","Indigo"},
-                        this,
-                        false,4,4
-                )};
-        currentQuestion = questionset[0];
+        currentQuestion = probset.get(currentQuestionIndex);
         currentQuestion.displayQuestion();
         nextButton.setDisable(true);
         currentQuestion.toggleNextButton();
@@ -133,10 +202,12 @@ public class MainQuizController {
     private void handleNextButton() {
 
         currentQuestion.storeAnswerandScore();
-
-        if(currentQuestionIndex != questionset.length - 1) {
+        System.out.println(scores.get(currentQuestionIndex));
+        if(currentQuestionIndex != probset.size() - 1) {
             currentQuestionIndex++;
-        }else if(currentQuestionIndex == questionset.length - 1&&nextButton.getText().equals("Submit")){
+        }else if(currentQuestionIndex == probset.size() - 1&&nextButton.getText().equals("Submit")){
+            score=CalculateScore();
+            System.out.println(score);
             try {
                 showPopup();
             } catch (IOException e) {
@@ -157,10 +228,10 @@ public class MainQuizController {
 
 
         if(!isDone) {
-            currentQuestion = questionset[currentQuestionIndex];
+            currentQuestion = probset.get(currentQuestionIndex);
             currentQuestion.displayQuestion();
 
-            if (currentQuestionIndex == questionset.length - 1) {
+            if (currentQuestionIndex == probset.size() - 1) {
                 nextButton.setText("Submit");
             } else {
                 nextButton.setText("Next ▶");
@@ -173,22 +244,24 @@ public class MainQuizController {
 
         currentQuestion.storeAnswerandScore();
 
-        if(Choices.getSelectedToggle()!=null) {
-            currentQuestionIndex--;
+        currentQuestionIndex--;
 
-            if (currentQuestionIndex == 0) {
-                prevButton.setVisible(false);
-            }
+        currentQuestion = probset.get(currentQuestionIndex);
+        currentQuestion.displayQuestion();
 
-            if (currentQuestionIndex == questionset.length - 1) {
-                nextButton.setText("Submit");
-            } else {
-                nextButton.setText("Next ▶");
-            }
-
-            currentQuestion = questionset[currentQuestionIndex];
-            currentQuestion.displayQuestion();
+        if (currentQuestionIndex == 0) {
+            prevButton.setVisible(false);
         }
+
+        if (currentQuestionIndex == probset.size() - 1) {
+            nextButton.setText("Submit");
+        } else {
+            nextButton.setText("Next ▶");
+        }
+
+
+
+
     }
 
     public void showPopup() throws IOException {
@@ -220,7 +293,6 @@ public class MainQuizController {
         for(int i=0;i<scores.size();i++){
             score+=scores.get(i);
         }
-
         return score;
     }
 

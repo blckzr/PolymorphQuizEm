@@ -54,7 +54,8 @@ public class PopupController {
     }
 
     public void handleYes(ActionEvent actionEvent) {
-        double correctPer= (mainQuizController.CalculateScore()/mainQuizController.totalPoints)*100;
+        double correctPer= (mainQuizController.score/mainQuizController.totalPoints)*100;
+        System.out.println(mainQuizController.score +" " + mainQuizController.totalPoints);
         double wrongPer=100-correctPer;
 
         dashboard_button.setVisible(true);
