@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -103,17 +104,15 @@ public class TrackingController implements Initializable {
 
         stackPane.getChildren().addAll(background, text);
 
-        // Highlight days with tasks
         if (!day.isEmpty()) {
             LocalDate date = LocalDate.of(dateFocus.getYear(), dateFocus.getMonthValue(), Integer.parseInt(day));
             if (taskCounts.containsKey(date)) {
-                Circle taskIndicator = new Circle(5, Color.RED);
+                Circle taskIndicator = new Circle(5, Paint.valueOf("#5c155e"));
                 StackPane.setAlignment(taskIndicator, Pos.BOTTOM_CENTER);
                 stackPane.getChildren().add(taskIndicator);
             }
         }
 
-        // Click to show tasks
         stackPane.setOnMouseClicked(event -> {
             if (!day.isEmpty()) {
                 LocalDate clickedDate = LocalDate.of(dateFocus.getYear(), dateFocus.getMonthValue(), Integer.parseInt(day));
@@ -123,18 +122,40 @@ public class TrackingController implements Initializable {
 
         return stackPane;
     }
-
+    
+    // Show panel when clicking on a date
     private void showTasksForDate(LocalDate date) {
-        taskList.getChildren().clear(); // Clear previous tasks
+        Dialog<Void> taskDialog = new Dialog<>();
+        taskDialog.setTitle("Tasks for " + date);
+
+        VBox taskContainer = new VBox(10);
+        taskContainer.setAlignment(Pos.CENTER);
+        taskContainer.setStyle("-fx-padding: 15px; -fx-background-color: #fcf0ff; -fx-border-color: #5c155e; -fx-border-width: 2px;");
+
+        Label titleLabel = new Label("Tasks for " + date);
+        titleLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #5c155e;");
+
+        ListView<String> taskListView = new ListView<>();
+        taskListView.setStyle("-fx-background-color: #f5e0f4; -fx-border-color: #5c155e; -fx-border-width: 1px;");
+        taskListView.setPrefHeight(5 * 24);
 
         for (CheckBox task : taskList.getChildren().filtered(node -> node instanceof CheckBox).toArray(new CheckBox[0])) {
             if (task.getText().contains(date.toString())) {
-                taskList.getChildren().add(task);
+                taskListView.getItems().add(task.getText().replace(" - " + date, "")); // Remove date from text
             }
         }
+
+        if (taskListView.getItems().isEmpty()) {
+            taskListView.getItems().add("No tasks scheduled.");
+        }
+
+        taskContainer.getChildren().addAll(titleLabel, taskListView);
+        taskDialog.getDialogPane().setContent(taskContainer);
+        taskDialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        taskDialog.showAndWait();
     }
 
-    @FXML
+    @FXML // Add task
     void addTask(ActionEvent event) {
         String title = taskTitleField.getText();
         LocalDate date = taskDatePicker.getValue();
@@ -150,10 +171,41 @@ public class TrackingController implements Initializable {
         taskDatePicker.setValue(null);
     }
 
+    // Append added task to the list pane
     private void addTaskToList(String title, LocalDate date) {
         CheckBox taskCheckBox = new CheckBox(title + " - " + date);
         taskCheckBox.setStyle("-fx-font-size: 15px; -fx-text-fill: #4f1e69;");
+
+        // Remove the task if checked
+        taskCheckBox.setOnAction(event -> {
+            if (taskCheckBox.isSelected()) {
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(1500); // Wait 1.5 seconds
+                        javafx.application.Platform.runLater(() -> removeTask(taskCheckBox, date));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }).start();
+            }
+        });
+
         taskList.getChildren().add(taskCheckBox);
+    }
+
+    // Remove task from list and calendar
+    private void removeTask(CheckBox taskCheckBox, LocalDate date) {
+        taskList.getChildren().remove(taskCheckBox);
+
+        // Update task count
+        taskCounts.put(date, taskCounts.getOrDefault(date, 1) - 1);
+        if (taskCounts.get(date) <= 0) {
+            taskCounts.remove(date);
+        }
+
+        // Redraw calendar to update task indicators
+        calendar.getChildren().clear();
+        drawCalendar();
     }
 
     private void markCalendar(LocalDate date) {
