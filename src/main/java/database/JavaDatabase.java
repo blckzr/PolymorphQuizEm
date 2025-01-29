@@ -20,7 +20,7 @@ public class JavaDatabase {
     }
 
     // Signup Function
-    public static void signUpUser(String username, String email, String password) {
+    public static void logInUser(String username, String email, String password) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
