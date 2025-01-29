@@ -105,7 +105,7 @@ public class JavaDatabase {
         return false;
     }
 
-    // Settings Function
+    // Get User Information
     public static User getUserInfo(String username) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -139,6 +139,7 @@ public class JavaDatabase {
         }
     }
 
+    // Update User Information in Settings
     public static boolean updateUserInfo(String username, String firstName, String lastName, String email, String contact, String bio) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -173,6 +174,7 @@ public class JavaDatabase {
         }
     }
 
+    // Get User's Password
     public static String getUserPassword(String username) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -201,6 +203,7 @@ public class JavaDatabase {
         }
     }
 
+    // Check if successfully changed user's password
     public static boolean updateUserPassword(String username, String newPassword) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -231,6 +234,7 @@ public class JavaDatabase {
         }
     }
 
+    // close all statement method
     private static void closeResources(Connection connection, PreparedStatement preparedStatement) {
         try {
             if (preparedStatement != null) preparedStatement.close();
@@ -240,6 +244,7 @@ public class JavaDatabase {
         }
     }
 
+    // close all statement method
     private static void closeResources(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
         try {
             if (preparedStatement != null) preparedStatement.close();
@@ -250,5 +255,30 @@ public class JavaDatabase {
         }
     }
 
+    public static boolean saveQuestionCategoryAndAnswersToDatabase(String question, String category,
+                                                                   String[] answers, int correctIndex){
+        try{
+            // establish a database connection
+            Connection connection = DriverManager.getConnection(
+                    db_url, db_username, db_password
+            );
 
+            // insert category if it's new, otherwise retrieve it from the database
+            Category categoryObj = getCategory(category);
+            if(categoryObj == null){
+                // insert new category to database
+                categoryObj = insertCategory(category);
+            }
+
+            // insert question to database
+            Question questionObj = insertQuestion(categoryObj, question);
+
+            // insert answers to database
+            return insertAnswers(questionObj, answers, correctIndex);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 }
