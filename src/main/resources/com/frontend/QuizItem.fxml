@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="245.0" prefWidth="220.0" style="-fx-background-radius: 15;" stylesheets="@QuizCategoriesStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.QuizItemController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="33.0" layoutY="38.0" prefHeight="200.0" prefWidth="194.0" style="-fx-background-color: white; -fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="15.0" prefWidth="220.0" />
+            <ImageView fx:id="quizImageView" fitHeight="122.0" fitWidth="197.0">
+               <image>
+                  <Image url="@icons/small1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="quizTitleLabel" prefHeight="20.0" prefWidth="198.0" styleClass="card-title" text="OOP Quiz - Identification" textFill="#5c155e">
+               <font>
+                  <Font name="Poppins Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="difficultyLabel" alignment="CENTER" prefHeight="21.0" prefWidth="78.0" style="-fx-background-color: #F6D4FB; -fx-background-radius: 10;" text="AVERAGE" textAlignment="CENTER" textFill="#5c155e">
+               <VBox.margin>
+                  <Insets right="115.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Poppins Regular" size="12.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="54.0" prefWidth="260.0">
+               <children>
+                  <HBox prefHeight="54.0" prefWidth="130.0">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="23.0">
+                           <image>
+                              <Image url="@icons/clock.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="durationLabel" text="10min" textFill="#b133b1">
+                           <HBox.margin>
+                              <Insets left="5.0" top="16.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Poppins Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="54.0" prefWidth="130.0">
+                     <children>
+                        <ImageView>
+                           <image>
+                              <Image url="@icons/items.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="itemCountLabel" text="5 items" textFill="#b133b1">
+                           <font>
+                              <Font name="Poppins Regular" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
