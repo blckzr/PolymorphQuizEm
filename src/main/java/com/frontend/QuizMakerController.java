@@ -297,7 +297,7 @@ public class QuizMakerController {
 
 
 
-        writer.write(String.format("\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",%d\n",
+        writer.write(String.format("%s,%s,%s,%s,%s,%d\n",
                 metadataFilename,
                 TitleTextField.getText().trim(),
                 selectedMode,

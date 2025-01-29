@@ -93,7 +93,7 @@ public class TrueOrFalse extends QuizQuestion {
 
     @Override
     public double checkAnswer(){
-        if(controller.answers.get(controller.currentQuestionIndex).toUpperCase().equals(correctAnswer)){
+        if(controller.answers.get(controller.currentQuestionIndex).toUpperCase().equals(correctAnswer.toUpperCase())){
             return points;
         }
         return 0;

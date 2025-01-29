@@ -60,7 +60,6 @@ public class MainQuizController {
     public boolean isDone;
     private QuizQuestion currentQuestion;
     private Stage stage;
-    public QuizQuestion[]  questionset;
     public int totalPoints;
     public double score=0;
     public String Mode;
@@ -78,11 +77,11 @@ public class MainQuizController {
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
 
-            String questionType = data[0].replace("\"","");
-            String questionText = data[1].replace("\"", "");
-            String correctAnswer = data[2].replace("\"", ""); // Remove quotes
-            String[] choices = data[3].split("/"); // Remove quotes and split by comma
-            int points = Integer.parseInt(data[4].replace("\"", ""));
+            String questionType = data[0].replaceAll("\"","");
+            String questionText = data[1].replaceAll("\"", "");
+            String correctAnswer = data[2].replaceAll("\"", ""); // Remove quotes
+            String[] choices = data[3].replaceAll("\"", "").split("/"); // Remove quotes and split by comma
+            int points = Integer.parseInt(data[4].replaceAll("\"", ""));
 
             System.out.println(points);
             // Create a QuestionData object and add to the list
@@ -110,11 +109,11 @@ public class MainQuizController {
             }
             String[] data = line.split(",");
 
-            String title = data[1].replace("\"","");
-            String mode = data[2].replace("\"","");
-            String time = data[3].replace("\"","");
+            String title = data[1].replaceAll("\"","");
+            String mode = data[2].replaceAll("\"","");
+            String time = data[3].replaceAll("\"","");
             String dueDate = data[4];
-            int tpoints = Integer.parseInt(data[5]);
+            int tpoints = Integer.parseInt(data[5].replaceAll("\"",""));
 
             QuizInfo quizInfo = new QuizInfo(title, mode, time, dueDate, tpoints);
 
