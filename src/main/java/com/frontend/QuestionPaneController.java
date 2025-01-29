@@ -5,9 +5,14 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class QuestionPaneController {
 
+    @FXML
+    VBox primary_panel;
+    @FXML
+    VBox secondary_panel;
     @FXML
     public AnchorPane question_pane;
     @FXML
@@ -47,23 +52,40 @@ public class QuestionPaneController {
     @FXML
     public ToggleGroup TOF;
 
-    @FXML
-    private void initialize(){
-        String[] qTypes = {"Multiple Choice","Identification","Enumeration","True or False","Essay"};
+    String selectedOption;
 
-        for(String option: qTypes)
+    @FXML
+    private void initialize() {
+        String[] qTypes = {"Multiple Choice", "Identification", "Enumeration", "True or False", "Essay"};
+
+        for (String option : qTypes)
             QuestionType.getItems().add(option);
 
-        for (javafx.scene.Node node : question_pane.getChildren()) {
+
+        for (javafx.scene.Node node : secondary_panel.getChildren()) {
             node.setVisible(false);
-            node.setDisable(true); // Hide each child node
         }
 
+        removeButton.setVisible(true);
+        removeButton.setDisable(false);
         QuestionType.setVisible(true);
         QuestionType.setDisable(false);
+        questionLabel.setVisible(false);
+        questionLabel.setDisable(true);
+        QuestionTF.setVisible(false);
+        QuestionTF.setDisable(true);
+        pointsLabel.setVisible(false);
+        pointsLabel.setDisable(true);
+        pointsField.setVisible(false);
+        pointsField.setDisable(true);
+        true_rb.setVisible(false);
+        false_rb.setVisible(false);
+        correctAnswer_field.setVisible(false);
+        answerLabel.setVisible(false);
+
 
         QuestionType.setOnAction(event -> {
-            String selectedOption = QuestionType.getValue();
+            selectedOption = QuestionType.getValue();
             handleComboBoxSelection(selectedOption);
         });
     }
@@ -90,68 +112,68 @@ public class QuestionPaneController {
         removeButton.setOnAction(event -> removeListener.run());
     }
 
-    private void displayPrimary(){
-        QuestionType.setDisable(false);
-        QuestionType.setVisible(true);
-        questionLabel.setVisible(true);
-        QuestionTF.setVisible(true);
-        answerLabel.setVisible(true);
-        pointsLabel.setVisible(true);
-        pointsField.setVisible(true);
-        removeButton.setVisible(true);
-        questionLabel.setDisable(false);
-        QuestionTF.setDisable(false);
-        answerLabel.setDisable(false);
-        pointsLabel.setDisable(false);
-        pointsField.setDisable(false);
-        removeButton.setDisable(false);
-        option1Label.setVisible(true);
-        option2Label.setVisible(true);
-        option3Label.setVisible(true);
-        option4Label.setVisible(true);
-        option1Label.setDisable(false);
-        option2Label.setDisable(false);
-        option3Label.setDisable(false);
-        option4Label.setDisable(false);
-        option1TF.setVisible(true);
-        option2TF.setVisible(true);
-        option3TF.setVisible(true);
-        option4TF.setVisible(true);
-        correctAnswer_field.setVisible(true);
-        correctAnswer_field.setDisable(false);
-        true_rb.setVisible(true);;
-        false_rb.setVisible(true);
-    }
-
-    public void DisableAll(){
-        for (javafx.scene.Node node : question_pane.getChildren()) {
-            node.setDisable(true); // Hide each child node
-        }
-    }
 
     public void handleComboBoxSelection(String selectedOption) {
-        DisableAll();
-        displayPrimary();
+
         if (selectedOption != null) {
-            if(selectedOption.equals("True or False")){
-                correctAnswer_field.setVisible(false);
-                true_rb.setDisable(false);
-                false_rb.setDisable(false);
-            }else if(selectedOption.equals("Multiple Choice")) {
-                correctAnswer_field.setVisible(true);
-                correctAnswer_field.setDisable(false);
-                option1TF.setDisable(false);
-                option2TF.setDisable(false);
-                option3TF.setDisable(false);
-                option4TF.setDisable(false);
-                true_rb.setVisible(false);
-                false_rb.setVisible(false);
+
+            questionLabel.setVisible(true);
+            questionLabel.setDisable(false);
+            QuestionTF.setVisible(true);
+            QuestionTF.setDisable(false);
+            pointsLabel.setVisible(true);
+            pointsLabel.setDisable(false);
+            pointsField.setVisible(true);
+            pointsField.setDisable(false);
+            answerLabel.setVisible(true);
+
+            for (javafx.scene.Node node : secondary_panel.getChildren()) {
+                node.setVisible(selectedOption.equals("Multiple Choice"));
+            }
+            true_rb.setVisible(selectedOption.equals("True or False"));
+            false_rb.setVisible(selectedOption.equals("True or False"));
+            true_rb.setDisable(!selectedOption.equals("True or False"));
+            false_rb.setDisable(!selectedOption.equals("True or False"));
+            correctAnswer_field.setVisible(!selectedOption.equals("True or False"));
+            correctAnswer_field.setVisible(!selectedOption.equals("True or False"));
+            correctAnswer_field.setDisable(selectedOption.equals("True or False"));
+            correctAnswer_field.setDisable(selectedOption.equals("True or False"));
+
+        }
+    }
+
+    public String getQuestionText() {
+        return QuestionTF.getText();
+    }
+
+    public int getPoints() {
+        try {
+            return Integer.parseInt(pointsField.getText());
+        } catch (NumberFormatException e) {
+            return 0; // Return 0 if the points field is empty or invalid
+        }
+    }
+
+    public String getCorrectAnswer() {
+        if(selectedOption.equals("True or False")){
+            if(true_rb.isSelected()){
+                return "True";
             }else{
-                correctAnswer_field.setVisible(true);
-                correctAnswer_field.setDisable(false);
-                true_rb.setVisible(false);
-                false_rb.setVisible(false);
+                return "False";
             }
         }
+        return correctAnswer_field.getText();  // Return null if no option is selected
+    }
+
+    public String[] getChoices() {
+        if(selectedOption.equals("Multiple Choice")) {
+            return new String[]{option1TF.getText(), option2TF.getText(), option3TF.getText(), option4TF.getText()};
+        }else{
+            return null;
+        }
+    }
+
+    public String getQuestionType() {
+        return selectedOption;
     }
 }

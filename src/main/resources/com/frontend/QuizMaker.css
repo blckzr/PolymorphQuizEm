@@ -12,7 +12,7 @@
 }
 
 .main-panel {
-    -fx-background-color: #fcf0ff;
+    -fx-background-color: #f5e0f4;
 }
 
 .control-panel {
@@ -85,7 +85,7 @@
 }
 
 .question-panel {
-    -fx-background-color: #f5e0f4;
+    -fx-background-color: #ffffff;
     -fx-border-color: #e1a6e0;
     -fx-border-width: 3px;
     -fx-border-radius: 30px;

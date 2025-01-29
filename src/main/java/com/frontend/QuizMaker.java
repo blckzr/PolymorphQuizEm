@@ -17,7 +17,6 @@ public class QuizMaker extends Application {
         scene.getStylesheets().add(getClass().getResource("QuizMaker.css").toExternalForm());
         QuizMakerController controller = loader.getController();
 
-
         stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.setTitle("PolymorphQuizEm - Quiz Maker");

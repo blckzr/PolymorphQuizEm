@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="secondary_panel" prefHeight="102.0" prefWidth="1020.0" stylesheets="@QuizMaker.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.AddOns">
+   <children>
+      <AnchorPane prefHeight="102.0" prefWidth="1020.0" styleClass="question-panel">
+         <children>
+            <Label fx:id="option1Label" layoutX="20.0" layoutY="10.0" prefHeight="28.0" prefWidth="104.0" styleClass="qnorm_text" text="Option 1:" />
+            <TextField fx:id="option1TF" layoutX="105.0" layoutY="6.0" prefHeight="38.0" prefWidth="401.0" styleClass="qcombo_box" />
+            <TextField fx:id="option3TF" layoutX="595.0" layoutY="6.0" prefHeight="38.0" prefWidth="401.0" styleClass="qcombo_box" />
+            <Label fx:id="option2Label" layoutX="522.0" layoutY="10.0" prefHeight="28.0" prefWidth="104.0" styleClass="qnorm_text" text="Option 3:" />
+            <TextField fx:id="option2TF" layoutX="105.0" layoutY="56.0" prefHeight="38.0" prefWidth="401.0" styleClass="qcombo_box" />
+            <Label fx:id="option3Label" layoutX="19.0" layoutY="60.0" prefHeight="28.0" prefWidth="104.0" styleClass="qnorm_text" text="Option 2:" />
+            <TextField fx:id="option4TF" layoutX="595.0" layoutY="56.0" prefHeight="38.0" prefWidth="401.0" styleClass="qcombo_box" />
+            <Label fx:id="option4Label" layoutX="522.0" layoutY="60.0" prefHeight="28.0" prefWidth="104.0" styleClass="qnorm_text" text="Option 4:" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
