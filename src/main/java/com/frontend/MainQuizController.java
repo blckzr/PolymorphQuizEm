@@ -101,14 +101,12 @@ public class MainQuizController {
         String line;
 
         // Skip the header
-        reader.readLine();
-        int i = 0;
+        while (index != 0){
+            reader.readLine();
+            index--;
+        }
         // Read the first line of quiz info
-        while ((line = reader.readLine()) != null){
-
-            if(i!=index-1){
-                continue;
-            }
+        if ((line = reader.readLine()) != null){
             String[] data = line.split(",");
 
             String title = data[1].replace("\"","");
@@ -164,7 +162,7 @@ public class MainQuizController {
         QuizInfo currentQuiz;
         List<QuestionPaneData>  questionset;
         try {
-            currentQuiz = loadQuizInfo("Quizzez.csv",1);
+            currentQuiz = loadQuizInfo("Quizzez.csv",2);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
