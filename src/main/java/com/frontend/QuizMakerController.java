@@ -92,16 +92,16 @@ public class QuizMakerController {
 
         QuestionPaneController controller = loader.getController();
 
-        // Set the controller as the userData of the Parent (questionPane)
+
         questionPane.setUserData(controller);
 
         if (!QuestionVbox.getChildren().contains(questionPane)) {
             controller.setIndex(nextIndex);
             controller.setRemoveListener(() -> removeQuestionPane(questionPane));
 
-            // Add the new question pane
+
             QuestionVbox.getChildren().add(questionPane);
-            nextIndex++; // Increment the index
+            nextIndex++;
         }
 
         updateTotalPoints();
@@ -129,7 +129,7 @@ public class QuizMakerController {
 
         for (int i = 0; i < QuestionVbox.getChildren().size(); i++) {
             Parent questionPane = (Parent) QuestionVbox.getChildren().get(i);
-            // Ensure the controller is correctly retrieved from the HBox
+
             QuestionPaneController controller = (QuestionPaneController) questionPane.getUserData();
             if (controller != null) {
                 controller.setIndex(i);
@@ -140,21 +140,19 @@ public class QuizMakerController {
     private List<QuestionPaneData> questions = new ArrayList<>();
 
     public void gatherAllQuestions() {
-        questions.clear(); // Clear the list to avoid duplicates
+        questions.clear();
 
-        // Iterate through each child in QuestionVbox (which are question panes)
+
         for (Node questionPane : QuestionVbox.getChildren()) {
             QuestionPaneController controller = (QuestionPaneController) questionPane.getUserData();
 
             if (controller != null) {
-                // Get data from the controller
                 String questionText = controller.getQuestionText();
                 String questionType = controller.getQuestionType();
                 String correctAnswer = controller.getCorrectAnswer();
                 String[] choices = controller.getChoices();
                 int points = controller.getPoints();
 
-                // Create a new Question object and add it to the list
                 QuestionPaneData question = new QuestionPaneData(questionType, questionText, correctAnswer, choices, points);
                 questions.add(question);
             } else {
@@ -162,7 +160,6 @@ public class QuizMakerController {
             }
         }
 
-        // For debugging, print out the questions
         displayQuestions();
         try {
             saveQuestionsToCSV();
@@ -177,14 +174,13 @@ public class QuizMakerController {
     private void calculateTotalPoints() {
         totalPoints = 0;
 
-        // Iterate through each question pane and add its points
         for (Node questionPane : QuestionVbox.getChildren()) {
-            // Get the controller for each question pane
+
             QuestionPaneController controller = (QuestionPaneController) questionPane.getUserData();
 
             if (controller != null) {
-                // Add the points of the current question to the total
-                totalPoints += controller.getPoints();  // Assuming getPoints() gives the points for this question
+
+                totalPoints += controller.getPoints();
             }
         }
 
@@ -192,7 +188,7 @@ public class QuizMakerController {
 
     public void updateTotalPoints() {
         calculateTotalPoints();
-        totalPointsLabel.setText(totalPoints+" pts");  // Update label with total points
+        totalPointsLabel.setText(totalPoints+" pts");
     }
 
     public void displayQuestions() {
@@ -212,53 +208,50 @@ public class QuizMakerController {
     }
 
     public void saveQuestionsToCSV() throws IOException {
-        String filename = TitleTextField.getText().trim(); // Ensure no leading or trailing spaces
+        String filename = TitleTextField.getText().trim();
 
         if (filename.isEmpty()) {
             System.out.println("Filename is empty. Please provide a valid filename.");
             return;
         }
 
-        // Ensure proper file extension
         if (!filename.endsWith(".csv")) {
             filename += ".csv";
         }
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 
-        // Write CSV header
         writer.write("QuestionType,QuestionText,CorrectAnswer,Choices,Points\n");
 
-        // Check if the questions list is empty
         if (questions.isEmpty()) {
             System.out.println("No questions to save!");
             writer.close();
             return;
         }
 
-        // Iterate through each question and write its data to the CSV
+
         for (QuestionPaneData question : questions) {
-            // Get the question data
+
             String questionType = question.getQuestionType();
             String questionText = question.getQuestionText();
-            String correctAnswer = question.getCorrectAnswer(); // Enclose in quotes
+            String correctAnswer = question.getCorrectAnswer();
             String[] choices = question.getChoices();
             int points = question.getPoints();
 
-            // Enclose correct answer in quotes
+
             correctAnswer = "\"" + correctAnswer + "\"";
 
             String joinedChoices;
-            // Enclose choices in a single cell, all quotes and separated by commas
+
             if (choices != null && choices.length > 0) {
                 joinedChoices = String.join("/", choices);
                 joinedChoices = "\""+joinedChoices+"\"";
             } else {
-                // Handle the case where choices is null (e.g., use an empty string or a placeholder)
-                joinedChoices = ""; // Or provide a meaningful default value
+
+                joinedChoices = "";
             }
             System.out.println(joinedChoices);
-            // Write the question data to the file (Escaping quotes around the data)
+
             writer.write(String.format("\"%s\",\"%s\",%s,%s,%d\n",
                     questionType,
                     questionText,
@@ -266,7 +259,7 @@ public class QuizMakerController {
                     joinedChoices,
                     points));
 
-            // Debugging: Print what will be written to the CSV
+
             System.out.println("Writing to CSV: " + String.format("\"%s\",\"%s\",%s,%s,%d\n",
                     questionType,
                     questionText,
@@ -275,22 +268,16 @@ public class QuizMakerController {
                     points));
         }
 
-        // Close the writer
         writer.close();
 
         System.out.println("Quiz saved to CSV successfully!");
     }
 
     public void saveQuizMetadataToCSV() throws IOException {
-        // Create a new CSV file for storing metadata
+
         String metadataFilename = TitleTextField.getText().trim() + ".csv"; // Use quiz title or any other logic for naming
 
-        // Create a BufferedWriter to write to the file
         BufferedWriter writer = new BufferedWriter(new FileWriter("Quizzez.csv", true)); // 'true' to append to the file
-
-        // Write header only if the file is empty (for the first write)
-        // (Optional) You can check if the file exists and write the header only once
-        writer.write("FileName,QuizTitle,Mode,Time,DueOn,TotalPoints\n");
 
         String timer;
         String selectedMode;
@@ -309,14 +296,14 @@ public class QuizMakerController {
         LocalDate duedate = datePicker.getValue();
 
 
-        // Write the quiz metadata information to the CSV file
+
         writer.write(String.format("\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",%d\n",
-                metadataFilename,  // File name (for reference, use the title or a custom name)
-                TitleTextField.getText().trim(),         // Quiz title
-                selectedMode,              // Mode (e.g., multiple-choice, true/false)
-                timer,              // Time allocated
-                duedate,             // Due date
-                totalPoints        // Total points in the quiz
+                metadataFilename,
+                TitleTextField.getText().trim(),
+                selectedMode,
+                timer,
+                duedate,
+                totalPoints
         ));
 
         // Close the writer
@@ -326,8 +313,8 @@ public class QuizMakerController {
     }
 
     public void saveQuiz() {
-        gatherAllQuestions();
         updateTotalPoints();
+        gatherAllQuestions();
     }
 
     public void handleBackButton() {

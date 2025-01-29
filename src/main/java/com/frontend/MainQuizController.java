@@ -79,10 +79,10 @@ public class MainQuizController {
             String[] data = line.split(",");
 
             String questionType = data[0].replace("\"","");
-            String questionText = data[1];
+            String questionText = data[1].replace("\"", "");
             String correctAnswer = data[2].replace("\"", ""); // Remove quotes
             String[] choices = data[3].split("/"); // Remove quotes and split by comma
-            int points = Integer.parseInt(data[4]);
+            int points = Integer.parseInt(data[4].replace("\"", ""));
 
             System.out.println(points);
             // Create a QuestionData object and add to the list
@@ -110,9 +110,9 @@ public class MainQuizController {
             }
             String[] data = line.split(",");
 
-            String title = data[1];
-            String mode = data[2];
-            String time = data[3];
+            String title = data[1].replace("\"","");
+            String mode = data[2].replace("\"","");
+            String time = data[3].replace("\"","");
             String dueDate = data[4];
             int tpoints = Integer.parseInt(data[5]);
 
