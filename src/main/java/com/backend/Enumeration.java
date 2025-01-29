@@ -2,6 +2,9 @@ package com.backend;
 
 import com.frontend.MainQuizController;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Enumeration extends QuizQuestion {
 
         private final MainQuizController controller;
@@ -69,14 +72,16 @@ public class Enumeration extends QuizQuestion {
         }
 
         @Override
-        public void storeAnswer() {
+        public void storeAnswerandScore() {
             if(controller.Choices.getSelectedToggle()!=null)
                 isAnswered =true;
 
             if (controller.answers.size() - 1 < controller.currentQuestionIndex) {
                 controller.answers.add(controller.essay_field.getText());
+                controller.scores.add(checkAnswer());
             }else{
                 controller.answers.set(controller.currentQuestionIndex,controller.essay_field.getText());
+                controller.scores.set(controller.currentQuestionIndex,checkAnswer());
             }
         }
 
@@ -90,23 +95,25 @@ public class Enumeration extends QuizQuestion {
 
         @Override
         public double checkAnswer(){
-            int pointPerAns= points/ correctAnswers.length;
+            int pointPerAns= points/ numOfAcceptedAns;
             int score = 0;
 
             String answer = controller.answers.get(controller.currentQuestionIndex);
             answer = answer.toLowerCase();
 
-            String[] answersDivided = answer.split(",");
+            String[] answersDivided = answer.split(", ");
 
+            Set<String> usedCorrectAnswers = new HashSet<>();
             for (String s : answersDivided) {
                 for (int j = 0; j < correctAnswers.length; j++) {
-                    if (s.equalsIgnoreCase(correctAnswers[j])) {
+                    if (!usedCorrectAnswers.contains(correctAnswers[j]) && s.equalsIgnoreCase(correctAnswers[j])) {
                         score += pointPerAns;
-                        correctAnswers[j] = ".....";
+                        usedCorrectAnswers.add(correctAnswers[j]); // Mark it as used
                     }
                 }
             }
 
+            System.out.println(score);
             return score;
         }
 

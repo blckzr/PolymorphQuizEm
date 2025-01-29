@@ -13,7 +13,7 @@ public abstract class QuizQuestion {
     }
 
     public abstract  void displayInputs();
-    public abstract void storeAnswer();
+    public abstract void storeAnswerandScore();
     public abstract void displayQuestion();
     public abstract  void toggleNextButton();
     public abstract double checkAnswer();

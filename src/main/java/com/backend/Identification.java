@@ -51,14 +51,16 @@ public class Identification extends QuizQuestion {
     }
 
     @Override
-    public void storeAnswer() {
+    public void storeAnswerandScore() {
         if(controller.Choices.getSelectedToggle()!=null)
             isAnswered =true;
 
         if (controller.answers.size() - 1 < controller.currentQuestionIndex) {
             controller.answers.add(controller.identification_field.getText());
+            controller.scores.add(checkAnswer());
         }else{
             controller.answers.set(controller.currentQuestionIndex,controller.identification_field.getText());
+            controller.scores.set(controller.currentQuestionIndex,checkAnswer());
         }
     }
 

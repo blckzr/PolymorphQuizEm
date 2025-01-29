@@ -71,10 +71,9 @@ public class MultipleChoices extends QuizQuestion {
     }
 
     @Override
-    public void storeAnswer() {
+    public void storeAnswerandScore() {
         if(controller.Choices.getSelectedToggle()!=null)
             isAnswered =true;
-
         if (controller.answers.size() - 1 < controller.currentQuestionIndex) {
             if (controller.choice1.isSelected()) {
                 controller.answers.add(options[0]);
@@ -89,6 +88,8 @@ public class MultipleChoices extends QuizQuestion {
                 controller.answers.add(options[3]);
                 System.out.println("Choice 4 selected");
             }
+
+            controller.scores.add(checkAnswer());
         }else{
             if (controller.choice1.isSelected()) {
                 controller.answers.set(controller.currentQuestionIndex,options[0]);
@@ -99,6 +100,8 @@ public class MultipleChoices extends QuizQuestion {
             } else if (controller.choice4.isSelected()) {
                 controller.answers.set(controller.currentQuestionIndex,options[3]);
             }
+
+            controller.scores.set(controller.currentQuestionIndex,checkAnswer());
         }
     }
     @Override

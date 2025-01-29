@@ -55,7 +55,7 @@ public class TrueOrFalse extends QuizQuestion {
     }
 
     @Override
-    public void storeAnswer() {
+    public void storeAnswerandScore() {
         if(controller.Choices.getSelectedToggle()!=null)
             isAnswered =true;
 
@@ -67,12 +67,14 @@ public class TrueOrFalse extends QuizQuestion {
                 controller.answers.add("False");
                 System.out.println("False selected");
             }
+            controller.scores.add(checkAnswer());
         }else{
             if (controller.choice1.isSelected()) {
                 controller.answers.set(controller.currentQuestionIndex,"True");
             } else if (controller.choice2.isSelected()) {
                 controller.answers.set(controller.currentQuestionIndex,"False");
             }
+            controller.scores.set(controller.currentQuestionIndex,checkAnswer());
         }
     }
     @Override
