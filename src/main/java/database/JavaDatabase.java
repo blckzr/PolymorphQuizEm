@@ -255,30 +255,30 @@ public class JavaDatabase {
         }
     }
 
-    public static boolean saveQuestionCategoryAndAnswersToDatabase(String question, String category,
-                                                                   String[] answers, int correctIndex){
-        try{
-            // establish a database connection
-            Connection connection = DriverManager.getConnection(
-                    db_url, db_username, db_password
-            );
-
-            // insert category if it's new, otherwise retrieve it from the database
-            Category categoryObj = getCategory(category);
-            if(categoryObj == null){
-                // insert new category to database
-                categoryObj = insertCategory(category);
-            }
-
-            // insert question to database
-            Question questionObj = insertQuestion(categoryObj, question);
-
-            // insert answers to database
-            return insertAnswers(questionObj, answers, correctIndex);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-        return false;
-    }
+//    public static boolean saveQuestionCategoryAndAnswersToDatabase(String question, String category,
+//                                                                   String[] answers, int correctIndex){
+//        try{
+//            // establish a database connection
+//            Connection connection = DriverManager.getConnection(
+//                    db_url, db_username, db_password
+//            );
+//
+//            // insert category if it's new, otherwise retrieve it from the database
+//            Category categoryObj = getCategory(category);
+//            if(categoryObj == null){
+//                // insert new category to database
+//                categoryObj = insertCategory(category);
+//            }
+//
+//            // insert question to database
+//            Question questionObj = insertQuestion(categoryObj, question);
+//
+//            // insert answers to database
+//            return insertAnswers(questionObj, answers, correctIndex);
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//
+//        return false;
+//    }
 }
