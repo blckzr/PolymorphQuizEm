@@ -2,6 +2,7 @@ package com.frontend;
 
 import com.frontend.QuizItem;
 import com.frontend.QuizItemController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 
 import java.io.IOException;
@@ -25,6 +27,7 @@ public class QuizCategoriesController implements Initializable {
     @FXML
     private GridPane gridPane;
 
+    private SidebarController sidebarController;
     private List<QuizItem> quizzes = new ArrayList<>();
 
     private List<QuizItem> getSampleData() {
@@ -77,6 +80,38 @@ public class QuizCategoriesController implements Initializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void setSidebarController(SidebarController sidebarController) {
+        this.sidebarController = sidebarController;
+    }
+
+    @FXML
+    private void switchToQuizMaker(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizMaker.fxml"));
+            Pane quizMakerView = loader.load();
+
+            QuizMakerController quizMakerController = loader.getController();
+            quizMakerController.setSidebarController(sidebarController);
+
+            sidebarController.setCenterView(quizMakerView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void switchToCreate(ActionEvent event) {
+        if (sidebarController != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizMaker.fxml"));
+                Pane quizMakerView = loader.load();
+
+                sidebarController.getMainPane().setCenter(quizMakerView);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
