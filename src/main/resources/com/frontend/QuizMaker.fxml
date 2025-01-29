@@ -15,20 +15,20 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="685.0" prefWidth="1020.0" styleClass="main-panel" stylesheets="@QuizMaker.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.QuizMakerController">
+<AnchorPane prefHeight="686.0" prefWidth="1036.0" styleClass="main-panel" stylesheets="@QuizMaker.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.QuizMakerController">
    <children>
-      <ScrollPane layoutX="-5.0" layoutY="113.0" prefHeight="572.0" prefWidth="1036.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="-5.0" layoutY="113.0" prefHeight="572.0" prefWidth="1036.0">
          <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-panel">
+            <AnchorPane prefHeight="563.0" prefWidth="1005.0" styleClass="main-panel">
                <children>
-                  <VBox fx:id="QuestionVbox" layoutY="23.0" prefHeight="539.0" prefWidth="1022.0" />
+                  <VBox fx:id="QuestionVbox" layoutX="7.0" layoutY="23.0" prefHeight="539.0" prefWidth="1015.0" />
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
       <StackPane layoutY="-27.0" prefHeight="166.0" prefWidth="1032.0">
          <children>
-            <Pane fx:id="control_pane" prefHeight="159.0" prefWidth="1022.0" style="-fx-border-radius: 30;" styleClass="control-panel">
+            <Pane fx:id="control_pane" prefHeight="159.0" prefWidth="1049.0" style="-fx-border-radius: 30;" styleClass="control-panel">
                <children>
                   <TextField fx:id="TitleTextField" layoutX="96.0" layoutY="43.0" prefHeight="47.0" prefWidth="390.0" promptText="Quiz Title..." styleClass="title_text_field" />
                   <Button fx:id="backButton" layoutX="2.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="46.0" prefWidth="89.0" styleClass="control-button" text="&lt; Back">

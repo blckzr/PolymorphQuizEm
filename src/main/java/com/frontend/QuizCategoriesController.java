@@ -87,28 +87,17 @@ public class QuizCategoriesController implements Initializable {
         this.sidebarController = sidebarController;
     }
 
-    @FXML
-    private void switchToQuizMaker(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizMaker.fxml"));
-            Pane quizMakerView = loader.load();
-
-            QuizMakerController quizMakerController = loader.getController();
-            quizMakerController.setSidebarController(sidebarController);
-
-            sidebarController.setCenterView(quizMakerView);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void switchToCreate(ActionEvent event) {
         if (sidebarController != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizMaker.fxml"));
                 Pane quizMakerView = loader.load();
 
-                sidebarController.getMainPane().setCenter(quizMakerView);
+                QuizMakerController quizMakerController = loader.getController();
+
+                quizMakerController.setSidebarController(sidebarController);
+
+                sidebarController.setCenterView(quizMakerView);
             } catch (IOException e) {
                 e.printStackTrace();
             }

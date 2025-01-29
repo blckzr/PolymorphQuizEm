@@ -229,6 +229,7 @@ public class QuizMakerController implements Initializable {
             Pane quizCategoriesView = loader.load();
 
             QuizCategoriesController quizCategoriesController = loader.getController();
+
             quizCategoriesController.setSidebarController(sidebarController);
 
             sidebarController.setCenterView(quizCategoriesView);
