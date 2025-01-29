@@ -88,7 +88,7 @@ public class MultipleChoices extends QuizQuestion {
                 controller.answers.add(options[3]);
                 System.out.println("Choice 4 selected");
             }
-
+            System.out.println(checkAnswer());
             controller.scores.add(checkAnswer());
         }else{
             if (controller.choice1.isSelected()) {

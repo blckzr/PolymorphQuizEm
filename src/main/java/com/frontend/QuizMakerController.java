@@ -7,10 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,10 @@ public class QuizMakerController {
     Label totalPointsLabel;
     @FXML
     Button BackButton;
+    @FXML
+    TextField TitleTextField;
+    @FXML
+    CheckBox TimerCheckbox;
 
     private List<Parent> questionPanes = new ArrayList<>();
     private int nextIndex = 0;
@@ -158,6 +164,12 @@ public class QuizMakerController {
 
         // For debugging, print out the questions
         displayQuestions();
+        try {
+            saveQuestionsToCSV();
+            saveQuizMetadataToCSV();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     int totalPoints;
@@ -197,6 +209,120 @@ public class QuizMakerController {
             System.out.println("\nPoints: " + q.getPoints());
             System.out.println();
         }
+    }
+
+    public void saveQuestionsToCSV() throws IOException {
+        String filename = TitleTextField.getText().trim(); // Ensure no leading or trailing spaces
+
+        if (filename.isEmpty()) {
+            System.out.println("Filename is empty. Please provide a valid filename.");
+            return;
+        }
+
+        // Ensure proper file extension
+        if (!filename.endsWith(".csv")) {
+            filename += ".csv";
+        }
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+
+        // Write CSV header
+        writer.write("QuestionType,QuestionText,CorrectAnswer,Choices,Points\n");
+
+        // Check if the questions list is empty
+        if (questions.isEmpty()) {
+            System.out.println("No questions to save!");
+            writer.close();
+            return;
+        }
+
+        // Iterate through each question and write its data to the CSV
+        for (QuestionPaneData question : questions) {
+            // Get the question data
+            String questionType = question.getQuestionType();
+            String questionText = question.getQuestionText();
+            String correctAnswer = question.getCorrectAnswer(); // Enclose in quotes
+            String[] choices = question.getChoices();
+            int points = question.getPoints();
+
+            // Enclose correct answer in quotes
+            correctAnswer = "\"" + correctAnswer + "\"";
+
+            String joinedChoices;
+            // Enclose choices in a single cell, all quotes and separated by commas
+            if (choices != null && choices.length > 0) {
+                joinedChoices = String.join("/", choices);
+                joinedChoices = "\""+joinedChoices+"\"";
+            } else {
+                // Handle the case where choices is null (e.g., use an empty string or a placeholder)
+                joinedChoices = ""; // Or provide a meaningful default value
+            }
+            System.out.println(joinedChoices);
+            // Write the question data to the file (Escaping quotes around the data)
+            writer.write(String.format("\"%s\",\"%s\",%s,%s,%d\n",
+                    questionType,
+                    questionText,
+                    correctAnswer,
+                    joinedChoices,
+                    points));
+
+            // Debugging: Print what will be written to the CSV
+            System.out.println("Writing to CSV: " + String.format("\"%s\",\"%s\",%s,%s,%d\n",
+                    questionType,
+                    questionText,
+                    correctAnswer,
+                    joinedChoices,
+                    points));
+        }
+
+        // Close the writer
+        writer.close();
+
+        System.out.println("Quiz saved to CSV successfully!");
+    }
+
+    public void saveQuizMetadataToCSV() throws IOException {
+        // Create a new CSV file for storing metadata
+        String metadataFilename = TitleTextField.getText().trim() + ".csv"; // Use quiz title or any other logic for naming
+
+        // Create a BufferedWriter to write to the file
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Quizzez.csv", true)); // 'true' to append to the file
+
+        // Write header only if the file is empty (for the first write)
+        // (Optional) You can check if the file exists and write the header only once
+        writer.write("FileName,QuizTitle,Mode,Time,DueOn,TotalPoints\n");
+
+        String timer;
+        String selectedMode;
+        if(profMode.isSelected()){
+            selectedMode = "Professional";
+        }else{
+            selectedMode = "Review";
+        }
+
+        if(TimerCheckbox.isSelected()){
+            timer= timerTF.getText();
+        }else{
+            timer= "";
+        }
+
+        LocalDate duedate = datePicker.getValue();
+
+
+        // Write the quiz metadata information to the CSV file
+        writer.write(String.format("\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",%d\n",
+                metadataFilename,  // File name (for reference, use the title or a custom name)
+                TitleTextField.getText().trim(),         // Quiz title
+                selectedMode,              // Mode (e.g., multiple-choice, true/false)
+                timer,              // Time allocated
+                duedate,             // Due date
+                totalPoints        // Total points in the quiz
+        ));
+
+        // Close the writer
+        writer.close();
+
+        System.out.println("Quiz metadata saved to CSV successfully!");
     }
 
     public void saveQuiz() {
