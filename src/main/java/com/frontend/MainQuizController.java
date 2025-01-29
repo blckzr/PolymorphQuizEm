@@ -78,16 +78,16 @@ public class MainQuizController {
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
 
-            // Assuming the columns are in the order: QuestionType, QuestionText, CorrectAnswer, Choices, Points
-            String questionType = data[0];
+            String questionType = data[0].replace("\"","");
             String questionText = data[1];
             String correctAnswer = data[2].replace("\"", ""); // Remove quotes
             String[] choices = data[3].split("/"); // Remove quotes and split by comma
             int points = Integer.parseInt(data[4]);
 
-            System.out.println(data[2]);
+            System.out.println(points);
             // Create a QuestionData object and add to the list
             QuestionPaneData question = new QuestionPaneData(questionType, questionText, correctAnswer, choices, points);
+            System.out.println(question.getQuestionText());
             questions.add(question);
         }
 
@@ -110,14 +110,12 @@ public class MainQuizController {
             }
             String[] data = line.split(",");
 
-            // Assuming the columns are: Title, Mode, Time, DueDate, TotalPoints
             String title = data[1];
             String mode = data[2];
             String time = data[3];
             String dueDate = data[4];
             int tpoints = Integer.parseInt(data[5]);
 
-            // Create a QuizInfo object
             QuizInfo quizInfo = new QuizInfo(title, mode, time, dueDate, tpoints);
 
             reader.close();
@@ -125,7 +123,7 @@ public class MainQuizController {
         }
 
         reader.close();
-        return null;  // Return null if file is empty or doesn't have data
+        return null;
     }
 
     private void LoadProbset (List<QuestionPaneData> CSVquestions){
@@ -136,7 +134,7 @@ public class MainQuizController {
             String[] choices = cur_unformatted_q.getChoices();
             int points = cur_unformatted_q.getPoints();
 
-
+            System.out.println(type);
             if(type.equals("Multiple Choice")){
                 System.out.println(points);
                 probset.add(new MultipleChoices(question,answer,choices,this,false,points));
@@ -189,7 +187,7 @@ public class MainQuizController {
             timerLabel.setVisible(true);
         }
 
-        currentQuestion = probset.get(0);
+        currentQuestion = probset.get(currentQuestionIndex);
         currentQuestion.displayQuestion();
         nextButton.setDisable(true);
         currentQuestion.toggleNextButton();
