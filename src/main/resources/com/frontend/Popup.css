@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('fonts/Poppins-Light.ttf');
+}
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('fonts/Poppins-Medium.ttf');
+}
+
+.main-panel {
+    -fx-background-color: #fcf0ff;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.no-button{
+    -fx-background-color: #fcf0ff;
+    -fx-border-color: #5c155e;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.yes-button{
+    -fx-background-color: #5c155e;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
