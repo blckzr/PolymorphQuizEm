@@ -1,4 +1,4 @@
-package frontend;
+package com.frontend;
 
 import database.JavaDatabase;
 import javafx.fxml.FXML;
