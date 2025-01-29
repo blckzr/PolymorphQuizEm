@@ -7,11 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -50,7 +53,9 @@ public class QuizCategoriesController implements Initializable {
         int row = 1;
 
         try {
-            for (QuizItem quiz : quizzes) {
+            for (int i = 0; i < quizzes.size(); i++) {
+                QuizItem quiz = quizzes.get(i);
+
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("QuizItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
@@ -61,6 +66,15 @@ public class QuizCategoriesController implements Initializable {
                 itemController.setDuration(quiz.getDuration());
                 itemController.setItemCount(quiz.getItemCount());
                 itemController.setQuizImage(quiz.getImagePath());
+
+                int finalI = i;
+                anchorPane.setOnMouseClicked(event -> {
+                    try {
+                        loadQuizScene(finalI);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
 
                 if (column == 4) {
                     column = 0;
@@ -87,31 +101,39 @@ public class QuizCategoriesController implements Initializable {
         this.sidebarController = sidebarController;
     }
 
-    @FXML
-    private void switchToQuizMaker(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizMaker.fxml"));
-            Pane quizMakerView = loader.load();
-
-            QuizMakerController quizMakerController = loader.getController();
-            quizMakerController.setSidebarController(sidebarController);
-
-            sidebarController.setCenterView(quizMakerView);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void switchToCreate(ActionEvent event) {
         if (sidebarController != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizMaker.fxml"));
                 Pane quizMakerView = loader.load();
 
-                sidebarController.getMainPane().setCenter(quizMakerView);
+                QuizMakerController quizMakerController = loader.getController();
+
+                quizMakerController.setSidebarController(sidebarController);
+
+                sidebarController.setCenterView(quizMakerView);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
+    private void loadQuizScene(int quizIndex) throws IOException {
+        String fxmlFile = switch (quizIndex) {
+            case 0 -> "CategoryClick.fxml";
+            case 1 -> "Category2Click.fxml";
+            case 2 -> "Category3Click.fxml";
+            case 3 -> "Category4Click.fxml";
+            case 4 -> "Category5Click.fxml";
+            default -> "Category6Click.fxml";
+        };
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) gridPane.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
