@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="686.0" prefWidth="1036.0" styleClass="main" stylesheets="@DashboardStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.Category5ClickController">
+    <children>
+        <VBox prefHeight="686.0" prefWidth="1036.0" styleClass="main">
+            <children>
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="956.0">
+               <children>
+                  <Pane prefHeight="141.0" prefWidth="956.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label layoutX="23.0" layoutY="-4.0" prefHeight="74.0" prefWidth="224.0" styleClass="dashboardTitle" text="Take a Quiz">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="262.0" layoutY="19.0" prefHeight="33.0" prefWidth="678.0" promptText="Search...." styleClass="searchBar">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </TextField>
+                        <Circle fill="WHITE" layoutX="976.0" layoutY="33.0" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Circle>
+                        <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="967.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/bell.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <Pane prefHeight="200.0" prefWidth="955.0" stylesheets="@CategoryClickStyle.css" VBox.vgrow="ALWAYS">
+               <children>
+                  <Pane layoutX="41.0" layoutY="44.0" prefHeight="530.0" prefWidth="953.0" styleClass="click-contentPane">
+                     <children>
+                        <Text fill="#696f79" layoutX="789.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoDesc" text="Average" />
+                        <Text fill="#696f79" layoutX="789.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoDesc" text="10 mins" />
+                        <Text fill="#696f79" layoutX="789.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoDesc" text="5" />
+                        <Text fill="#696f79" layoutX="789.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoDesc" text="Multiple" />
+                     </children>
+                  </Pane>
+                  <Button focusTraversable="false" layoutX="693.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleStartQuiz" prefHeight="51.0" prefWidth="123.0" styleClass="start-button" text="Start Quiz" textFill="WHITE">
+                     <font>
+                        <Font name="Poppins Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Pane layoutX="42.0" layoutY="43.0" prefHeight="530.0" prefWidth="574.0">
+                     <children>
+                        <ImageView fitHeight="294.0" fitWidth="515.0" layoutX="30.0" layoutY="33.0">
+                           <image>
+                              <Image url="@icons/illustration5.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#5c155e" layoutX="30.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-title" text="OOP Quiz - Enumeration">
+                           <font>
+                              <Font name="Poppins Bold" size="30.0" />
+                           </font>
+                        </Text>
+                        <Line endX="411.0" endY="-3.0517578125E-5" layoutX="131.0" layoutY="383.0" startX="-100.0" stroke="#5c155e" />
+                        <Text fill="#5c155e" layoutX="30.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-conText" text="This quiz tests your ability to answer the questions about Java Object-Oriented Programming (OOP) through an enumeration quiz type format. Sharpen your focus and demonstrate your ability to recognize and distinguish core concepts with precision." wrappingWidth="512.4141845703125" />
+                        <Text fill="#5c155e" layoutX="30.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-conText" text="Click the &quot;Start&quot; button to begin the quiz. Once you have completed all the questions, click the &quot;Submit&quot; button to submit your answers." wrappingWidth="512.4141845703125" />
+                     </children></Pane>
+                  <ImageView layoutX="26.0" layoutY="-11.0" onMouseClicked="#handleBackButtonClick">
+                     <image>
+                        <Image url="@icons/back_icon.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#696f79" layoutX="676.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoTitle" text="Difficulty:">
+                     <font>
+                        <Font name="Poppins Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#696f79" layoutX="676.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoTitle" text="Time Limit:">
+                     <font>
+                        <Font name="Poppins Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#696f79" layoutX="676.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoTitle" text="No. of Items:">
+                     <font>
+                        <Font name="Poppins Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#696f79" layoutX="676.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="categ-infoTitle" text="Attempts:">
+                     <font>
+                        <Font name="Poppins Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
