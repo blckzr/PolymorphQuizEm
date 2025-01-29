@@ -19,7 +19,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="686.0" prefWidth="1036.0" styleClass="main" stylesheets="@DashboardStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.DashboardController">
+<AnchorPane fx:id="mainPane" prefHeight="686.0" prefWidth="1036.0" styleClass="main" stylesheets="@DashboardStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.DashboardController">
     <children>
         <VBox prefHeight="686.0" prefWidth="1036.0" styleClass="main">
             <children>
@@ -32,7 +32,7 @@
                               <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="262.0" layoutY="19.0" prefHeight="33.0" prefWidth="678.0" promptText="Search...." styleClass="searchBar">
+                        <TextField layoutX="262.0" layoutY="19.0" prefHeight="33.0" prefWidth="675.0" promptText="Search...." styleClass="searchBar">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

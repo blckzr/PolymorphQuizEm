@@ -16,7 +16,7 @@
 }
 
 .control-panel {
-    -fx-background-color: #5c155e;
+    -fx-background-color: #b133b1;
     -fx-background-radius: 30px;
 }
 
@@ -49,7 +49,7 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 14px;
 
-    -fx-background-color: #5c155e
+    -fx-background-color: #b133b1;
 }
 
 .title_text_field {
@@ -63,11 +63,11 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 20px;
 
-    -fx-background-color: #5c155e
+    -fx-background-color: #b133b1;
 }
 
 .combo_box {
-    -fx-background-color: #5c155e;
+    -fx-background-color: #f5e0f4;
     -fx-font-family: "Poppins";
     -fx-text-fill: #ffffff;
     -fx-border-color: #ffffff;

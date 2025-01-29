@@ -4,6 +4,7 @@ import com.backend.QuestionPaneData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -11,10 +12,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class QuizMakerController {
+public class QuizMakerController implements Initializable {
     @FXML
     VBox QuestionVbox;
     @FXML
@@ -39,9 +42,18 @@ public class QuizMakerController {
     Label totalPointsLabel;
     @FXML
     Button BackButton;
+    @FXML
+    ChoiceBox<String> difficultyChoice;
+
+    private final String[] difficulty = {"Easy", "Average", "Hard"};
 
     private List<Parent> questionPanes = new ArrayList<>();
     private int nextIndex = 0;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        difficultyChoice.getItems().addAll(difficulty);
+    }
 
     @FXML
     private void initialize() {
@@ -207,4 +219,5 @@ public class QuizMakerController {
     public void handleBackButton() {
 
     }
+
 }

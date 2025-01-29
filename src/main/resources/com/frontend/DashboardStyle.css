@@ -177,3 +177,20 @@
     -fx-background-color: #f5e0f4;
     -fx-background-radius: 10px;
 }
+.testBtn {
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: #f5e0f4;
+    -fx-font-weight: bold;
+    -fx-background-color: #5c155e;
+    -fx-background-radius: 5px;
+}
+.testBtn:hover {
+    -fx-font-size: 18px;
+    -fx-pref-height: 39px;
+    -fx-pref-width: 108px;
+}
+.testBtn:pressed {
+    -fx-font-size: 18px;
+    -fx-pref-height: 39px;
+    -fx-pref-width: 108px;
+}

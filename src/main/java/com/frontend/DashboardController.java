@@ -5,11 +5,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -17,6 +20,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -26,6 +30,9 @@ import java.util.ResourceBundle;
 public class DashboardController implements Initializable {
     @FXML
     private PieChart pieChart;
+
+    @FXML
+    private AnchorPane mainPane;
     
     @FXML
     private Label welcomeLbl, usernameLbl, quizTakenLbl, month, year, upcomingDaysLbl;
@@ -122,11 +129,6 @@ public class DashboardController implements Initializable {
         text.setStyle("-fx-font-size: 14;");
 
         stackPane.getChildren().addAll(background, text);
-
-        // Change here if add click on a day
-        stackPane.setOnMouseClicked(event -> {
-            System.out.println("Clicked on day: " + day);
-        });
 
         return stackPane;
     }
