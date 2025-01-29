@@ -15,6 +15,7 @@ public class Signup extends Application {
         Image icon = new Image(getClass().getResourceAsStream("icons/mainLogo.png"));
         scene.getStylesheets().add(getClass().getResource("SignupStyle.css").toExternalForm());
 
+        stage.setResizable(false);
         stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.setTitle("PolymorphQuizEm - Signup");

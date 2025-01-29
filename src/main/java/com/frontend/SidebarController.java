@@ -95,9 +95,9 @@ public class SidebarController {
         historyBump.setVisible(true);
         historyPane.setStyle("-fx-background-color: #c951c9;");
 
-//        SceneLoader object = new SceneLoader();
-//        Pane view = object.getPage("Dashboard");
-//        mainPane.setCenter(view);
+        SceneLoader object = new SceneLoader();
+        Pane view = object.getPage("QuizHistory");
+        mainPane.setCenter(view);
     }
     @FXML
     private void switchToTracking(javafx.scene.input.MouseEvent event) {
